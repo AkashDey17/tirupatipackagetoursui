@@ -1,5 +1,6 @@
 
 
+
 // import React, { useEffect, useState } from "react";
 // import { Button } from "@/components/ui/button";
 // import { Mail, Phone, User, MessageCircle } from "lucide-react";
@@ -60,6 +61,16 @@
 //     }
 //   };
 
+//   // Helper component for dot-in-circle list items
+//   const DotListItem = ({ children }) => (
+//     <li className="relative pl-10">
+//       <span className="absolute left-0 top-1 flex w-5 h-5 bg-gray-300 rounded-full items-center justify-center">
+//         <span className="w-2 h-2 bg-gray-700 rounded-full"></span>
+//       </span>
+//       {children}
+//     </li>
+//   );
+
 //   return (
 //     <div className="min-h-screen bg-white font-sans relative flex flex-col">
       
@@ -75,7 +86,7 @@
 //         <div className="md:w-1/2 md:pl-12 text-center md:text-left">
 //           <h1 className="text-4xl font-bold text-[#6B4E3D] mb-4">Contact Sanchar6t - Plan Your Sacred Tirupati Journey</h1>
 //           <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-//             Ready to embark on your spiritual journey? Sanchar6T makes planning your Tirupati trip from Bangalore simple, convenient, and completely stress-free.
+//             Ready to embark on your spiritual journey? <strong>Sanchar6T</strong> makes planning your <strong>Tirupati trip from Bangalore</strong> simple, convenient, and completely stress-free.
 //             Our experienced customer service team is available to assist with bookings, answer questions, and customize packages according to your specific requirements.
 //           </p>
 //         </div>
@@ -84,10 +95,16 @@
 //       {/* Booking Channels */}
 //       <section className="py-10 px-6 md:px-20 bg-white">
 //         <h2 className="text-3xl font-bold text-[#6B4E3D] mb-6">Multiple Booking Channels</h2>
-//         <ul className="list-disc list-inside space-y-2 text-gray-700 text-lg">
-//           <li><strong>Phone Booking :</strong> Speak directly with our travel experts for personalized package recommendations and instant booking confirmation.</li>
-//           <li><strong>Online Reservation :</strong> Visit our user-friendly website for detailed package information, real-time availability, and secure online payment processing.</li>
-//           <li><strong>WhatsApp Support :</strong> Get quick responses to queries, package updates, and booking assistance through our dedicated WhatsApp business line.</li>
+//         <ul className="list-none space-y-2 text-gray-700 text-lg">
+//           <DotListItem>
+//             <strong>Phone Booking :</strong> Speak directly with our travel experts for personalized package recommendations and instant booking confirmation.
+//           </DotListItem>
+//           <DotListItem>
+//             <strong>Online Reservation :</strong> Visit our user-friendly website for detailed package information, real-time availability, and secure online payment processing.
+//           </DotListItem>
+//           <DotListItem>
+//             <strong>WhatsApp Support :</strong> Get quick responses to queries, package updates, and booking assistance through our dedicated WhatsApp business line.
+//           </DotListItem>
 //         </ul>
 //       </section>
 
@@ -96,26 +113,26 @@
 //         <h2 className="text-3xl font-bold text-[#6B4E3D] mb-6">Specialized Quick Packages</h2>
 //         <h3 className="text-xl font-semibold mb-2">Express One-Day Solution</h3>
 //         <p className="text-gray-700 text-lg mb-4">
-//          Perfect for busy devotees, our 1 day Tirupati package from Bangalore offers complete spiritual experience within 24 hours. This efficiently planned package maximizes temple time while ensuring comfortable travel, quality meals, and meaningful darshan experience.
+//          Perfect for busy devotees, our <strong>1 day Tirupati package from Bangalore</strong> offers complete spiritual experience within 24 hours. This efficiently planned package maximizes temple time while ensuring comfortable travel, quality meals, and meaningful darshan experience.
 //         </p>
-//         <ul className="list-disc list-inside space-y-2 text-gray-700 text-lg">
-//           <li>Early morning departure from multiple Bangalore pickup points</li>
-//           <li>Comfortable AC bus transportation with reclining seats</li>
-//           <li>Traditional breakfast and regional lunch included</li>
-//           <li>Expert guide assistance for temple navigation and darshan</li>
-//           <li>Sarva darshan queue management and optimal positioning</li>
-//           <li>Sacred prasadam collection and blessing ceremonies</li>
-//           <li>Additional temple visits including Padmavathy Temple</li>
-//           <li>Safe evening return with drop-off at original pickup locations</li>
+//         <ul className="list-none space-y-2 text-gray-700 text-lg">
+//           <DotListItem>Early morning departure from multiple Bangalore pickup points</DotListItem>
+//           <DotListItem>Comfortable AC bus transportation with reclining seats</DotListItem>
+//           <DotListItem>Traditional breakfast and regional lunch included</DotListItem>
+//           <DotListItem>Expert guide assistance for temple navigation and darshan</DotListItem>
+//           <DotListItem>Sarva darshan queue management and optimal positioning</DotListItem>
+//           <DotListItem>Sacred prasadam collection and blessing ceremonies</DotListItem>
+//           <DotListItem>Additional temple visits including Padmavathy Temple</DotListItem>
+//           <DotListItem>Safe evening return with drop-off at original pickup locations</DotListItem>
 //         </ul>
 //       </section>
 
 //       {/* Customer Service */}
 //       <section className="py-10 px-6 md:px-20 bg-white">
 //         <h2 className="text-3xl font-bold text-[#6B4E3D] mb-6">Customer Service Excellence</h2>
-//         <ul className="list-disc list-inside space-y-2 text-gray-700 text-lg">
-//           <li><strong>24/7 Support:</strong> Our dedicated customer service team provides round-the-clock assistance for booking inquiries, travel updates, and emergency support during your pilgrimage journey.</li>
-//           <li><strong>Flexible Arrangements:</strong> We accommodate special requirements including dietary restrictions, mobility assistance, group bookings, and customized departure times to ensure every devotee's needs are met.</li>
+//         <ul className="list-none space-y-2 text-gray-700 text-lg">
+//           <DotListItem><strong>24/7 Support:</strong> Our dedicated customer service team provides round-the-clock assistance for booking inquiries, travel updates, and emergency support during your pilgrimage journey.</DotListItem>
+//           <DotListItem><strong>Flexible Arrangements:</strong> We accommodate special requirements including dietary restrictions, mobility assistance, group bookings, and customized departure times to ensure every devotee's needs are met.</DotListItem>
 //         </ul>
 //       </section>
 
@@ -141,7 +158,6 @@
 
 //           {/* Right: Form */}
 //           <div className="md:w-1/2 bg-white p-10 rounded-2xl shadow-2xl space-y-6">
-            
 //             {/* Name */}
 //             <div className="relative">
 //               <User className="absolute left-3 top-1/2 -translate-y-1/2 text-yellow-500 h-5 w-5" />
@@ -223,17 +239,17 @@
 //           </div>
 //         </div>
 //       </section>
-//       {/* Book Your Blessed Journey Today Section */}
-// <section className="py-12 px-6 md:px-20 text-center rounded-2xl mt-10 shadow-lg">
-//   <h2 className="text-3xl md:text-4xl font-bold text-[#6B4E3D] mb-4">
-//     Book Your Blessed Journey Today
-//   </h2>
-//   <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-//     Experience the difference of traveling with Sanchar6t - where devotion meets comfort, and every journey becomes a cherished spiritual memory. 
-//     Contact us now to plan your perfect Tirupati pilgrimage experience.
-//   </p>
-// </section>
 
+//       {/* Book Your Blessed Journey Today Section */}
+//       <section className="py-12 px-6 md:px-20 text-center rounded-2xl mt-10 shadow-lg">
+//         <h2 className="text-3xl md:text-4xl font-bold text-[#6B4E3D] mb-4">
+//           Book Your Blessed Journey Today
+//         </h2>
+//         <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+//           Experience the difference of traveling with <strong>Sanchar6T</strong> - where devotion meets comfort, and every journey becomes a cherished spiritual memory. 
+//           Contact us now to plan your perfect Tirupati pilgrimage experience.
+//         </p>
+//       </section>
 
 //       {/* Popup */}
 //       {showPopup && (
@@ -261,6 +277,10 @@
 // export default ContactSignup;
 
 
+
+
+
+
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, User, MessageCircle } from "lucide-react";
@@ -280,7 +300,7 @@ const ContactSignup = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/package-list");
+        const response = await fetch("https://tirupatipackagetoursbackend.onrender.com/api/package-list");
         const data = await response.json();
         setPackages(data);
       } catch (err) {
@@ -298,7 +318,7 @@ const ContactSignup = () => {
     if (!selectedPackage) return toast.error("Please select a package");
 
     try {
-      const response = await fetch("http://localhost:5000/api/submit-feedback", {
+      const response = await fetch("https://tirupatipackagetoursbackend.onrender.com/api/submit-feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

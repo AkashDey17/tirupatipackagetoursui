@@ -370,7 +370,7 @@ const TirupatiPakage = () => {
             <strong>NRI Services:</strong> TTD provides special darshan passes for NRI devotees.
           </p>
           <p className="mb-2 text-[22px]">
-            <strong>VIP Darshan:</strong> Available at ₹500 per person.
+            <strong>VIP Darshan:</strong> Available at ₹500 per person(Only for NRI Devotees).
           </p>
           <p className="mb-2 text-[22px]">
             <strong>Privileges:</strong> Children below 1 year are allowed direct entry along with their parents only.

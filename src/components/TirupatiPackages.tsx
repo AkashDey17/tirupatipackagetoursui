@@ -332,7 +332,7 @@ const TirupatiPackages = () => {
                 lineHeight: "1.4",
               }}
             >
-              Tirupati 1 Night / 1 Days Dharma Darshan Package{" "}
+             APTDC Tirupati 1 Night / 1 Days Dharma Darshan Package{" "}
             </h3>
             <p
               style={{

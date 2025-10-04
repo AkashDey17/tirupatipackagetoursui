@@ -1,3 +1,4 @@
+import ContactFloatingButton from "@/components/ContactFloatingButton";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import TirupatiPakage from "@/components/tirupati-packages/TirupatiPackage";
@@ -9,6 +10,7 @@ const TirupatiPackage = () => {
         <Header />
         <TirupatiPakage />
         <Footer />
+        <ContactFloatingButton />
         </div>
   )
 }

@@ -1,3 +1,4 @@
+import ContactFloatingButton from "@/components/ContactFloatingButton";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PrivacyPolicy from "@/components/privacy/PrivacyPolicy";
@@ -8,6 +9,7 @@ const PrivacyPage = () => {
         <Header />
   <PrivacyPolicy />
   <Footer />
+  <ContactFloatingButton />
   </div> 
   )
 };

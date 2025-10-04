@@ -1,3 +1,6 @@
+
+
+
 // import logoImg from "@/assets/logo.png";
 // import { Link } from "react-router-dom";
 
@@ -21,6 +24,7 @@
 //       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
 //         {/* Three Equal Sections */}
 //         <div
+//           className="footer-grid"
 //           style={{
 //             display: "grid",
 //             gridTemplateColumns: "repeat(3, 1fr)",
@@ -35,9 +39,10 @@
 //               src={logoImg}
 //               alt="Sanchar6T"
 //               style={{
-//                 height: "clamp(80px, 12vw, 140px)",
+//                 height: "clamp(120px, 14vw, 180px)", // 🔹 Made logo larger
 //                 width: "auto",
-//                 marginBottom: "20px",
+//                 margin: "0 auto 20px", // 🔹 Ensures proper centering
+//                 display: "block",
 //               }}
 //             />
 //             <p
@@ -81,6 +86,19 @@
 //                 {`
 //                   .contact-list li {
 //                     color: #4d361b;
+//                   }
+
+//                   /* Mobile responsive footer */
+//                   @media (max-width: 768px) {
+//                     .footer-grid {
+//                       display: flex !important;
+//                       flex-direction: column !important;
+//                       align-items: center !important;
+//                       text-align: center !important;
+//                     }
+//                     .footer-grid > div {
+//                       margin-top: 20px !important;
+//                     }
 //                   }
 //                 `}
 //               </style>
@@ -197,6 +215,7 @@
 // export default Footer;
 
 
+
 import logoImg from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 
@@ -235,9 +254,9 @@ const Footer = () => {
               src={logoImg}
               alt="Sanchar6T"
               style={{
-                height: "clamp(120px, 14vw, 180px)", // 🔹 Made logo larger
+                height: "clamp(120px, 14vw, 180px)",
                 width: "auto",
-                margin: "0 auto 20px", // 🔹 Ensures proper centering
+                margin: "0 auto 20px",
                 display: "block",
               }}
             />
@@ -257,8 +276,9 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Middle Section - Contact Info */}
+          {/* Middle Section - Contact Info + Popular Searches */}
           <div style={{ textAlign: "left", marginTop: "106px" }}>
+            {/* Contact Info */}
             <h3
               style={{
                 fontSize: "clamp(20px, 3vw, 24px)",
@@ -317,6 +337,7 @@ const Footer = () => {
                 display: "inline-block",
                 textAlign: "left",
                 maxWidth: "100%",
+                marginBottom: "20px",
               }}
             >
               <p
@@ -332,6 +353,46 @@ const Footer = () => {
                 2767, Advaitha, 3rd Floor, D Block, near BBMP Ward Office,
                 Defence Layout, Sahakar Nagar, Bengaluru, Karnataka 560092.
               </p>
+            </div>
+
+            {/* Popular Searches */}
+            <div>
+              <h3
+                style={{
+                  fontSize: "clamp(20px, 3vw, 24px)",
+                  fontWeight: "600",
+                  color: "#4d361b",
+                  marginBottom: "10px",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                Popular Searches
+              </h3>
+              <ul
+                style={{
+                  margin: 0,
+                  padding: 0,
+                  listStyle: "none",
+                  fontSize: "clamp(14px, 2vw, 20px)",
+                  fontFamily: "Inter, sans-serif",
+                }}
+              >
+                <li>
+                  <Link to="/tirupati-package" style={linkStyle}>
+                    Bangalore to Tirupati Tour Packages
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tirupati-package" style={linkStyle}>
+                    Tirupati Packages From Bangalore
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/tirupati-package" style={linkStyle}>
+                    Tirupati Car Packages from Bangalore
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
 

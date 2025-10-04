@@ -1,5 +1,6 @@
+
 // import { useState } from "react";
-// import { Menu, X } from "lucide-react";
+// import { Menu, X, Phone } from "lucide-react"; // 🔹 Added Phone icon
 // import { Link } from "react-router-dom"; 
 // import logoImg from "@/assets/logo.png";
 
@@ -10,8 +11,7 @@
 //     { name: "Home", path: "/" },
 //     { name: "About", path: "/about-us" },
 //     { name: "Tirupati Packages", path: "/tirupati-package" }, 
-//     { name: "Contact", path: "/contact-us" },   // 🔹 updated path
-   
+//     { name: "Contact", path: "/contact-us" },
 //   ];
 
 //   return (
@@ -19,7 +19,7 @@
 //       style={{
 //         backgroundColor: "#ffffff",
 //         borderBottom: "1px solid #e0e0e0",
-//         height: "105px", // fixed height for desktop
+//         height: "105px",
 //         position: "sticky",
 //         top: "0",
 //         zIndex: "100",
@@ -45,7 +45,7 @@
 //               src={logoImg}
 //               alt="Sanchar6T"
 //               style={{
-//                 height: "140%", // logo height relative to header
+//                 height: "140%",
 //                 width: "auto",
 //                 objectFit: "contain",
 //               }}
@@ -58,27 +58,55 @@
 //           className="hidden md:flex"
 //           style={{
 //             alignItems: "center",
-//             gap: "40px",
-//             flexWrap: "wrap",
-//             justifyContent: "center",
+//             gap: "20px",
+//             flexDirection: "column", // number above links
+//             textAlign: "center",
 //           }}
 //         >
-//           {menuItems.map((item) => (
-//             <Link
-//               key={item.name}
-//               to={item.path}
-//               style={{
-//                 color: "#6B4E3D",
-//                 fontSize: "18px",
-//                 fontWeight: "600",
-//                 textDecoration: "none",
-//                 fontFamily: "Inter, sans-serif",
-//                 whiteSpace: "nowrap",
-//               }}
-//             >
-//               {item.name}
-//             </Link>
-//           ))}
+//           {/* Clickable Number with Icon */}
+//           <a
+//             href="tel:+918197882511"
+//             style={{
+//               color: "#6B4E3D",
+//               fontSize: "18px",
+//               fontWeight: "700",
+//               fontFamily: "Inter, sans-serif",
+//               marginBottom: "5px",
+//               whiteSpace: "nowrap",
+//               display: "flex",
+//               alignItems: "center",
+//               gap: "8px",
+//               animation: "blink 1s infinite", // 🔹 blink animation
+//             }}
+//           >
+//             <Phone size={18} /> +91 8197882511
+//           </a>
+
+//           <div
+//             style={{
+//               display: "flex",
+//               gap: "40px",
+//               flexWrap: "wrap",
+//               justifyContent: "center",
+//             }}
+//           >
+//             {menuItems.map((item) => (
+//               <Link
+//                 key={item.name}
+//                 to={item.path}
+//                 style={{
+//                   color: "#6B4E3D",
+//                   fontSize: "18px",
+//                   fontWeight: "600",
+//                   textDecoration: "none",
+//                   fontFamily: "Inter, sans-serif",
+//                   whiteSpace: "nowrap",
+//                 }}
+//               >
+//                 {item.name}
+//               </Link>
+//             ))}
+//           </div>
 //         </nav>
 
 //         {/* Hamburger Icon (Mobile) */}
@@ -108,6 +136,23 @@
 //             gap: "16px",
 //           }}
 //         >
+//           {/* Mobile Number */}
+//           <a
+//             href="tel:+918197882511"
+//             style={{
+//               color: "#6B4E3D",
+//               fontSize: "18px",
+//               fontWeight: "700",
+//               fontFamily: "Inter, sans-serif",
+//               display: "flex",
+//               alignItems: "center",
+//               gap: "8px",
+//               animation: "blink 1s infinite", // 🔹 blink animation
+//             }}
+//           >
+//             <Phone size={18} /> +91 8197882511
+//           </a>
+
 //           {menuItems.map((item) => (
 //             <Link
 //               key={item.name}
@@ -119,13 +164,24 @@
 //                 textDecoration: "none",
 //                 fontFamily: "Inter, sans-serif",
 //               }}
-//               onClick={() => setMenuOpen(false)} // closes menu after click
+//               onClick={() => setMenuOpen(false)}
 //             >
 //               {item.name}
 //             </Link>
 //           ))}
 //         </div>
 //       )}
+
+//       {/* 🔹 Inline blink CSS */}
+//       <style>
+//         {`
+//           @keyframes blink {
+//             0% { opacity: 1; }
+//             50% { opacity: 0.4; }
+//             100% { opacity: 1; }
+//           }
+//         `}
+//       </style>
 //     </header>
 //   );
 // };
@@ -133,7 +189,7 @@
 // export default Header;
 
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react"; // 🔹 Added Phone icon
+import { Menu, X, Phone } from "lucide-react"; 
 import { Link } from "react-router-dom"; 
 import logoImg from "@/assets/logo.png";
 
@@ -171,8 +227,8 @@ const Header = () => {
           gap: "20px",
         }}
       >
-        {/* Logo */}
-        <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
+        {/* Logo + Text */}
+        <div style={{ display: "flex", alignItems: "center", height: "100%", gap: "10px" }}>
           <Link to="/" style={{ display: "flex", alignItems: "center", height: "100%" }}>
             <img
               src={logoImg}
@@ -184,6 +240,18 @@ const Header = () => {
               }}
             />
           </Link>
+          {/* Text next to logo */}
+          <span
+            style={{
+              fontSize: "24px",
+              fontWeight: "700",
+              color: "#6B4E3D",
+              fontFamily: "Inter, sans-serif",
+              whiteSpace: "nowrap",
+            }}
+          >
+            TirupatiPackageTours
+          </span>
         </div>
 
         {/* Desktop Navigation */}
@@ -192,7 +260,7 @@ const Header = () => {
           style={{
             alignItems: "center",
             gap: "20px",
-            flexDirection: "column", // number above links
+            flexDirection: "column",
             textAlign: "center",
           }}
         >
@@ -209,7 +277,7 @@ const Header = () => {
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              animation: "blink 1s infinite", // 🔹 blink animation
+              animation: "blink 1s infinite",
             }}
           >
             <Phone size={18} /> +91 8197882511
@@ -280,7 +348,7 @@ const Header = () => {
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              animation: "blink 1s infinite", // 🔹 blink animation
+              animation: "blink 1s infinite",
             }}
           >
             <Phone size={18} /> +91 8197882511
@@ -320,4 +388,3 @@ const Header = () => {
 };
 
 export default Header;
-

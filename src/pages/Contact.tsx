@@ -1,4 +1,5 @@
 import ContactSignup from "@/components/contact/ContactSignUp";
+import ContactFloatingButton from "@/components/ContactFloatingButton";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import React from "react";
@@ -8,6 +9,7 @@ const Contact = () => {
         <Header />
     <ContactSignup />
     <Footer />
+    <ContactFloatingButton />
    </div>
   );
 };

@@ -271,7 +271,7 @@ const Header = () => {
         >
           {/* Mobile Number */}
           <a
-            href="tel:+919876543210"
+            href="tel:+918197882511"
             style={{
               color: "#6B4E3D",
               fontSize: "18px",
@@ -283,7 +283,7 @@ const Header = () => {
               animation: "blink 1s infinite", // 🔹 blink animation
             }}
           >
-            <Phone size={18} /> +91 98765 43210
+            <Phone size={18} /> +91 8197882511
           </a>
 
           {menuItems.map((item) => (

@@ -12,44 +12,77 @@ const TirupatiPakage = () => {
   return (
     <div className="w-full font-sans text-gray-800 bg-gray-50">
       {/* Hero Section */}
-      <section className="relative w-full h-[550px] flex items-center justify-start">
-        {/* Background Image */}
-        <img
-          src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/e22d8701f66d4f0f53145840b35f2a93.jpg"
-          alt="Tirupati"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-
-        {/* ✅ Fixed Image on Right Side (Shifted Left) */}
-        <img
-          src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/bf232ac6034f03c6428ea84a47dbf921.png"
-          alt="Right Side Decoration"
-          className="absolute h-[80%] object-contain z-20 pointer-events-none"
-          style={{ top: "110px", right: "120px", transform: "translateY(0)" }}
-        />
-
-        {/* Overlay Content - Left Aligned */}
-        <div
-          className="relative z-10 text-left px-6 md:px-16"
-          style={{ maxWidth: "700px" }}
-        >
-         <h2 className="text-white text-[20px] md:text-3xl font-bold mb-4 leading-snug">
-  Tirupati 1 Night / 1 Days Dharma Darshan Package
-  <span className="block text-[#ffea92] text-lg md:text-2xl font-semibold leading-relaxed mt-2">
-    Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
-  </span> 
-</h2>
 
 
-         
-            <button 
-             onClick={handleBookNow}
-            className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">
-              Book Now &gt;
-            </button>
-         
-        </div>
-      </section>
+      <section className="w-full relative">
+
+  {/* Desktop / Laptop Hero (unchanged) */}
+  <div className="hidden md:block relative w-full h-[550px]">
+   <img
+    src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/e22d8701f66d4f0f53145840b35f2a93.jpg"
+    alt="tirupati package from bangalore"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+    <img
+      src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/bf232ac6034f03c6428ea84a47dbf921.png"
+      alt="tirupati package from bangalore"
+      className="absolute object-contain z-20 pointer-events-none
+                 h-[80%] right-[120px] top-[110px]"
+    />
+    <div
+      className="relative z-10 text-left pt-40 pl-16 pr-16"
+      style={{ maxWidth: "700px" }}
+    >
+      <h2 className="text-white text-3xl font-bold mb-4 leading-snug">
+        Tirupati 1 Night / 1 Days Dharma Darshan Package
+        <span className="block text-[#ffea92] text-2xl font-semibold leading-relaxed mt-2">
+          Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
+        </span>
+      </h2>
+      <button
+        onClick={handleBookNow}
+        className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition text-base"
+      >
+        Book Now &gt;
+      </button>
+    </div>
+  </div>
+
+{/* Mobile Hero (text above, image below) */}
+<div
+  className="block md:hidden w-full px-6 pt-6 relative"
+  style={{
+    backgroundImage: "url('https://productcatalo.my.canva.site/sanchar6t/_assets/media/e22d8701f66d4f0f53145840b35f2a93.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+   
+  }}
+>
+  <div className="text-left mb-4 relative z-10">
+    <h2 className="text-white text-xl font-bold mb-2 leading-snug">
+      Tirupati 1 Night / 1 Days Dharma Darshan Package
+      <span className="block text-[#ffea92] text-base font-semibold leading-relaxed mt-1">
+        Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
+      </span>
+    </h2>
+    <button
+      onClick={handleBookNow}
+      className="bg-yellow-400 text-[#6B4E3D] font-bold px-6 py-2 rounded-full shadow-md hover:shadow-lg transition text-sm"
+    >
+      Book Now &gt;
+    </button>
+  </div>
+
+  <img
+    src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/bf232ac6034f03c6428ea84a47dbf921.png"
+    alt="tirupati package from bangalore"
+    className="w-full object-contain mt-4 relative z-10"
+  />
+</div>
+
+</section>
+
+
 
       {/* Content Sections */}
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 space-y-16">
@@ -254,7 +287,7 @@ const TirupatiPakage = () => {
         </section>
 
         {/* Fare */}
-      <section>
+      {/* <section>
   <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Package Fare</h2>
   <p className="text-gray-700 mb-4 text-[22px]"><strong>Competitive Tirupati Package Pricing</strong></p>
   <p className="text-gray-700 mb-4 text-[22px]">
@@ -303,8 +336,62 @@ const TirupatiPakage = () => {
     *All <strong>Tirupati package from Bangalore price</strong> rates are per person and subject to availability. 
    <strong>Tirupati one day package from Bangalore</strong> rates available on request.
   </p>
-</section>
+</section> */}
 
+<section>
+  <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4 sm:text-xl">Package Fare</h2>
+  <p className="text-gray-700 mb-4 text-[22px] sm:text-base"><strong>Competitive Tirupati Package Pricing</strong></p>
+  <p className="text-gray-700 mb-4 text-[22px] sm:text-base">
+    Our <strong>Tirupati package from Bangalore price</strong> offers exceptional value for complete spiritual experience:
+  </p>
+
+  {/* Scrollable container for mobile */}
+  <div className="overflow-x-auto">
+    <table className="w-full border border-gray-200 text-left min-w-[700px] sm:min-w-full">
+      <thead className="bg-yellow-100">
+        <tr>
+          <th className="border p-3 text-[22px] sm:text-base">Category</th>
+          <th className="border p-3 text-[22px] sm:text-base">Day</th>
+          <th className="border p-3 text-[22px] sm:text-base">Price</th>
+          <th className="border p-3 text-[22px] sm:text-base">Day</th>
+          <th className="border p-3 text-[22px] sm:text-base">Price</th>
+          <th className="border p-3 text-[22px] sm:text-base">Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="border p-3 text-[22px] sm:text-base">Adult</td>
+          <td className="border p-3 text-[22px] sm:text-base">Sun-Thur</td>
+          <td className="border p-3 text-[22px] sm:text-base">₹2,300</td>
+          <td className="border p-3 text-[22px] sm:text-base">Fri-Sat</td>
+          <td className="border p-3 text-[22px] sm:text-base">₹2,650</td>
+          <td className="border p-3 text-[22px] sm:text-base">Complete package with all inclusions</td>
+        </tr>
+        <tr>
+          <td className="border p-3 text-[22px] sm:text-base">Child (5-12 yrs)</td>
+          <td className="border p-3 text-[22px] sm:text-base">Sun-Thur</td>
+          <td className="border p-3 text-[22px] sm:text-base">₹2,300</td>
+          <td className="border p-3 text-[22px] sm:text-base">Fri-Sat</td>
+          <td className="border p-3 text-[22px] sm:text-base">₹2,650</td>
+          <td className="border p-3 text-[22px] sm:text-base">Child-friendly arrangements</td>
+        </tr>
+        <tr>
+          <td className="border p-3 text-[22px] sm:text-base">Child (Below 5 yrs)</td>
+          <td className="border p-3 text-[22px] sm:text-base">All Day</td>
+          <td className="border p-3 text-[22px] sm:text-base">₹0</td>
+          <td className="border p-3 text-[22px] sm:text-base">All Day</td>
+          <td className="border p-3 text-[22px] sm:text-base">₹0</td>
+          <td className="border p-3 text-[22px] sm:text-base">Special discounted rates</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p className="mt-3 italic text-gray-600 text-[20px] sm:text-sm">
+    *All <strong>Tirupati package from Bangalore price</strong> rates are per person and subject to availability. 
+    <strong>Tirupati one day package from Bangalore</strong> rates available on request.
+  </p>
+</section>
 
 
 
@@ -389,6 +476,9 @@ const TirupatiPakage = () => {
             <strong>Women</strong> - Saree or Half-Saree with blouse, or Churidar with Pyjama and upper cloth
           </p>
         </section>
+        <p className="mt-3 text-gray-400 text-xl leading-relaxed">
+          <strong>FINDS ONLINE KEYWORDS:</strong> tirupati darshan package from bangalore, tirupati balaji darshan package from bangalore, balaji package from bangalore, tirupati balaji darshan packages, tirupati balaji package from bangalore, apsrtc tirupati darshan package from bangalore, aptdc tirupati darshan package from bangalore, bangalore tirupati darshan
+        </p>
       </div>
     </div>
   );

@@ -162,7 +162,7 @@ const AboutPage = () => {
       <section className="relative w-full h-[500px] flex items-center justify-center bg-black">
         <img
           src={Temple1}
-          alt="Tirupati Temple"
+          alt="tirupati darshan package from bangalore"
           className="absolute inset-0 w-full h-full object-cover opacity-70"
         />
         <div className="relative z-10 text-center text-white px-6">
@@ -285,23 +285,28 @@ const AboutPage = () => {
         </p>
         <img
           src={Temple2}
-          alt="Journey"
+          alt="tirupati darshan package from bangalore"
           className="mx-auto mt-6 rounded-xl shadow-lg"
         />
       </section>
 
       {/* 🔗 Hidden SEO Links Section */}
-      <section className="text-center py-4 text-sm text-gray-400 opacity-70 px-4">
+      <section className="text-center py-4 text-xl text-gray-400 opacity-70 px-4">
         <div className="flex flex-wrap justify-center gap-3">
           <Link to="/" className="hover:text-blue-600">Home</Link>
           <Link to="/about-us" className="hover:text-blue-600">About Sanchar6T</Link>
           <Link to="/tirupati-package" className="hover:text-blue-600">Tirupati Packages from Bangalore</Link>
           <Link to="/contact" className="hover:text-blue-600">Contact Us</Link>
-          
         </div>
+
+        {/* ✅ Added SEO Keywords Line */}
+        <p className="mt-3 text-gray-400 text-xl leading-relaxed">
+          <strong>FINDS ONLINE KEYWORDS:</strong> tirupati darshan package from bangalore, tirupati balaji darshan package from bangalore, balaji package from bangalore, tirupati balaji darshan packages, tirupati balaji package from bangalore, apsrtc tirupati darshan package from bangalore, aptdc tirupati darshan package from bangalore, bangalore tirupati darshan
+        </p>
       </section>
     </div>
   );
 };
 
 export default AboutPage;
+

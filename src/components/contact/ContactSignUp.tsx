@@ -359,7 +359,7 @@ const ContactSignup = () => {
         <div className="md:w-1/2 mb-6 md:mb-0">
           <img
             src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/9e5e7cbcbd2a60a2f4f86dbddb6040af.jpg"
-            alt="Temple"
+            alt="tirupati trip from bangalore"
             className="w-full h-[400px] object-cover rounded-xl shadow-lg"
           />
         </div>
@@ -427,7 +427,7 @@ const ContactSignup = () => {
           <div className="md:w-1/2 flex flex-col items-center md:items-start">
             <img
               src={Logo}
-              alt="Sanchar6T Logo"
+              alt="tirupati trip from bangalore"
               className="h-72 w-auto rounded-xl "
             />
             <p className="mt-6 text-center md:text-left text-gray-700 text-lg leading-relaxed max-w-md">
@@ -529,7 +529,11 @@ const ContactSignup = () => {
           Experience the difference of traveling with <strong>Sanchar6T</strong> - where devotion meets comfort, and every journey becomes a cherished spiritual memory. 
           Contact us now to plan your perfect Tirupati pilgrimage experience.
         </p>
+        <p className="mt-3 text-gray-400 text-xl leading-relaxed">
+          <strong>FINDS ONLINE KEYWORDS:</strong> tirupati trip from bangalore, 1 day tirupati package from bangalore, kstdc tirupati package from bangalore, tirupati balaji package from bangalore, tirupati balaji darshan package from bangalore, apsrtc tirupati darshan package from bangalore, aptdc tirupati darshan package from bangalore, bangalore tirupati darshan
+        </p>
       </section>
+       
 
       {/* Popup */}
       {showPopup && (

@@ -15,7 +15,8 @@ const TOUR_OPTIONS = [
   }
 ];
 
-const API_BASE = "http://localhost:5000";
+ const API_BASE = "http://localhost:5000";
+
 
 export default function ItineraryPlanner() {
   const [tourId, setTourId] = useState(TOUR_OPTIONS[0].id);
@@ -155,11 +156,25 @@ export default function ItineraryPlanner() {
           <div className="p-5 bg-red-50 text-red-700 rounded-xl shadow">{error}</div>
         )}
 
-        {!plan && !error && (
+        {/* {!plan && !error && (
           <div className="p-8 bg-white rounded-2xl text-xl shadow text-center text-gray-700">
             Choose a package and click <strong>Generate Itinerary</strong> to see AI suggestions.
           </div>
-        )}
+        )} */}
+        {!plan && !error && (
+  <div className="p-8 bg-white rounded-2xl text-xl shadow text-center text-gray-700 space-y-4">
+    <p>
+      Choose a package and click <strong>Generate Itinerary</strong> to see AI suggestions.
+    </p>
+    <p className="text-gray-500 text-base leading-relaxed">
+      <strong>FINDS ONLINE KEYWORDS:</strong> bangalore to tirupathi bus package, tirupati package from bangalore price,
+      ksrtc tirupati package from bangalore, tirupati balaji package from bangalore, tirupati tour package from bangalore,
+      tirupati package from bangalore, tirupati darshan package from bangalore, tirupati package from Bangalore price,
+      bangalore to tirupati package bus
+    </p>
+  </div>
+)}
+
 
         {plan && (
           <div className="space-y-6">

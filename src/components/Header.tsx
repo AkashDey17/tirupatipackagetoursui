@@ -1,6 +1,7 @@
 
+
 // import { useState } from "react";
-// import { Menu, X, Phone } from "lucide-react"; // 🔹 Added Phone icon
+// import { Menu, X, Phone } from "lucide-react"; 
 // import { Link } from "react-router-dom"; 
 // import logoImg from "@/assets/logo.png";
 
@@ -38,8 +39,8 @@
 //           gap: "20px",
 //         }}
 //       >
-//         {/* Logo */}
-//         <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
+//         {/* Logo + Text */}
+//         <div style={{ display: "flex", alignItems: "center", height: "100%", gap: "10px" }}>
 //           <Link to="/" style={{ display: "flex", alignItems: "center", height: "100%" }}>
 //             <img
 //               src={logoImg}
@@ -51,6 +52,17 @@
 //               }}
 //             />
 //           </Link>
+//           <span
+//             style={{
+//               fontSize: "24px",
+//               fontWeight: "700",
+//               color: "#6B4E3D",
+//               fontFamily: "Inter, sans-serif",
+//               whiteSpace: "nowrap",
+//             }}
+//           >
+//             TirupatiPackageTours
+//           </span>
 //         </div>
 
 //         {/* Desktop Navigation */}
@@ -59,11 +71,10 @@
 //           style={{
 //             alignItems: "center",
 //             gap: "20px",
-//             flexDirection: "column", // number above links
+//             flexDirection: "column",
 //             textAlign: "center",
 //           }}
 //         >
-//           {/* Clickable Number with Icon */}
 //           <a
 //             href="tel:+918197882511"
 //             style={{
@@ -76,7 +87,7 @@
 //               display: "flex",
 //               alignItems: "center",
 //               gap: "8px",
-//               animation: "blink 1s infinite", // 🔹 blink animation
+//               animation: "blink 1s infinite",
 //             }}
 //           >
 //             <Phone size={18} /> +91 8197882511
@@ -109,18 +120,30 @@
 //           </div>
 //         </nav>
 
-//         {/* Hamburger Icon (Mobile) */}
-//         <button
-//           className="md:hidden"
-//           onClick={() => setMenuOpen(!menuOpen)}
-//           style={{ background: "none", border: "none", cursor: "pointer" }}
-//         >
-//           {menuOpen ? (
-//             <X size={28} color="#6B4E3D" />
-//           ) : (
-//             <Menu size={28} color="#6B4E3D" />
-//           )}
-//         </button>
+//         {/* Mobile Row: Phone + Hamburger */}
+//         <div className="md:hidden" style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+//           <a
+//             href="tel:+918197882511"
+//             style={{
+//               color: "#6B4E3D",
+//               fontSize: "16px",
+//               fontWeight: "700",
+//               fontFamily: "Inter, sans-serif",
+//               display: "flex",
+//               alignItems: "center",
+//               gap: "5px",
+//               animation: "blink 1s infinite",
+//             }}
+//           >
+//             <Phone size={16} /> +91 8197882511
+//           </a>
+//           <button
+//             onClick={() => setMenuOpen(!menuOpen)}
+//             style={{ background: "none", border: "none", cursor: "pointer" }}
+//           >
+//             {menuOpen ? <X size={28} color="#6B4E3D" /> : <Menu size={28} color="#6B4E3D" />}
+//           </button>
+//         </div>
 //       </div>
 
 //       {/* Mobile Menu */}
@@ -136,23 +159,6 @@
 //             gap: "16px",
 //           }}
 //         >
-//           {/* Mobile Number */}
-//           <a
-//             href="tel:+918197882511"
-//             style={{
-//               color: "#6B4E3D",
-//               fontSize: "18px",
-//               fontWeight: "700",
-//               fontFamily: "Inter, sans-serif",
-//               display: "flex",
-//               alignItems: "center",
-//               gap: "8px",
-//               animation: "blink 1s infinite", // 🔹 blink animation
-//             }}
-//           >
-//             <Phone size={18} /> +91 8197882511
-//           </a>
-
 //           {menuItems.map((item) => (
 //             <Link
 //               key={item.name}
@@ -172,7 +178,6 @@
 //         </div>
 //       )}
 
-//       {/* 🔹 Inline blink CSS */}
 //       <style>
 //         {`
 //           @keyframes blink {
@@ -227,7 +232,7 @@ const Header = () => {
           gap: "20px",
         }}
       >
-        {/* Logo + Text */}
+        {/* Logo + Text (Desktop only) */}
         <div style={{ display: "flex", alignItems: "center", height: "100%", gap: "10px" }}>
           <Link to="/" style={{ display: "flex", alignItems: "center", height: "100%" }}>
             <img
@@ -240,8 +245,9 @@ const Header = () => {
               }}
             />
           </Link>
-          {/* Text next to logo */}
+          {/* Hide text on mobile */}
           <span
+            className="hidden md:inline"
             style={{
               fontSize: "24px",
               fontWeight: "700",
@@ -264,7 +270,6 @@ const Header = () => {
             textAlign: "center",
           }}
         >
-          {/* Clickable Number with Icon */}
           <a
             href="tel:+918197882511"
             style={{
@@ -310,21 +315,18 @@ const Header = () => {
           </div>
         </nav>
 
-        {/* Hamburger Icon (Mobile) */}
-        <button
-          className="md:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-          style={{ background: "none", border: "none", cursor: "pointer" }}
-        >
-          {menuOpen ? (
-            <X size={28} color="#6B4E3D" />
-          ) : (
-            <Menu size={28} color="#6B4E3D" />
-          )}
-        </button>
+        {/* Mobile Hamburger Only */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{ background: "none", border: "none", cursor: "pointer" }}
+          >
+            {menuOpen ? <X size={28} color="#6B4E3D" /> : <Menu size={28} color="#6B4E3D" />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu with Phone Number & Text */}
       {menuOpen && (
         <div
           className="md:hidden"
@@ -337,6 +339,19 @@ const Header = () => {
             gap: "16px",
           }}
         >
+          {/* Mobile Logo Text */}
+          <span
+            style={{
+              fontSize: "24px",
+              fontWeight: "700",
+              color: "#6B4E3D",
+              fontFamily: "Inter, sans-serif",
+              whiteSpace: "nowrap",
+            }}
+          >
+            TirupatiPackageTours
+          </span>
+
           {/* Mobile Number */}
           <a
             href="tel:+918197882511"
@@ -373,7 +388,6 @@ const Header = () => {
         </div>
       )}
 
-      {/* 🔹 Inline blink CSS */}
       <style>
         {`
           @keyframes blink {

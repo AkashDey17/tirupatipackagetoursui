@@ -167,7 +167,7 @@ export default function ItineraryPlanner() {
       Choose a package and click <strong>Generate Itinerary</strong> to see AI suggestions.
     </p>
     <p className="text-gray-500 text-base leading-relaxed">
-      <strong>FINDS ONLINE KEYWORDS:</strong> bangalore to tirupathi bus package, tirupati package from bangalore price,
+      <strong>FIND OUR PACKAGES:</strong> bangalore to tirupathi bus package, tirupati package from bangalore price,
       ksrtc tirupati package from bangalore, tirupati balaji package from bangalore, tirupati tour package from bangalore,
       tirupati package from bangalore, tirupati darshan package from bangalore, tirupati package from Bangalore price,
       bangalore to tirupati package bus

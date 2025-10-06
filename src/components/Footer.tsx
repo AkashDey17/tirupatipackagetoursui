@@ -203,11 +203,11 @@ const Footer = () => {
       key={idx}
       href="/tirupati-package"
       style={{
-        fontSize: "clamp(18px, 1.9vw, 18px)",
+        fontSize: "clamp(18px, 2.0vw, 18px)",
         color: "#4d361b",
         fontFamily: "Inter, sans-serif",
         textDecoration: "none",
-        textAlign:"right"
+        textAlign:"left"
       }}
     >
       {pkg}

@@ -286,7 +286,7 @@ const TirupatiPackages = () => {
           >
             <img
               src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/eaf07c9e6a994a35b830914a2cf034fe.png"
-              alt="Tirupati Package 1"
+             alt="bangalore to tirupathi bus package"
               style={{
                 width: "100%",
                 maxWidth: "500px",

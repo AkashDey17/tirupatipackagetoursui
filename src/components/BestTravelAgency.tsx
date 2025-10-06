@@ -96,7 +96,7 @@ const BestTravelAgency = () => {
           <div style={{ textAlign: "center", order: 2 }}>
             <img
               src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/e31a0788537379626695b1c5edd448e6.png"
-              alt="Temple"
+             alt="bangalore to tirupathi bus package"
               style={{
                 width: "clamp(220px, 50vw, 420px)",
                 height: "auto",

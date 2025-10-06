@@ -167,7 +167,7 @@ const HeroSection = () => {
       {/* Canva Background Image */}
       <img
         src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/ba62ffc1619478d5d53529924384308d.png"
-        alt="Hero Background"
+        alt="bangalore to tirupathi bus package"
         style={{
           position: "absolute",
           top: "50%",

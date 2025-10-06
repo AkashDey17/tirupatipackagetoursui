@@ -1,100 +1,293 @@
+// import React from "react";
+// import { Link } from "react-router-dom";
+
+// const TirupatiSrikalahasti = () => {
+//   const handleBookNow = () => {
+//     const phoneNumber = "918197882511";
+//     const message = "Hello! I’d like to know more about your services.";
+//     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
+//   };
+//   return (
+//     <div className="w-full font-sans text-gray-800">
+//       {/* Hero Section */}
+//       <section className="relative w-full h-[550px] flex items-center justify-start">
+//         {/* Background Image */}
+//         <img
+//           src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/e22d8701f66d4f0f53145840b35f2a93.jpg"
+//           alt="Tirupati"
+//           className="absolute inset-0 w-full h-full object-cover"
+//         />
+
+      
+
+//         {/* Overlay Content - Left Aligned */}
+//         <div className="relative z-10 text-left px-6 md:px-16" style={{ maxWidth: '700px' }}>
+//           <h2 className="text-white text-3xl md:text-5xl font-bold mb-4 leading-snug">
+//             Divine Blessings & Sacred Serenity – <br />
+//             <span className="">Tirupati & Srikalahasti in 2 Days 2 Nights</span> 
+//           </h2>
+         
+//           <button 
+//           onClick={handleBookNow}
+//           className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">
+//             Book Now &gt;
+//           </button>
+          
+//         </div>
+//       </section>
+
+//       {/* Details Section */}
+//       <section className="bg-white py-12 px-6 md:px-16">
+//         <p className="mb-6 leading-relaxed">
+//           We are pleased to present our Tirupati & Srikalahasti Pilgrimage Tour.<br />
+//           Please ensure that all participants carry their original Aadhar cards during travel.
+//           <br />
+//           Below is the travel itinerary for the {" "}
+//           <strong>
+//             Tirupati & Srikalahasti – 2 Days / 2 Nights
+//           </strong>
+//         </p>
+
+//         {/* Itinerary */}
+//         <div className="space-y-4">
+//           <h3 className="font-bold text-lg">Day 01:</h3>
+//           <p>
+//             07:30 PM: Departure from Bangalore Majestic Bus Stand to Tirupati via A/C Sleeper Bus. Overnight journey.
+//           </p>
+
+//           <h3 className="font-bold text-lg">Day 02:</h3>
+//           <ul className="list-disc list-inside space-y-2">
+//             <li>Early morning arrival in Tirupati.</li>
+//             <li>Check into the hotel for freshening up (45 to 60 minutes allotted, each room 2 members).</li>
+//             <li>Breakfast will be served at the hotel.</li>
+//             <li>After breakfast, proceed to Tirumala by APSRTC Non A/C bus.</li>
+//             <li>1 hour time will be allotted for Tonsure (Head Shave/Mundan).</li>
+//             <li>
+//               Participate in Dharma Darshanam at Tirumala Sri Venkateshwara Swamy Devasthanam (duration 2 to 3 hours depending on the crowd). Laddu Prasadam will be provided.
+//             </li>
+//             <li>After Darshanam, return to the hotel for lunch.</li>
+//             <li>Post lunch, visit Padmavathi Ammavaru Temple (depending on time).</li>
+//             <li>Evening free for rest / local temple visits. Overnight stay in Tirupati hotel.</li>
+//           </ul>
+
+//           <h3 className="font-bold text-lg">Day 03:</h3>
+//           <ul className="list-disc list-inside space-y-2">
+//             <li>Early morning after breakfast, check out from the hotel and proceed to Srikalahasti Temple, famous for Rahu-Ketu Pooja and devotion to Lord Shiva.</li>
+//             <li>After darshan, have lunch en route.</li>
+//             <li>Proceed back to Bangalore via A/C Sleeper Bus.</li>
+//             <li>Arrival in Bangalore by late night. The tour concludes with the divine blessings of Lord Venkateshwara and Lord Shiva.</li>
+//           </ul>
+//         </div>
+
+//         {/* Dress Code */}
+//         <div className="mt-8">
+//           <h3 className="font-bold">Dress code - Traditional wear Only</h3>
+//           <p>Men - Kurta-Pajama & Dhoti</p>
+//           <p>Women - Saree, Churidar with Pyjama and Dupatta</p>
+//         </div>
+
+//         {/* Button */}
+//         <div className="mt-8">
+//           <Link to="/contact-us">
+//           <button className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">
+//             Book Now &gt;
+//           </button>
+//           </Link>
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default TirupatiSrikalahasti;
+
 import React from "react";
 import { Link } from "react-router-dom";
+import { Phone, Mail, Globe, MessageCircle } from "lucide-react";
 
 const TirupatiSrikalahasti = () => {
   const handleBookNow = () => {
     const phoneNumber = "918197882511";
-    const message = "Hello! I’d like to know more about your services.";
+    const message = "Hello! I’d like to know more about your Tirupati & Srikalahasti Package.";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
   };
+
   return (
-    <div className="w-full font-sans text-gray-800">
+    <div className="w-full font-sans text-gray-800 bg-gray-50">
       {/* Hero Section */}
       <section className="relative w-full h-[550px] flex items-center justify-start">
-        {/* Background Image */}
         <img
           src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/e22d8701f66d4f0f53145840b35f2a93.jpg"
-          alt="Tirupati"
+          alt="Tirupati & Srikalahasti"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-      
+        <img
+          src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/bf232ac6034f03c6428ea84a47dbf921.png"
+          alt="Right Decoration"
+          className="absolute h-[80%] object-contain z-20 pointer-events-none"
+          style={{ top: "110px", right: "120px" }}
+        />
 
-        {/* Overlay Content - Left Aligned */}
-        <div className="relative z-10 text-left px-6 md:px-16" style={{ maxWidth: '700px' }}>
-          <h2 className="text-white text-3xl md:text-5xl font-bold mb-4 leading-snug">
-            Divine Blessings & Sacred Serenity – <br />
-            <span className="">Tirupati & Srikalahasti in 2 Days 2 Nights</span> 
+        <div className="relative z-10 text-left px-6 md:px-16" style={{ maxWidth: "700px" }}>
+          <h2 className="text-white text-[20px] md:text-3xl font-bold mb-4 leading-snug">
+            Tirupati & Srikalahasti 2 Nights / 2 Days Pilgrimage Package
+            <span className="block text-[#ffea92] text-lg md:text-2xl font-semibold leading-relaxed mt-2">
+              Seek Divine Blessings from Lord Venkateshwara and Lord Shiva
+            </span>
           </h2>
-         
-          <button 
-          onClick={handleBookNow}
-          className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">
+
+          <button
+            onClick={handleBookNow}
+            className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition"
+          >
             Book Now &gt;
           </button>
-          
         </div>
       </section>
 
-      {/* Details Section */}
-      <section className="bg-white py-12 px-6 md:px-16">
-        <p className="mb-6 leading-relaxed">
-          We are pleased to present our Tirupati & Srikalahasti Pilgrimage Tour.<br />
-          Please ensure that all participants carry their original Aadhar cards during travel.
-          <br />
-          Below is the travel itinerary for the {" "}
-          <strong>
-            Tirupati & Srikalahasti – 2 Days / 2 Nights
-          </strong>
-        </p>
-
-        {/* Itinerary */}
-        <div className="space-y-4">
-          <h3 className="font-bold text-lg">Day 01:</h3>
-          <p>
-            07:30 PM: Departure from Bangalore Majestic Bus Stand to Tirupati via A/C Sleeper Bus. Overnight journey.
+      {/* Content Sections */}
+      <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 space-y-16">
+        {/* Overview */}
+        <section>
+          <h2 className="text-4xl font-bold text-[#6B4E3D] mb-4">Overview</h2>
+          <p className="leading-relaxed text-gray-700 text-[22px]">
+            Experience the sacred journey combining the divine energies of both Tirupati and Srikalahasti.
+            This <strong>2 Days / 2 Nights pilgrimage package</strong> offers a perfect blend of devotion, comfort,
+            and guided temple visits. Enjoy an organized trip from Bangalore with AC sleeper transport,
+            traditional meals, and expert support throughout.
           </p>
+        </section>
 
-          <h3 className="font-bold text-lg">Day 02:</h3>
-          <ul className="list-disc list-inside space-y-2">
-            <li>Early morning arrival in Tirupati.</li>
-            <li>Check into the hotel for freshening up (45 to 60 minutes allotted, each room 2 members).</li>
-            <li>Breakfast will be served at the hotel.</li>
-            <li>After breakfast, proceed to Tirumala by APSRTC Non A/C bus.</li>
-            <li>1 hour time will be allotted for Tonsure (Head Shave/Mundan).</li>
-            <li>
-              Participate in Dharma Darshanam at Tirumala Sri Venkateshwara Swamy Devasthanam (duration 2 to 3 hours depending on the crowd). Laddu Prasadam will be provided.
-            </li>
-            <li>After Darshanam, return to the hotel for lunch.</li>
-            <li>Post lunch, visit Padmavathi Ammavaru Temple (depending on time).</li>
-            <li>Evening free for rest / local temple visits. Overnight stay in Tirupati hotel.</li>
-          </ul>
+        {/* Detailed Itinerary */}
+        <section>
+          <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Detailed Day-wise Itinerary</h2>
+          <table className="w-full border border-gray-200 text-left">
+            <thead className="bg-yellow-100">
+              <tr>
+                <th className="border p-3 text-[22px]">Day</th>
+                <th className="border p-3 text-[22px]">Highlights</th>
+                <th className="border p-3 text-[22px]">Overnight</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border p-3 text-[22px]">Day 1</td>
+                <td className="border p-3 text-[22px]">Departure from Bangalore (Majestic) by AC Sleeper Bus</td>
+                <td className="border p-3 text-[22px]">Onboard Journey</td>
+              </tr>
+              <tr>
+                <td className="border p-3 text-[22px]">Day 2</td>
+                <td className="border p-3 text-[22px]">
+                  Arrival in Tirupati, Hotel check-in, Breakfast, Tirumala Darshan, Padmavathi Temple Visit,
+                  Lunch & Overnight stay in Tirupati.
+                </td>
+                <td className="border p-3 text-[22px]">Tirupati Hotel</td>
+              </tr>
+              <tr>
+                <td className="border p-3 text-[22px]">Day 3</td>
+                <td className="border p-3 text-[22px]">
+                  Visit Srikalahasti Temple, perform Rahu-Ketu Pooja (optional), Lunch, and return journey to Bangalore.
+                </td>
+                <td className="border p-3 text-[22px]">Return Journey</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-          <h3 className="font-bold text-lg">Day 03:</h3>
-          <ul className="list-disc list-inside space-y-2">
-            <li>Early morning after breakfast, check out from the hotel and proceed to Srikalahasti Temple, famous for Rahu-Ketu Pooja and devotion to Lord Shiva.</li>
-            <li>After darshan, have lunch en route.</li>
-            <li>Proceed back to Bangalore via A/C Sleeper Bus.</li>
-            <li>Arrival in Bangalore by late night. The tour concludes with the divine blessings of Lord Venkateshwara and Lord Shiva.</li>
-          </ul>
-        </div>
+        {/* Package Includes & Excludes */}
+        <section className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Package Includes</h2>
+            <ul className="list-disc list-inside space-y-1 text-gray-700 text-[22px]">
+              <li>AC Sleeper Bus (Bangalore ↔ Tirupati ↔ Srikalahasti)</li>
+              <li>Hotel accommodation (shared double occupancy)</li>
+              <li>Breakfast and lunch (authentic South Indian cuisine)</li>
+              <li>APSRTC bus to Tirumala</li>
+              <li>Free Sarva Darshan at Tirumala Temple</li>
+              <li>Padmavathi and Srikalahasti Temple visit</li>
+              <li>Guide assistance throughout the journey</li>
+              <li>Laddu Prasadam distribution</li>
+            </ul>
+          </div>
 
-        {/* Dress Code */}
-        <div className="mt-8">
-          <h3 className="font-bold">Dress code - Traditional wear Only</h3>
-          <p>Men - Kurta-Pajama & Dhoti</p>
-          <p>Women - Saree, Churidar with Pyjama and Dupatta</p>
-        </div>
+          <div>
+            <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Package Excludes</h2>
+            <ul className="list-disc list-inside space-y-1 text-gray-700 text-[22px]">
+              <li>VIP Darshan Tickets (₹500 per person extra)</li>
+              <li>Personal expenses or shopping</li>
+              <li>Dinner and additional meals</li>
+              <li>Tonsure charges</li>
+              <li>Travel insurance</li>
+              <li>Rahu-Ketu Pooja ticket (optional, to be paid at temple)</li>
+            </ul>
+          </div>
+        </section>
 
-        {/* Button */}
-        <div className="mt-8">
-          <Link to="/contact-us">
-          <button className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">
+        {/* Fare Section */}
+        <section>
+          <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Package Fare</h2>
+          <table className="w-full border border-gray-200 text-left">
+            <thead className="bg-yellow-100">
+              <tr>
+                <th className="border p-3 text-[22px]">Category</th>
+                <th className="border p-3 text-[22px]">Fare</th>
+                <th className="border p-3 text-[22px]">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border p-3 text-[22px]">Adult</td>
+                <td className="border p-3 text-[22px]">₹3,600</td>
+                <td className="border p-3 text-[22px]">Includes both Tirupati & Srikalahasti temples</td>
+              </tr>
+              <tr>
+                <td className="border p-3 text-[22px]">Child (5–12 yrs)</td>
+                <td className="border p-3 text-[22px]">₹3,200</td>
+                <td className="border p-3 text-[22px]">Shared accommodation with guardians</td>
+              </tr>
+              <tr>
+                <td className="border p-3 text-[22px]">Child (Below 5 yrs)</td>
+                <td className="border p-3 text-[22px]">₹0</td>
+                <td className="border p-3 text-[22px]">Free (without separate bed/meals)</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        {/* Dress Code & Instructions */}
+        <section>
+          <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Dress Code</h2>
+          <p className="text-[22px] text-gray-700">
+            <strong>Men:</strong> Dhoti or Kurta-Pajama with upper cloth. <br />
+            <strong>Women:</strong> Saree or Churidar with dupatta. <br />
+            Traditional wear is mandatory for all temple visits.
+          </p>
+        </section>
+
+        {/* Booking Info */}
+        <section className="bg-yellow-50 p-6 rounded-xl shadow-md">
+          <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Book Now</h2>
+          <p className="mb-3 text-[22px] flex items-center gap-2">
+            <Phone className="w-6 h-6 text-[#6B4E3D]" /> Call: <strong>+91 97313 12275 | +91 81978 82511</strong>
+          </p>
+          <p className="mb-3 text-[22px] flex items-center gap-2">
+            <MessageCircle className="w-6 h-6 text-[#6B4E3D]" /> WhatsApp: Click “Book Now” for instant chat
+          </p>
+          <p className="mb-3 text-[22px] flex items-center gap-2">
+            <Globe className="w-6 h-6 text-[#6B4E3D]" /> Website: www.tirupatipackagetours.com
+          </p>
+          <p className="mb-3 text-[22px] flex items-center gap-2">
+            <Mail className="w-6 h-6 text-[#6B4E3D]" /> Email: sanchar6t@gmail.com
+          </p>
+          <button
+            onClick={handleBookNow}
+            className="mt-4 bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition"
+          >
             Book Now &gt;
           </button>
-          </Link>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 };

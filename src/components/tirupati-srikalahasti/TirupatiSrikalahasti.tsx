@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const TirupatiSrikalahasti = () => {
+  const handleBookNow = () => {
+    const phoneNumber = "918197882511";
+    const message = "Hello! I’d like to know more about your services.";
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
+  };
   return (
     <div className="w-full font-sans text-gray-800">
       {/* Hero Section */}
@@ -21,11 +26,13 @@ const TirupatiSrikalahasti = () => {
             Divine Blessings & Sacred Serenity – <br />
             <span className="">Tirupati & Srikalahasti in 2 Days 2 Nights</span> 
           </h2>
-          <Link to="/contact-us">
-          <button className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">
+         
+          <button 
+          onClick={handleBookNow}
+          className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">
             Book Now &gt;
           </button>
-          </Link>
+          
         </div>
       </section>
 

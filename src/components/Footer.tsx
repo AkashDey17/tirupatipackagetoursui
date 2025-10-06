@@ -439,7 +439,7 @@ const Footer = () => {
               minWidth: "250px",
             }}
           >
-            © Copyright Sanchar6T Tours and Travels - Powered By TechVaraha
+            © Copyright Sanchar6T Tours and Travels - Managed By TechVaraha
           </p>
 
           <div

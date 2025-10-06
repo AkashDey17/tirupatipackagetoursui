@@ -426,21 +426,47 @@ const Footer = () => {
               }}
             />
             {/* New Content Below Temple Image */}
-            <p
-              className="text-gray-500 text-base leading-relaxed"
-              style={{
-                fontSize: "clamp(12px, 1.5vw, 16px)",
-                color: "#4d361b",
-                textAlign: "center",
-                lineHeight: "1.6",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              <strong>FIND OUR PACKAGES:</strong> bangalore to tirupathi bus package, tirupati package from bangalore price,
-              ksrtc tirupati package from bangalore, tirupati balaji package from bangalore, tirupati tour package from bangalore,
-              tirupati package from bangalore, tirupati darshan package from bangalore, tirupati package from Bangalore price,
-              bangalore to tirupati package bus
-            </p>
+           
+            <div
+  style={{
+    textAlign: "center",
+    marginTop: "15px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "6px",
+  }}
+>
+  <strong style={{ fontSize: "clamp(14px, 2vw, 16px)", color: "#4d361b", marginBottom: "6px" }}>
+    POPULAR PACKAGES:
+  </strong>
+  
+  {[
+    "bangalore to tirupathi bus package",
+    "tirupati package from bangalore price",
+    "ksrtc tirupati package from bangalore",
+    "tirupati balaji package from bangalore",
+    "tirupati tour package from bangalore",
+    "tirupati package from bangalore",
+    "tirupati darshan package from bangalore",
+    "tirupati package from Bangalore price",
+    "bangalore to tirupati package bus",
+  ].map((pkg, idx) => (
+    <a
+      key={idx}
+      href="/tirupati-package"
+      style={{
+        fontSize: "clamp(12px, 1.3vw, 14px)",
+        color: "#4d361b",
+        fontFamily: "Inter, sans-serif",
+        textDecoration: "none",
+        textAlign:"right"
+      }}
+    >
+      {pkg}
+    </a>
+  ))}
+</div>
+
           </div>
         </div>
 

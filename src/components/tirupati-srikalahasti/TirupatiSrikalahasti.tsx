@@ -159,7 +159,23 @@ const TirupatiSrikalahasti = () => {
           </p>
         </section>
 
-        {/* Detailed Itinerary */}
+        {/* Brief Itinerary */}
+        <section>
+          <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Brief Itinerary</h2>
+          <p className="mb-2 text-[22px]">
+            <strong>Day 1:</strong> Evening departure from Bangalore via AC Sleeper Bus
+          </p>
+          <p className="text-[22px]">
+            <strong>Day 2:</strong> Arrival in Tirupati, hotel check-in, breakfast,
+            Tirumala darshan, lunch, Padmavathi temple visit, overnight stay in Tirupati
+          </p>
+          <p className="text-[22px]">
+            <strong>Day 3:</strong> Visit Srikalahasti Temple, perform Rahu-Ketu Pooja (optional),
+            lunch, and return to Bangalore
+          </p>
+        </section>
+
+        {/* Detailed Day-wise Itinerary */}
         <section>
           <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Detailed Day-wise Itinerary</h2>
           <table className="w-full border border-gray-200 text-left">
@@ -195,6 +211,33 @@ const TirupatiSrikalahasti = () => {
           </table>
         </section>
 
+        {/* Complete Itinerary */}
+        <section>
+          <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Complete Detailed Itinerary</h2>
+          <div className="space-y-4 text-gray-700">
+            <h3 className="text-[22px] font-semibold">
+              Day 01: Journey Begins
+            </h3>
+            <ul className="list-disc list-inside space-y-1 text-[22px]">
+              <li><strong>Evening:</strong> Departure from Bangalore via AC Sleeper Bus</li>
+              <li><strong>Overnight Journey:</strong> Comfortable travel with reclining berths and air conditioning</li>
+            </ul>
+
+            <h3 className="text-[22px] font-semibold">Day 02: Tirupati Darshan</h3>
+            <ul className="list-disc list-inside space-y-1 text-[22px]">
+              <li><strong>Early Morning:</strong> Arrival in Tirupati, hotel check-in, breakfast</li>
+              <li><strong>Darshan:</strong> Tirumala and Padmavathi Temple visits</li>
+              <li><strong>Lunch & Rest:</strong> Traditional South Indian meal and overnight stay</li>
+            </ul>
+
+            <h3 className="text-[22px] font-semibold">Day 03: Srikalahasti & Return</h3>
+            <ul className="list-disc list-inside space-y-1 text-[22px]">
+              <li><strong>Morning:</strong> Visit Srikalahasti Temple, perform Rahu-Ketu Pooja (optional)</li>
+              <li><strong>Afternoon:</strong> Lunch and departure to Bangalore</li>
+            </ul>
+          </div>
+        </section>
+
         {/* Package Includes & Excludes */}
         <section className="grid md:grid-cols-2 gap-8">
           <div>
@@ -224,7 +267,7 @@ const TirupatiSrikalahasti = () => {
           </div>
         </section>
 
-        {/* Fare Section */}
+        {/* Package Fare */}
         <section>
           <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Package Fare</h2>
           <table className="w-full border border-gray-200 text-left">
@@ -255,7 +298,7 @@ const TirupatiSrikalahasti = () => {
           </table>
         </section>
 
-        {/* Dress Code & Instructions */}
+        {/* Dress Code */}
         <section>
           <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Dress Code</h2>
           <p className="text-[22px] text-gray-700">
@@ -287,9 +330,51 @@ const TirupatiSrikalahasti = () => {
             Book Now &gt;
           </button>
         </section>
+
+        {/* Terms & Conditions */}
+        <section>
+          <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Terms & Conditions</h2>
+          <div className="space-y-4 text-[22px] text-gray-700">
+            <h3 className="text-2xl font-semibold text-[#6B4E3D]">Important Guidelines</h3>
+            <div>
+              <h4 className="font-semibold">Payment Terms:</h4>
+              <ul className="list-disc list-inside ml-6 space-y-1">
+                <li>Full payment for booking</li>
+                <li>Cancellation charges apply as per company policy</li>
+                <li>Refunds processed within 7-10 working days</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold">Travel Requirements:</h4>
+              <ul className="list-disc list-inside ml-6 space-y-1">
+                <li>All participants must carry original Aadhaar cards during travel</li>
+                <li>Traditional dress code mandatory (see above)</li>
+                <li>Reporting time: 30 minutes before departure</li>
+                <li>Late arrivals may result in tour cancellation without refund</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold">Health & Safety:</h4>
+              <ul className="list-disc list-inside ml-6 space-y-1">
+                <li>Travellers with health conditions must inform in advance</li>
+                <li>First aid facilities available during journey</li>
+                <li>Emergency contact support throughout the trip</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Special Instructions */}
+        <section>
+          <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Special Instructions</h2>
+          <p className="mb-2 text-[22px]"><strong>NRI Services:</strong> TTD provides special darshan passes for NRI devotees.</p>
+          <p className="mb-2 text-[22px]"><strong>VIP Darshan:</strong> Available at ₹500 per person (Only for NRI Devotees).</p>
+          <p className="mb-2 text-[22px]"><strong>Privileges:</strong> Children below 1 year are allowed direct entry along with their parents only.</p>
+        </section>
       </div>
     </div>
   );
 };
 
 export default TirupatiSrikalahasti;
+

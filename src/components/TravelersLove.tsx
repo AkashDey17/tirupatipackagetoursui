@@ -212,7 +212,7 @@ const TravelersLove = () => {
             <h2
               className="header-title"
               style={{
-                fontSize: "clamp(24px, 5vw, 42px)",
+                fontSize: "clamp(20px, 2.2vw, 20px)",
                 fontWeight: "600",
                 color: "#a2703d",
                 fontFamily: "Inter, sans-serif",
@@ -276,7 +276,7 @@ const TravelersLove = () => {
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   <h3
                     style={{
-                      fontSize: "clamp(16px, 2.5vw, 22px)",
+                      fontSize: "clamp(18px, 2.5vw, 18px)",
                       fontWeight: "600",
                       color: "#4d361b",
                       margin: 0,
@@ -287,7 +287,7 @@ const TravelersLove = () => {
                   </h3>
                   <p
                     style={{
-                      fontSize: "clamp(12px, 2vw, 18px)",
+                      fontSize: "clamp(18px, 2vw, 18px)",
                       color: "#4d361b",
                       margin: 0,
                       fontFamily: "Inter, sans-serif",
@@ -310,7 +310,7 @@ const TravelersLove = () => {
               {/* Review */}
               <p
                 style={{
-                  fontSize: "clamp(14px, 2vw, 16px)",
+                  fontSize: "clamp(16px, 2vw, 16px)",
                   color: "#6B4E3D",
                   lineHeight: "1.5",
                   fontFamily: "Inter, sans-serif",

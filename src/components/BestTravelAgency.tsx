@@ -12,7 +12,7 @@ const BestTravelAgency = () => {
       <div style={{ padding: "0 20px" }}>
         <p
           style={{
-            fontSize: "clamp(22px, 3vw, 31px)",
+            fontSize: "clamp(22px, 2.2vw, 22px)",
             color: "#6B4E3D",
             lineHeight: "1.6",
             marginBottom: "clamp(20px, 5vw, 40px)",
@@ -36,7 +36,7 @@ const BestTravelAgency = () => {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: "clamp(20px, 4vw, 40px)",
+            gap: "clamp(22px, 2.2vw, 22px)",
             alignItems: "center",
           }}
         >
@@ -44,7 +44,7 @@ const BestTravelAgency = () => {
           <div style={{ order: 1 }}>
             <h2
               style={{
-                fontSize: "clamp(26px, 5vw, 38px)",
+                fontSize: "clamp(22px, 2.2vw, 22px)",
                 fontWeight: "700",
                 color: "#B45309",
                 marginBottom: "clamp(15px, 4vw, 30px)",
@@ -59,7 +59,7 @@ const BestTravelAgency = () => {
             <div style={{ marginBottom: "clamp(20px, 5vw, 40px)" }}>
               <p
                 style={{
-                  fontSize: "clamp(18px, 2.5vw, 22px)",
+                  fontSize: "clamp(18px, 2.5vw, 18px)",
                   color: "#6B4E3D",
                   lineHeight: "1.6",
                   marginBottom: "clamp(12px, 3vw, 20px)",
@@ -76,7 +76,7 @@ const BestTravelAgency = () => {
 
               <p
                 style={{
-                  fontSize: "clamp(18px, 2.5vw, 22px)",
+                  fontSize: "clamp(18px, 2.5vw, 18px)",
                   color: "#6B4E3D",
                   lineHeight: "1.6",
                   fontFamily: "Inter, sans-serif",

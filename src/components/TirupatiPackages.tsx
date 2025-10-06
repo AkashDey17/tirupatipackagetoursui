@@ -255,7 +255,7 @@ const TirupatiPackages = () => {
         >
           <h2
             style={{
-              fontSize: "clamp(32px, 6vw, 38px)",
+              fontSize: "clamp(22px, 2.2vw, 22px)",
               fontWeight: "700",
               color: "#B45309",
               fontFamily: "Inter, sans-serif",
@@ -324,7 +324,7 @@ const TirupatiPackages = () => {
           <div style={{ flex: "1" }}>
             <h3
               style={{
-                fontSize: "clamp(28px, 3vw, 34px)",
+                fontSize: "clamp(22px, 3vw, 22px)",
                 fontWeight: "600",
                 color: "#6B4E3D",
                 marginBottom: "15px",
@@ -336,7 +336,7 @@ const TirupatiPackages = () => {
             </h3>
             <p
               style={{
-                fontSize: "clamp(25px, 2.5vw, 24px)",
+                fontSize: "clamp(20px, 2.5vw, 20px)",
                 color: "#6B4E3D",
                 fontFamily: "Inter, sans-serif",
                 lineHeight: "1.6",
@@ -408,7 +408,7 @@ const TirupatiPackages = () => {
           <div style={{ flex: "1" }}>
             <h3
               style={{
-                fontSize: "clamp(28px, 3vw, 34px)",
+                fontSize: "clamp(22px, 3vw, 22px)",
                 fontWeight: "600",
                 color: "#6B4E3D",
                 marginBottom: "15px",
@@ -421,7 +421,7 @@ const TirupatiPackages = () => {
             </h3>
             <p
               style={{
-                fontSize: "clamp(25px, 2.5vw, 24px)",
+                fontSize: "clamp(20px, 2.5vw, 20px)",
                 color: "#6B4E3D",
                 fontFamily: "Inter, sans-serif",
                 lineHeight: "1.6",

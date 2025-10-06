@@ -82,7 +82,7 @@ const TravelQuiz: React.FC = () => {
   return (
     <section className="bg-white py-16 px-4">
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-orange-700 mb-8">
+        <h2 className="text-[22px] md:text-[20px] font-bold text-orange-700 mb-8">
           Which Tirupati Package Suits You Best?
         </h2>
 
@@ -96,7 +96,7 @@ const TravelQuiz: React.FC = () => {
 
         {!finished ? (
           <div className="bg-orange-50 p-8 rounded-xl shadow-lg animate-fadeIn">
-            <h3 className="text-xl md:text-2xl font-semibold mb-6">
+            <h3 className="text-[20px] md:text-[20px] font-semibold mb-6">
               {quizData[current].question}
             </h3>
             <div className="flex flex-col gap-4">

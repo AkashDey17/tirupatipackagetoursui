@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const linkStyle = {
-    fontSize: "clamp(12px, 2vw, 20px)",
+    fontSize: "clamp(12px, 2vw, 18px)",
     color: "#4d361b",
     textDecoration: "none",
     fontFamily: "Inter, sans-serif",
@@ -46,7 +46,7 @@ const Footer = () => {
             />
             <p
               style={{
-                fontSize: "clamp(14px, 2vw, 20px)",
+                fontSize: "clamp(14px, 2vw, 18px)",
                 color: "#4d361b",
                 lineHeight: "1.6",
                 fontFamily: "Inter, sans-serif",
@@ -64,7 +64,7 @@ const Footer = () => {
           <div style={{ textAlign: "left", marginTop: "106px" }}>
             <h3
               style={{
-                fontSize: "clamp(20px, 3vw, 24px)",
+                fontSize: "clamp(20px, 3vw, 20px)",
                 fontWeight: "600",
                 color: "#4d361b",
                 marginBottom: "20px",
@@ -79,7 +79,7 @@ const Footer = () => {
                 className="contact-list"
                 style={{
                   margin: 0,
-                  fontSize: "clamp(14px, 2vw, 20px)",
+                  fontSize: "clamp(14px, 2vw, 18px)",
                   listStylePosition: "inside",
                   fontFamily: "Inter, sans-serif",
                 }}
@@ -99,7 +99,7 @@ const Footer = () => {
             >
               <p
                 style={{
-                  fontSize: "clamp(14px, 2vw, 20px)",
+                  fontSize: "clamp(14px, 2vw, 18px)",
                   color: "#4d361b",
                   lineHeight: "1.6",
                   fontFamily: "Inter, sans-serif",
@@ -115,7 +115,7 @@ const Footer = () => {
             <div>
               <h3
                 style={{
-                  fontSize: "clamp(20px, 3vw, 24px)",
+                  fontSize: "clamp(20px, 3vw, 20px)",
                   fontWeight: "600",
                   color: "#4d361b",
                   marginBottom: "10px",
@@ -183,7 +183,7 @@ const Footer = () => {
     gap: "6px",
   }}
 >
-  <strong style={{ fontSize: "clamp(14px, 2vw, 16px)", color: "#4d361b", marginBottom: "6px" }}>
+  <strong style={{ fontSize: "clamp(20px, 2vw, 20px)", color: "#4d361b", marginBottom: "6px" }}>
     POPULAR PACKAGES:
   </strong>
   
@@ -202,7 +202,7 @@ const Footer = () => {
       key={idx}
       href="/tirupati-package"
       style={{
-        fontSize: "clamp(12px, 1.3vw, 14px)",
+        fontSize: "clamp(18px, 1.9vw, 18px)",
         color: "#4d361b",
         fontFamily: "Inter, sans-serif",
         textDecoration: "none",
@@ -232,20 +232,20 @@ const Footer = () => {
         >
           <p
             style={{
-              fontSize: "clamp(12px, 2vw, 20px)",
+              fontSize: "clamp(12px, 2vw, 18px)",
               color: "#4d361b",
               fontFamily: "Inter, sans-serif",
               flex: "1",
               minWidth: "250px",
             }}
           >
-            © Copyright Sanchar6T Tours and Travels - Powered By TechVaraha Solutions Pvt Ltd.
+            © Copyright Sanchar6T Tours and Travels <br /> Powered By TechVaraha Solutions Pvt Ltd.
           </p>
 
           <div
             style={{
               display: "flex",
-              gap: "clamp(15px, 3vw, 20px)",
+              gap: "clamp(15px, 3vw, 18px)",
               flexWrap: "wrap",
               justifyContent: "center",
             }}

@@ -66,10 +66,10 @@ export default function ItineraryPlanner() {
       <div className="bg-gradient-to-r from-[#05386B] via-[#136F63] to-[#B2DBBF] rounded-3xl p-6 shadow-2xl text-white">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">
+            <h1 className="text-[22px] md:text-[20px] font-extrabold leading-tight">
               AI-Powered Darshan Planner
             </h1>
-            <p className="text-xl opacity-90 mt-2">
+            <p className="text-[18px] opacity-90 mt-2">
               Smart schedules, darshan slots, hotels, & activities at a glance.
             </p>
           </div>
@@ -162,7 +162,7 @@ export default function ItineraryPlanner() {
           </div>
         )} */}
         {!plan && !error && (
-  <div className="p-8 bg-white rounded-2xl text-xl shadow text-center text-gray-700 space-y-4">
+  <div className="p-8 bg-white rounded-2xl text-[20px] shadow text-center text-gray-700 space-y-4">
     <p>
       Choose a package and click <strong>Generate Itinerary</strong> to see AI suggestions.
     </p>

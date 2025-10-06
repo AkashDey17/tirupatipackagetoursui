@@ -1,6 +1,3 @@
-
-
-
 // import logoImg from "@/assets/logo.png";
 // import { Link } from "react-router-dom";
 
@@ -39,9 +36,9 @@
 //               src={logoImg}
 //               alt="Sanchar6T"
 //               style={{
-//                 height: "clamp(120px, 14vw, 180px)", // 🔹 Made logo larger
+//                 height: "clamp(120px, 14vw, 180px)",
 //                 width: "auto",
-//                 margin: "0 auto 20px", // 🔹 Ensures proper centering
+//                 margin: "0 auto 20px",
 //                 display: "block",
 //               }}
 //             />
@@ -61,8 +58,9 @@
 //             </p>
 //           </div>
 
-//           {/* Middle Section - Contact Info */}
+//           {/* Middle Section - Contact Info + Popular Searches */}
 //           <div style={{ textAlign: "left", marginTop: "106px" }}>
+//             {/* Contact Info */}
 //             <h3
 //               style={{
 //                 fontSize: "clamp(20px, 3vw, 24px)",
@@ -121,6 +119,7 @@
 //                 display: "inline-block",
 //                 textAlign: "left",
 //                 maxWidth: "100%",
+//                 marginBottom: "20px",
 //               }}
 //             >
 //               <p
@@ -136,6 +135,46 @@
 //                 2767, Advaitha, 3rd Floor, D Block, near BBMP Ward Office,
 //                 Defence Layout, Sahakar Nagar, Bengaluru, Karnataka 560092.
 //               </p>
+//             </div>
+
+//             {/* Popular Searches */}
+//             <div>
+//               <h3
+//                 style={{
+//                   fontSize: "clamp(20px, 3vw, 24px)",
+//                   fontWeight: "600",
+//                   color: "#4d361b",
+//                   marginBottom: "10px",
+//                   fontFamily: "Inter, sans-serif",
+//                 }}
+//               >
+//                 Popular Searches
+//               </h3>
+//               <ul
+//                 style={{
+//                   margin: 0,
+//                   padding: 0,
+//                   listStyle: "none",
+//                   fontSize: "clamp(14px, 2vw, 20px)",
+//                   fontFamily: "Inter, sans-serif",
+//                 }}
+//               >
+//                 <li>
+//                   <Link to="/tirupati-package" style={linkStyle}>
+//                     Bangalore to Tirupati Tour Packages
+//                   </Link>
+//                 </li>
+//                 <li>
+//                   <Link to="/tirupati-package" style={linkStyle}>
+//                     Tirupati Packages From Bangalore
+//                   </Link>
+//                 </li>
+//                 <li>
+//                   <Link to="/tirupati-package" style={linkStyle}>
+//                     Tirupati Car Packages from Bangalore
+//                   </Link>
+//                 </li>
+//               </ul>
 //             </div>
 //           </div>
 
@@ -182,7 +221,7 @@
 //               minWidth: "250px",
 //             }}
 //           >
-//             © Copyright Sanchar6T Tours and Travels - Powered By TechVaraha
+//             © Copyright Sanchar6T Tours and Travels - Powered By TechVaraha Solutions Pvt Ltd.
 //           </p>
 
 //           <div
@@ -213,8 +252,6 @@
 // };
 
 // export default Footer;
-
-
 
 import logoImg from "@/assets/logo.png";
 import { Link } from "react-router-dom";
@@ -278,7 +315,6 @@ const Footer = () => {
 
           {/* Middle Section - Contact Info + Popular Searches */}
           <div style={{ textAlign: "left", marginTop: "106px" }}>
-            {/* Contact Info */}
             <h3
               style={{
                 fontSize: "clamp(20px, 3vw, 24px)",
@@ -291,33 +327,7 @@ const Footer = () => {
               Contact Info
             </h3>
 
-            <div
-              style={{
-                marginBottom: "15px",
-                textAlign: "left",
-                display: "inline-block",
-              }}
-            >
-              <style>
-                {`
-                  .contact-list li {
-                    color: #4d361b;
-                  }
-
-                  /* Mobile responsive footer */
-                  @media (max-width: 768px) {
-                    .footer-grid {
-                      display: flex !important;
-                      flex-direction: column !important;
-                      align-items: center !important;
-                      text-align: center !important;
-                    }
-                    .footer-grid > div {
-                      margin-top: 20px !important;
-                    }
-                  }
-                `}
-              </style>
+            <div style={{ marginBottom: "15px", textAlign: "left", display: "inline-block" }}>
               <ol
                 className="contact-list"
                 style={{
@@ -355,7 +365,6 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Popular Searches */}
             <div>
               <h3
                 style={{
@@ -396,12 +405,13 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Right Section - Temple Image */}
+          {/* Right Section - Temple Image + New Content */}
           <div
             style={{
               display: "flex",
-              justifyContent: "center",
-              alignItems: "flex-end",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              alignItems: "center",
             }}
           >
             <img
@@ -412,8 +422,25 @@ const Footer = () => {
                 height: "290.375px",
                 objectFit: "cover",
                 pointerEvents: "none",
+                marginBottom: "15px",
               }}
             />
+            {/* New Content Below Temple Image */}
+            <p
+              className="text-gray-500 text-base leading-relaxed"
+              style={{
+                fontSize: "clamp(12px, 1.5vw, 16px)",
+                color: "#4d361b",
+                textAlign: "center",
+                lineHeight: "1.6",
+                fontFamily: "Inter, sans-serif",
+              }}
+            >
+              <strong>FIND OUR PACKAGES:</strong> bangalore to tirupathi bus package, tirupati package from bangalore price,
+              ksrtc tirupati package from bangalore, tirupati balaji package from bangalore, tirupati tour package from bangalore,
+              tirupati package from bangalore, tirupati darshan package from bangalore, tirupati package from Bangalore price,
+              bangalore to tirupati package bus
+            </p>
           </div>
         </div>
 
@@ -465,6 +492,23 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      <style>
+        {`
+          /* Mobile responsive footer */
+          @media (max-width: 768px) {
+            .footer-grid {
+              display: flex !important;
+              flex-direction: column !important;
+              align-items: center !important;
+              text-align: center !important;
+            }
+            .footer-grid > div {
+              margin-top: 20px !important;
+            }
+          }
+        `}
+      </style>
     </footer>
   );
 };

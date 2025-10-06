@@ -115,36 +115,73 @@ const TirupatiSrikalahasti = () => {
   return (
     <div className="w-full font-sans text-gray-800 bg-gray-50">
       {/* Hero Section */}
-      <section className="relative w-full h-[550px] flex items-center justify-start">
-        <img
-          src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/e22d8701f66d4f0f53145840b35f2a93.jpg"
-          alt="Tirupati & Srikalahasti"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+     <section className="w-full relative">
 
-        <img
-          src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/bf232ac6034f03c6428ea84a47dbf921.png"
-          alt="Right Decoration"
-          className="absolute h-[80%] object-contain z-20 pointer-events-none"
-          style={{ top: "110px", right: "120px" }}
-        />
+  {/* Desktop / Laptop Hero (unchanged) */}
+  <div className="hidden md:block relative w-full h-[550px]">
+   <img
+    src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/e22d8701f66d4f0f53145840b35f2a93.jpg"
+    alt="tirupati package from bangalore"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+    <img
+      src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/bf232ac6034f03c6428ea84a47dbf921.png"
+      alt="tirupati package from bangalore"
+      className="absolute object-contain z-20 pointer-events-none
+                 h-[80%] right-[120px] top-[110px]"
+    />
+    <div
+      className="relative z-10 text-left pt-40 pl-16 pr-16"
+      style={{ maxWidth: "700px" }}
+    >
+      <h2 className="text-white text-3xl font-bold mb-4 leading-snug">
+        Tirupati 1 Night / 1 Days Dharma Darshan Package
+        <span className="block text-[#ffea92] text-2xl font-semibold leading-relaxed mt-2">
+          Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
+        </span>
+      </h2>
+      <button
+        onClick={handleBookNow}
+        className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition text-base"
+      >
+        Book Now &gt;
+      </button>
+    </div>
+  </div>
 
-        <div className="relative z-10 text-left px-6 md:px-16" style={{ maxWidth: "700px" }}>
-          <h2 className="text-white text-[20px] md:text-3xl font-bold mb-4 leading-snug">
-            Tirupati & Srikalahasti 2 Nights / 2 Days Pilgrimage Package
-            <span className="block text-[#ffea92] text-lg md:text-2xl font-semibold leading-relaxed mt-2">
-              Seek Divine Blessings from Lord Venkateshwara and Lord Shiva
-            </span>
-          </h2>
+{/* Mobile Hero (text above, image below) */}
+<div
+  className="block md:hidden w-full px-6 pt-6 relative"
+  style={{
+    backgroundImage: "url('https://productcatalo.my.canva.site/sanchar6t/_assets/media/e22d8701f66d4f0f53145840b35f2a93.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+   
+  }}
+>
+  <div className="text-left mb-4 relative z-10">
+    <h2 className="text-white text-xl font-bold mb-2 leading-snug">
+      Tirupati 1 Night / 1 Days Dharma Darshan Package
+      <span className="block text-[#ffea92] text-base font-semibold leading-relaxed mt-1">
+        Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
+      </span>
+    </h2>
+    <button
+      onClick={handleBookNow}
+      className="bg-yellow-400 text-[#6B4E3D] font-bold px-6 py-2 rounded-full shadow-md hover:shadow-lg transition text-sm"
+    >
+      Book Now &gt;
+    </button>
+  </div>
 
-          <button
-            onClick={handleBookNow}
-            className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition"
-          >
-            Book Now &gt;
-          </button>
-        </div>
-      </section>
+  <img
+    src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/bf232ac6034f03c6428ea84a47dbf921.png"
+    alt="tirupati package from bangalore"
+    className="w-full object-contain mt-4 relative z-10"
+  />
+</div>
+
+</section>
 
       {/* Content Sections */}
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 space-y-16">

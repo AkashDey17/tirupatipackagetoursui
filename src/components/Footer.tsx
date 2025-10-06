@@ -86,6 +86,7 @@ const Footer = () => {
               >
                 <li>+91 9731312275</li>
                 <li>+91 8197882511</li>
+                <li>enquiry@tirupatipackagetours.com</li>
               </ol>
             </div>
 

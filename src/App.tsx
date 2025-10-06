@@ -43,8 +43,8 @@ const App = () => (
          <PageWrapper>
         <Routes>
           <Route path="/" element={<Index />} />
-           <Route path="/tirupati-package-1-Night-1-Days" element={<TirupatiPackage />} />
-           <Route path="/tirupati-srikalahasti-2-Days-2-Nights" element={<TirupatiSrikalahasti />} />
+           <Route path="/tirupati-package" element={<TirupatiPackage />} />
+           <Route path="/tirupati-srikalahasti" element={<TirupatiSrikalahasti />} />
            <Route path="/contact-us" element={<Contact />} />
            <Route path="/about-us" element={<AboutPage />} />
            <Route path="/privacy-policy" element={<PrivacyPage />} />

@@ -56,7 +56,8 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(), // React SWC plugin handles refresh automatically in dev
-    mode === "development" && componentTagger(), // dev-only plugin
+    mode === "development" && componentTagger(),
+     
   ].filter(Boolean),
   resolve: {
     alias: {

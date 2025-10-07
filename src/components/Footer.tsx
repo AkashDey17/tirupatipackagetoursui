@@ -56,7 +56,7 @@ const Footer = () => {
             />
             <p
               style={{
-                fontSize: "clamp(14px, 2vw, 18px)",
+                fontSize: "clamp(16px, 2vw, 16px)",
                 color: "#4d361b",
                 lineHeight: "1.6",
                 fontFamily: "Inter, sans-serif",
@@ -74,7 +74,7 @@ const Footer = () => {
           <div style={{ textAlign: "left", marginTop: "106px" }}>
             <h3
               style={{
-                fontSize: "clamp(20px, 3vw, 20px)",
+                fontSize: "clamp(16px, 3vw, 16px)",
                 fontWeight: "600",
                 color: "#4d361b",
                 marginBottom: "20px",
@@ -89,7 +89,7 @@ const Footer = () => {
                 className="contact-list"
                 style={{
                   margin: 0,
-                  fontSize: "clamp(14px, 2vw, 18px)",
+                  fontSize: "clamp(16px, 2vw, 16px)",
                   listStylePosition: "inside",
                   fontFamily: "Inter, sans-serif",
                 }}
@@ -110,7 +110,7 @@ const Footer = () => {
             >
               <p
                 style={{
-                  fontSize: "clamp(14px, 2vw, 18px)",
+                  fontSize: "clamp(16px, 2vw, 16px)",
                   color: "#4d361b",
                   lineHeight: "1.6",
                   fontFamily: "Inter, sans-serif",

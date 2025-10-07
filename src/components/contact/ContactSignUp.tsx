@@ -287,6 +287,7 @@ import { Mail, Phone, User, MessageCircle } from "lucide-react";
 import Logo from "@/assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const ContactSignup = () => {
   const [packages, setPackages] = useState([]);
@@ -529,9 +530,34 @@ const ContactSignup = () => {
           Experience the difference of traveling with <strong>Sanchar6T</strong> - where devotion meets comfort, and every journey becomes a cherished spiritual memory. 
           Contact us now to plan your perfect Tirupati pilgrimage experience.
         </p>
-        <p className="mt-3 text-gray-400 text-xl leading-relaxed">
-          <strong>FINDS ONLINE KEYWORDS:</strong> tirupati trip from bangalore, 1 day tirupati package from bangalore, kstdc tirupati package from bangalore, tirupati balaji package from bangalore, tirupati balaji darshan package from bangalore, apsrtc tirupati darshan package from bangalore, aptdc tirupati darshan package from bangalore, bangalore tirupati darshan
-        </p>
+       <p className="mt-3 text-gray-400 text-xl leading-relaxed">
+  <strong>FINDS ONLINE KEYWORDS:</strong>{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    tirupati trip from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    1 day tirupati package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    kstdc tirupati package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    tirupati balaji package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    tirupati balaji darshan package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    apsrtc tirupati darshan package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    aptdc tirupati darshan package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    bangalore tirupati darshan
+  </Link>
+</p>
+
       </section>
        
 

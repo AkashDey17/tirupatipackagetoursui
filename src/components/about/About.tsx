@@ -148,10 +148,35 @@ const AboutPage = () => {
       <section className="text-center py-4 text-xl text-gray-400 opacity-70 px-4">
        
 
-        {/* ✅ Added SEO Keywords Line */}
+        
         <p className="mt-3 text-gray-400 text-xl leading-relaxed">
-          <strong>FINDS ONLINE KEYWORDS:</strong> tirupati darshan package from bangalore, tirupati balaji darshan package from bangalore, balaji package from bangalore, tirupati balaji darshan packages, tirupati balaji package from bangalore, apsrtc tirupati darshan package from bangalore, aptdc tirupati darshan package from bangalore, bangalore tirupati darshan
-        </p>
+  <strong>FINDS US ONLINE:</strong>{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    tirupati darshan package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    tirupati balaji darshan package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    balaji package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    tirupati balaji darshan packages
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    tirupati balaji package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    apsrtc tirupati darshan package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    aptdc tirupati darshan package from bangalore
+  </Link>,{" "}
+  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+    bangalore tirupati darshan
+  </Link>
+</p>
+
       </section>
     </div>
   );

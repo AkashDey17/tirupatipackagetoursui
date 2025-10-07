@@ -16,22 +16,22 @@ import PrivacyPage from "./pages/PrivacyPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 
 const queryClient = new QueryClient();
-const PageWrapper = ({ children }) => {
-  const location = useLocation();
-  const [loading, setLoading] = useState(true);
+// const PageWrapper = ({ children }) => {
+//   const location = useLocation();
+//   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 800); // adjust speed
-    return () => clearTimeout(timer);
-  }, [location.pathname]); // runs whenever route changes
+//   useEffect(() => {
+//     setLoading(true);
+//     const timer = setTimeout(() => setLoading(false), 800); // adjust speed
+//     return () => clearTimeout(timer);
+//   }, [location.pathname]); // runs whenever route changes
 
-  if (loading) {
-    return <PreLoader />;
-  }
+//   if (loading) {
+//     return <PreLoader />;
+//   }
 
-  return children;
-};
+//   return children;
+// };
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -40,7 +40,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
        <ScrollToTop />
-         <PageWrapper>
+         {/* <PageWrapper> */}
         <Routes>
           <Route path="/" element={<Index />} />
            {/* <Route path="/tirupati-package" element={<TirupatiPackage />} /> */}
@@ -54,7 +54,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        </PageWrapper>
+        {/* </PageWrapper> */}
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -5,12 +5,22 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const linkStyle = {
-    fontSize: "clamp(12px, 2vw, 18px)",
+    fontSize: "clamp(16px, 2vw, 16px)",
     color: "#4d361b",
     textDecoration: "none",
     fontFamily: "Inter, sans-serif",
     whiteSpace: "nowrap",
+   
   };
+  const linkStyle1 = {
+  fontSize: "16px",  // smaller text
+  lineHeight: "1.4",
+  display: "block",
+  marginBottom: "4px",
+  
+  textDecoration: "none",
+};
+
 
   return (
     <footer
@@ -150,77 +160,77 @@ const Footer = () => {
                   </Link>
                 </li>
                  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Bangalore to Tirupati Tour Packages – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Tirupati Packages From Bangalore – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Tirupati Car Packages from Bangalore – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Bangalore to Tirupati Balaji Darshan Package – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Tirupati One Day Package from Bangalore – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       KSRTC Tirupati Package from Bangalore – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Bangalore to Tirumala Tirupati Package – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Tirupati Darshan Package from Bangalore by Car – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Bangalore to Tirupati Car Rental Package – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Tirupati Tour from Bangalore with VIP Darshan – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Best Tirupati Tour Operators in Bangalore – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Tirupati Package from Bangalore by Bus – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Tirupati Package from Bangalore for Families – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Bangalore to Tirupati Temple Tour Package – tirupatipackagetours.com
     </Link>
   </li>
   <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
       Tirupati Package Booking Online Bangalore – tirupatipackagetours.com
     </Link>
   </li>

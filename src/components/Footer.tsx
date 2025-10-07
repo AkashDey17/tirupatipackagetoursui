@@ -135,17 +135,17 @@ const Footer = () => {
                 }}
               >
                 <li>
-                  <Link to="/tirupati-package" style={linkStyle}>
+                  <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
                     Bangalore to Tirupati Tour Packages
                   </Link>
                 </li>
                 <li>
-                  <Link to="/tirupati-package" style={linkStyle}>
+                  <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
                     Tirupati Packages From Bangalore
                   </Link>
                 </li>
                 <li>
-                  <Link to="/tirupati-package" style={linkStyle}>
+                  <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
                     Tirupati Car Packages from Bangalore
                   </Link>
                 </li>

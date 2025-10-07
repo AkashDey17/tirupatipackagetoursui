@@ -297,7 +297,7 @@ const TirupatiPackages = () => {
             />
             <Link 
             // to="/tirupati-package"
-            to="/package-from-bangalore"
+            to="/tirupati-package-from-bangalore"
             >
               <button
                 style={{

@@ -44,7 +44,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
            {/* <Route path="/tirupati-package" element={<TirupatiPackage />} /> */}
-           <Route path="/package-from-bangalore" element={<TirupatiPackage />} />
+           <Route path="/tirupati-package-from-bangalore" element={<TirupatiPackage />} />
            <Route path="/tirupati-srikalahasti" element={<TirupatiSrikalahasti />} />
            <Route path="/contact-us" element={<Contact />} />
            {/* <Route path="/about-us" element={<AboutPage />} /> */}

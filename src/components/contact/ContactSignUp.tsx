@@ -531,7 +531,7 @@ const ContactSignup = () => {
           Contact us now to plan your perfect Tirupati pilgrimage experience.
         </p>
        <p className="mt-3 text-gray-400 text-xl leading-relaxed">
-  <strong>FINDS ONLINE KEYWORDS:</strong>{" "}
+  <strong>FINDS US ONLINE:</strong>{" "}
   <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
     tirupati trip from bangalore
   </Link>,{" "}

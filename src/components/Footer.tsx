@@ -260,19 +260,26 @@ const Footer = () => {
             />
             {/* New Content Below Temple Image */}
            
-            <div
+           <div
   style={{
-    textAlign: "center",
+    textAlign: "left",
     marginTop: "15px",
     display: "flex",
     flexDirection: "column",
     gap: "6px",
   }}
 >
-  <strong style={{ fontSize: "clamp(20px, 2vw, 20px)", color: "#4d361b", marginBottom: "6px" }}>
+  <strong
+    style={{
+      fontSize: "16px",
+      color: "#4d361b",
+      marginBottom: "6px",
+      display: "block",
+    }}
+  >
     POPULAR PACKAGES:
   </strong>
-  
+
   {[
     "bangalore to tirupathi bus package",
     "tirupati package from bangalore price",
@@ -286,19 +293,22 @@ const Footer = () => {
   ].map((pkg, idx) => (
     <a
       key={idx}
-      href="/tirupati-package"
+      href="/tirupati-package-from-bangalore"
       style={{
-        fontSize: "clamp(18px, 2.0vw, 18px)",
+        fontSize: "16px",
         color: "#4d361b",
         fontFamily: "Inter, sans-serif",
         textDecoration: "none",
-        textAlign:"left"
+        textAlign: "left",
+        display: "block",
+        marginBottom: "4px",
       }}
     >
       {pkg}
     </a>
   ))}
 </div>
+
 
           </div>
         </div>

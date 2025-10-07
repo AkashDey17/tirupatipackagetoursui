@@ -295,7 +295,10 @@ const TirupatiPackages = () => {
                 borderRadius: "12px",
               }}
             />
-            <Link to="/tirupati-package">
+            <Link 
+            // to="/tirupati-package"
+            to="/package-from-bangalore"
+            >
               <button
                 style={{
                   backgroundColor: "#F59E0B",
@@ -379,7 +382,8 @@ const TirupatiPackages = () => {
                 borderRadius: "12px",
               }}
             />
-            <Link to="/tirupati-srikalahasti">
+            <Link 
+            to="/tirupati-srikalahasti">
               <button
                 style={{
                   backgroundColor: "#F59E0B",

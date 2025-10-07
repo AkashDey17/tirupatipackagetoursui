@@ -43,10 +43,12 @@ const App = () => (
          <PageWrapper>
         <Routes>
           <Route path="/" element={<Index />} />
-           <Route path="/tirupati-package" element={<TirupatiPackage />} />
+           {/* <Route path="/tirupati-package" element={<TirupatiPackage />} /> */}
+           <Route path="/package-from-bangalore" element={<TirupatiPackage />} />
            <Route path="/tirupati-srikalahasti" element={<TirupatiSrikalahasti />} />
            <Route path="/contact-us" element={<Contact />} />
-           <Route path="/about-us" element={<AboutPage />} />
+           {/* <Route path="/about-us" element={<AboutPage />} /> */}
+           <Route path="/tirupati-darshan-package-from-bangalore" element={<AboutPage />} />
            <Route path="/privacy-policy" element={<PrivacyPage />} />
            <Route path="/tc" element={<TermsAndConditionsPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

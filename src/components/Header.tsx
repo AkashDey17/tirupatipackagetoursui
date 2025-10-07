@@ -8,8 +8,10 @@ const Header = () => {
 
   const menuItems = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about-us" },
-    { name: "Tirupati Packages", path: "/tirupati-package" }, 
+    // { name: "About", path: "/about-us" },
+    // { name: "Tirupati Packages", path: "/tirupati-package" }, 
+    { name: "About", path: "/tirupati-darshan-package-from-bangalore" },
+    { name: "Tirupati Packages", path: "/package-from-bangalore" }, 
     { name: "Contact", path: "/contact-us" },
   ];
 

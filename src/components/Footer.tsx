@@ -130,7 +130,7 @@ const Footer = () => {
                   margin: 0,
                   padding: 0,
                   listStyle: "none",
-                  fontSize: "clamp(14px, 2vw, 20px)",
+                  fontSize: "clamp(18px, 2vw, 18px)",
                   fontFamily: "Inter, sans-serif",
                 }}
               >
@@ -149,6 +149,81 @@ const Footer = () => {
                     Tirupati Car Packages from Bangalore
                   </Link>
                 </li>
+                 <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Bangalore to Tirupati Tour Packages – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Tirupati Packages From Bangalore – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Tirupati Car Packages from Bangalore – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Bangalore to Tirupati Balaji Darshan Package – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Tirupati One Day Package from Bangalore – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      KSRTC Tirupati Package from Bangalore – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Bangalore to Tirumala Tirupati Package – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Tirupati Darshan Package from Bangalore by Car – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Bangalore to Tirupati Car Rental Package – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Tirupati Tour from Bangalore with VIP Darshan – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Best Tirupati Tour Operators in Bangalore – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Tirupati Package from Bangalore by Bus – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Tirupati Package from Bangalore for Families – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Bangalore to Tirupati Temple Tour Package – tirupatipackagetours.com
+    </Link>
+  </li>
+  <li>
+    <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
+      Tirupati Package Booking Online Bangalore – tirupatipackagetours.com
+    </Link>
+  </li>
               </ul>
             </div>
           </div>

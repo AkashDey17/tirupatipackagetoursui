@@ -1,5 +1,3 @@
-
-
 import logoImg from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 
@@ -10,17 +8,7 @@ const Footer = () => {
     textDecoration: "none",
     fontFamily: "Inter, sans-serif",
     whiteSpace: "nowrap",
-   
   };
-  const linkStyle1 = {
-  fontSize: "16px",  // smaller text
-  lineHeight: "1.4",
-  display: "block",
-  marginBottom: "4px",
-  
-  textDecoration: "none",
-};
-
 
   return (
     <footer
@@ -28,10 +16,35 @@ const Footer = () => {
         backgroundColor: "#ffea92",
         padding: "clamp(40px, 8vw, 60px) 0 20px",
         position: "relative",
+        overflow: "visible",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
-        {/* Three Equal Sections */}
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 20px",
+          position: "relative",
+        }}
+      >
+        {/* Temple Image (hidden on mobile) */}
+        <img
+          className="temple-img"
+          src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/35d5de4b01073214c3ffce81e8218d28.png"
+          alt="Temple Decoration"
+          style={{
+            position: "absolute",
+            top: "-50%",
+            left: "85%",
+            transform: "translateX(-50%)",
+            width: "354.115px",
+            height: "290.375px",
+            objectFit: "cover",
+            pointerEvents: "none",
+            zIndex: 1,
+          }}
+        />
+
         <div
           className="footer-grid"
           style={{
@@ -40,9 +53,11 @@ const Footer = () => {
             gap: "clamp(30px, 6vw, 60px)",
             marginBottom: "clamp(25px, 5vw, 40px)",
             alignItems: "start",
+            position: "relative",
+            zIndex: 2,
           }}
         >
-          {/* Left Section - Logo + Text */}
+          {/* Left Column */}
           <div style={{ textAlign: "center" }}>
             <img
               src={logoImg}
@@ -50,7 +65,7 @@ const Footer = () => {
               style={{
                 height: "clamp(120px, 14vw, 180px)",
                 width: "auto",
-                margin: "0 auto 20px",
+                margin: "0 auto",
                 display: "block",
               }}
             />
@@ -70,7 +85,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Middle Section - Contact Info + Popular Searches */}
+          {/* Center Column */}
           <div style={{ textAlign: "left", marginTop: "106px" }}>
             <h3
               style={{
@@ -83,8 +98,13 @@ const Footer = () => {
             >
               Contact Info
             </h3>
-
-            <div style={{ marginBottom: "15px", textAlign: "left", display: "inline-block" }}>
+            <div
+              style={{
+                marginBottom: "15px",
+                textAlign: "left",
+                display: "inline-block",
+              }}
+            >
               <ol
                 className="contact-list"
                 style={{
@@ -99,12 +119,12 @@ const Footer = () => {
                 <li>enquiry@tirupatipackagetours.com</li>
               </ol>
             </div>
-
             <div
               style={{
                 display: "inline-block",
                 textAlign: "left",
-                maxWidth: "100%",
+                 width: "100%",
+                maxWidth: "500px",
                 marginBottom: "20px",
               }}
             >
@@ -122,123 +142,9 @@ const Footer = () => {
                 Defence Layout, Sahakar Nagar, Bengaluru, Karnataka 560092.
               </p>
             </div>
-
-            <div>
-              <h3
-                style={{
-                  fontSize: "clamp(20px, 3vw, 20px)",
-                  fontWeight: "600",
-                  color: "#4d361b",
-                  marginBottom: "10px",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
-                Popular Searches
-              </h3>
-              <ul
-                style={{
-                  margin: 0,
-                  padding: 0,
-                  listStyle: "none",
-                  fontSize: "clamp(18px, 2vw, 18px)",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
-                <li>
-                  <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
-                    Bangalore to Tirupati Tour Packages
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
-                    Tirupati Packages From Bangalore
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/tirupati-package-from-bangalore" style={linkStyle}>
-                    Tirupati Car Packages from Bangalore
-                  </Link>
-                </li>
-                 <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Bangalore to Tirupati Tour Packages – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Tirupati Packages From Bangalore – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Tirupati Car Packages from Bangalore – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Bangalore to Tirupati Balaji Darshan Package – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Tirupati One Day Package from Bangalore – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      KSRTC Tirupati Package from Bangalore – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Bangalore to Tirumala Tirupati Package – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Tirupati Darshan Package from Bangalore by Car – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Bangalore to Tirupati Car Rental Package – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Tirupati Tour from Bangalore with VIP Darshan – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Best Tirupati Tour Operators in Bangalore – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Tirupati Package from Bangalore by Bus – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Tirupati Package from Bangalore for Families – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Bangalore to Tirupati Temple Tour Package – tirupatipackagetours.com
-    </Link>
-  </li>
-  <li>
-    <Link to="/tirupati-package-from-bangalore" style={linkStyle1}>
-      Tirupati Package Booking Online Bangalore – tirupatipackagetours.com
-    </Link>
-  </li>
-              </ul>
-            </div>
           </div>
 
-          {/* Right Section - Temple Image + New Content */}
+          {/* Right Column */}
           <div
             style={{
               display: "flex",
@@ -246,71 +152,7 @@ const Footer = () => {
               justifyContent: "flex-end",
               alignItems: "center",
             }}
-          >
-            <img
-              src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/35d5de4b01073214c3ffce81e8218d28.png"
-              alt="Decoration"
-              style={{
-                width: "354.115px",
-                height: "290.375px",
-                objectFit: "cover",
-                pointerEvents: "none",
-                marginBottom: "15px",
-              }}
-            />
-            {/* New Content Below Temple Image */}
-           
-           <div
-  style={{
-    textAlign: "left",
-    marginTop: "15px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "6px",
-  }}
->
-  <strong
-    style={{
-      fontSize: "16px",
-      color: "#4d361b",
-      marginBottom: "6px",
-      display: "block",
-    }}
-  >
-    POPULAR PACKAGES:
-  </strong>
-
-  {[
-    "bangalore to tirupathi bus package",
-    "tirupati package from bangalore price",
-    "ksrtc tirupati package from bangalore",
-    "tirupati balaji package from bangalore",
-    "tirupati tour package from bangalore",
-    "tirupati package from bangalore",
-    "tirupati darshan package from bangalore",
-    "tirupati package from Bangalore price",
-    "bangalore to tirupati package bus",
-  ].map((pkg, idx) => (
-    <a
-      key={idx}
-      href="/tirupati-package-from-bangalore"
-      style={{
-        fontSize: "16px",
-        color: "#4d361b",
-        fontFamily: "Inter, sans-serif",
-        textDecoration: "none",
-        textAlign: "left",
-        display: "block",
-        marginBottom: "4px",
-      }}
-    >
-      {pkg}
-    </a>
-  ))}
-</div>
-
-
-          </div>
+          ></div>
         </div>
 
         {/* Bottom Section */}
@@ -335,7 +177,8 @@ const Footer = () => {
               minWidth: "250px",
             }}
           >
-            © Copyright Sanchar6T Tours and Travels <br /> Powered By TechVaraha Solutions Pvt Ltd.
+            © Copyright Sanchar6T Tours and Travels <br /> Powered By TechVaraha
+            Solutions Pvt Ltd.
           </p>
 
           <div
@@ -372,8 +215,14 @@ const Footer = () => {
               align-items: center !important;
               text-align: center !important;
             }
+
             .footer-grid > div {
               margin-top: 20px !important;
+            }
+
+            /* Hide temple image on mobile */
+            .temple-img {
+              display: none !important;
             }
           }
         `}

@@ -217,7 +217,7 @@ const TirupatiPackages = () => {
   return (
     <section
       style={{
-        padding: "clamp(40px, 8vw, 80px) 0",
+        padding: "clamp(23px, 5vw, 26px) 0px;"
       }}
     >
       {/* ✅ Responsive CSS */}

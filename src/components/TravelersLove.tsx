@@ -155,8 +155,9 @@
 // export default TravelersLove;
 
 
-import busTrackingImg from "@/assets/bus-tracking.png"; 
-import userImg from "@/assets/user.png"; 
+import busTrackingImg from "@/assets/bus-tracking.png";
+import userImg from "@/assets/user.png";
+import { Link } from "react-router-dom";
 
 const TravelersLove = () => {
   const testimonials = [
@@ -180,11 +181,59 @@ const TravelersLove = () => {
     },
   ];
 
+  const popularSearches = {
+    column1: [
+      "Bangalore to Tirupati Tour Packages",
+      "Tirupati Packages From Bangalore",
+      "Tirupati Car Packages from Bangalore",
+      "Bangalore to Tirupati Tour Packages",
+      "Bangalore to Tirupati Balaji Darshan Package",
+      "Tirupati One Day Package from Bangalore",
+    ],
+    column2: [
+      "KSRTC Tirupati Package from Bangalore",
+      "Bangalore to Tirumala Tirupati Package",
+      "Bangalore to Tirupati Car Rental Package",
+      "Tirupati Tour from Bangalore with VIP Darshan",
+    ],
+    column3: [
+      "Best Tirupati Tour Operators in Bangalore",
+      "Tirupati Package from Bangalore by Bus",
+      "Tirupati Package from Bangalore for Families",
+      "Bangalore to Tirupati Temple Tour Package",
+      "Tirupati Package Booking Online Bangalore",
+    ],
+  };
+
+  const quickLinks = {
+    column1: [
+      "bangalore to tirupathi bus package",
+      "tirupati package from bangalore price",
+      "ksrtc tirupati package from bangalore",
+    ],
+    column2: [
+      "tirupati balaji package from bangalore",
+      "tirupati tour package from bangalore",
+      "tirupati package from bangalore",
+    ],
+    column3: [
+      "bangalore to tirupati package bus",
+      "tirupati darshan package from bangalore",
+      "tirupati darshan package from bangalore",
+      "tirupati package from Bangalore price",
+    ],
+  };
+
   return (
-    <section style={{ padding: "clamp(40px, 8vw, 80px) 0" }}>
+    <section style={{ padding: "clamp(40px, 10vw, 127px) 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
         {/* Section Header */}
-        <div style={{ textAlign: "center", marginBottom: "clamp(20px, 4vw, 40px)" }}>
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: "clamp(20px, 4vw, 40px)",
+          }}
+        >
           <div
             className="header-flex"
             style={{
@@ -260,8 +309,13 @@ const TravelersLove = () => {
                 flexDirection: "column",
               }}
             >
-              {/* Name + Location */}
-              <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "8px",
+                }}
+              >
                 <img
                   src={userImg}
                   alt="User"
@@ -301,7 +355,10 @@ const TravelersLove = () => {
               {/* Stars */}
               <div style={{ display: "flex", gap: "2px", marginBottom: "8px" }}>
                 {Array.from({ length: 5 }).map((_, starIndex) => (
-                  <span key={starIndex} style={{ color: "#FBBF24", fontSize: "18px" }}>
+                  <span
+                    key={starIndex}
+                    style={{ color: "#FBBF24", fontSize: "18px" }}
+                  >
                     ★
                   </span>
                 ))}
@@ -324,17 +381,159 @@ const TravelersLove = () => {
         </div>
       </div>
 
-      {/* Responsive Styles */}
+      {/* --- Find Us Online Section --- */}
+      <section className="text-center py-10 text-xl text-gray-400 opacity-70 px-4">
+        <p className="mt-3 text-gray-400 text-xl leading-relaxed">
+          <strong>FINDS US ONLINE:</strong>{" "}
+          <Link
+            to="/tirupati-package-from-bangalore"
+            className="text-blue-600 hover:underline"
+          >
+            bangalore to tirupathi bus package
+          </Link>
+          ,{" "}
+          <Link
+            to="/tirupati-package-from-bangalore"
+            className="text-blue-600 hover:underline"
+          >
+            tirupati package from bangalore price
+          </Link>
+          ,{" "}
+          <Link
+            to="/tirupati-package-from-bangalore"
+            className="text-blue-600 hover:underline"
+          >
+            ksrtc tirupati package from bangalore
+          </Link>
+          ,{" "}
+          <Link
+            to="/tirupati-package-from-bangalore"
+            className="text-blue-600 hover:underline"
+          >
+            tirupati balaji package from bangalore
+          </Link>
+          ,{" "}
+          <Link
+            to="/tirupati-package-from-bangalore"
+            className="text-blue-600 hover:underline"
+          >
+            tirupati tour package from bangalore
+          </Link>
+          ,{" "}
+          <Link
+            to="/tirupati-package-from-bangalore"
+            className="text-blue-600 hover:underline"
+          >
+            tirupati package from bangalore
+          </Link>
+          ,{" "}
+          <Link
+            to="/tirupati-package-from-bangalore"
+            className="text-blue-600 hover:underline"
+          >
+            tirupati package from Bangalore price
+          </Link>
+        </p>
+      </section>
+
+      {/* --- NEW SECTION: Find Us Online (Detailed) --- */}
+      <main className="min-h-screen py-16 px-4"
+      style={{
+    paddingTop: "4rem",
+    paddingBottom: "4rem",
+    paddingRight: "4rem",
+    paddingLeft: "4rem",
+  }}
+      >
+        <div className="max-w-7xl mx-auto">
+          {/* Popular Searches */}
+          <section className="mb-20">
+            <h1 className="text-center mb-12 text-[20px] font-bold">
+              <span
+                style={{
+                  color: "#4d361b",
+                  borderBottom: "4px solid #4d361b",
+                  paddingBottom: "4px",
+                }}
+              >
+                Popular
+              </span>{" "}
+              <span
+                style={{
+                  color: "#e1aa01",
+                  borderBottom: "4px solid #e1aa01",
+                  paddingBottom: "4px",
+                }}
+              >
+                Searches
+              </span>
+            </h1>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+              {[popularSearches.column1, popularSearches.column2, popularSearches.column3].map(
+                (column, idx) => (
+                  <ul key={idx} className="space-y-4">
+                    {column.map((item, i) => (
+                      <li
+                        key={i}
+                        className="text-[18px] leading-relaxed flex"
+                        style={{ color: "#000000" }}
+                      >
+                        <span className="mr-3">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )
+              )}
+            </div>
+          </section>
+
+          {/* Quick Links */}
+          <section>
+            <h2 className="text-center mb-12 text-[20px] font-bold">
+              <span
+                style={{
+                  color: "#3d2817",
+                  borderBottom: "4px solid #3d2817",
+                  paddingBottom: "4px",
+                }}
+              >
+                Quick
+              </span>{" "}
+              <span
+                style={{
+                  color: "#d9a621",
+                  borderBottom: "4px solid #d9a621",
+                  paddingBottom: "4px",
+                }}
+              >
+                Links
+              </span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+              {[quickLinks.column1, quickLinks.column2, quickLinks.column3].map(
+                (column, idx) => (
+                  <ul key={idx} className="space-y-4">
+                    {column.map((item, i) => (
+                      <li
+                        key={i}
+                        className="text-[18px] leading-relaxed flex"
+                        style={{ color: "#000000" }}
+                      >
+                        <span className="mr-3">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )
+              )}
+            </div>
+          </section>
+        </div>
+      </main>
+
       <style>
         {`
-          /* Tablet */
-          @media (max-width: 1024px) {
-            .header-flex {
-              gap: 20px !important;
-            }
-          }
-
-          /* Mobile */
           @media (max-width: 768px) {
             .header-flex {
               flex-direction: column !important;
@@ -351,16 +550,6 @@ const TravelersLove = () => {
               gap: 16px !important;
             }
           }
-
-          /* Extra small phones */
-          @media (max-width: 480px) {
-            .header-img {
-              width: 120px !important;
-            }
-            .header-title {
-              font-size: 20px !important;
-            }
-          }
         `}
       </style>
     </section>
@@ -368,4 +557,5 @@ const TravelersLove = () => {
 };
 
 export default TravelersLove;
+
 

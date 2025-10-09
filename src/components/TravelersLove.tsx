@@ -182,47 +182,46 @@ const TravelersLove = () => {
   ];
 
   const popularSearches = {
-    column1: [
-      "Bangalore to Tirupati Tour Packages",
-      "Tirupati Packages From Bangalore",
-      "Tirupati Car Packages from Bangalore",
-      "Bangalore to Tirupati Tour Packages",
-      "Bangalore to Tirupati Balaji Darshan Package",
-      "Tirupati One Day Package from Bangalore",
-    ],
-    column2: [
-      "KSRTC Tirupati Package from Bangalore",
-      "Bangalore to Tirumala Tirupati Package",
-      "Bangalore to Tirupati Car Rental Package",
-      "Tirupati Tour from Bangalore with VIP Darshan",
-    ],
-    column3: [
-      "Best Tirupati Tour Operators in Bangalore",
-      "Tirupati Package from Bangalore by Bus",
-      "Tirupati Package from Bangalore for Families",
-      "Bangalore to Tirupati Temple Tour Package",
-      "Tirupati Package Booking Online Bangalore",
-    ],
-  };
+  column1: [
+    "Bangalore to Tirupati Tour Packages",
+    "Tirupati Packages From Bangalore",
+    "Tirupati Car Packages from Bangalore",
+    "Bangalore to Tirupati Balaji Darshan Package",
+    "Tirupati One Day Package from Bangalore",
+  ],
+  column2: [
+    "KSRTC Tirupati Package from Bangalore",
+    "Bangalore to Tirumala Tirupati Package",
+    "Bangalore to Tirupati Car Rental Package",
+    "Tirupati Tour from Bangalore with VIP Darshan",
+  ],
+  column3: [
+    "Best Tirupati Tour Operators in Bangalore",
+    "Tirupati Package from Bangalore by Bus",
+    "Tirupati Package from Bangalore for Families",
+    "Bangalore to Tirupati Temple Tour Package",
+    "Tirupati Package Booking Online Bangalore",
+  ],
+};
 
-  const quickLinks = {
-    column1: [
-      "bangalore to tirupathi bus package",
-      "tirupati package from bangalore price",
-      "ksrtc tirupati package from bangalore",
-    ],
-    column2: [
-      "tirupati balaji package from bangalore",
-      "tirupati tour package from bangalore",
-      "tirupati package from bangalore",
-    ],
-    column3: [
-      "bangalore to tirupati package bus",
-      "tirupati darshan package from bangalore",
-      "tirupati darshan package from bangalore",
-      "tirupati package from Bangalore price",
-    ],
-  };
+const quickLinks = {
+  column1: [
+    "bangalore to tirupathi bus package",
+    "tirupati package from bangalore price",
+    "ksrtc tirupati package from bangalore",
+  ],
+  column2: [
+    "tirupati balaji package from bangalore",
+    "tirupati tour package from bangalore",
+    "tirupati package from bangalore",
+  ],
+  column3: [
+    "bangalore to tirupati package bus",
+    "tirupati darshan package from bangalore",
+    "tirupati package from Bangalore price",
+  ],
+};
+
 
   return (
     <section style={{ padding: "clamp(40px, 10vw, 127px) 0" }}>

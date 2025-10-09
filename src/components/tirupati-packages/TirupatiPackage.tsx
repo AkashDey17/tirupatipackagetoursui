@@ -402,7 +402,7 @@ const TirupatiPakage = () => {
           <p className="mb-3 text-[22px] flex items-center gap-2">
             <Phone className="w-6 h-6 text-[#6B4E3D]" />{" "}
             <span>
-              Call: <strong>+91 97313 12275 | +91 81978 82511</strong>
+              Call: <strong>+91 9964060505 | +91 8197882511</strong>
             </span>
           </p>
           <p className="mb-3 text-[22px] flex items-center gap-2">
@@ -412,7 +412,7 @@ const TirupatiPakage = () => {
             <Globe className="w-6 h-6 text-[#6B4E3D]" /> Website: www.tirupatipackagetours.com
           </p>
           <p className="mb-3 text-[22px] flex items-center gap-2">
-            <Mail className="w-6 h-6 text-[#6B4E3D]" /> Email: sanchar6t@gmail.com
+            <Mail className="w-6 h-6 text-[#6B4E3D]" /> Email: enquiry@tirupatipackagetours.com
           </p>
           <Link to="/contact-us">
             <button className="mt-4 bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">

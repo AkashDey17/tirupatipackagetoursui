@@ -349,7 +349,7 @@ const TirupatiSrikalahasti = () => {
         <section className="bg-yellow-50 p-6 rounded-xl shadow-md">
           <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Book Now</h2>
           <p className="mb-3 text-[22px] flex items-center gap-2">
-            <Phone className="w-6 h-6 text-[#6B4E3D]" /> Call: <strong>+91 97313 12275 | +91 81978 82511</strong>
+            <Phone className="w-6 h-6 text-[#6B4E3D]" />  Call: <strong>+91 9964060505 | +91 8197882511</strong>
           </p>
           <p className="mb-3 text-[22px] flex items-center gap-2">
             <MessageCircle className="w-6 h-6 text-[#6B4E3D]" /> WhatsApp: Click “Book Now” for instant chat
@@ -358,7 +358,7 @@ const TirupatiSrikalahasti = () => {
             <Globe className="w-6 h-6 text-[#6B4E3D]" /> Website: www.tirupatipackagetours.com
           </p>
           <p className="mb-3 text-[22px] flex items-center gap-2">
-            <Mail className="w-6 h-6 text-[#6B4E3D]" /> Email: sanchar6t@gmail.com
+            <Mail className="w-6 h-6 text-[#6B4E3D]" /> Email: enquiry@tirupatipackagetours.com
           </p>
           <button
             onClick={handleBookNow}

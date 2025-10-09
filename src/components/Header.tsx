@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react"; 
-import { Link } from "react-router-dom"; 
+import { Menu, X, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import logoImg from "@/assets/logo.png";
 
 const Header = () => {
@@ -8,10 +8,8 @@ const Header = () => {
 
   const menuItems = [
     { name: "Home", path: "/" },
-    // { name: "About", path: "/about-us" },
-    // { name: "Tirupati Packages", path: "/tirupati-package" }, 
     { name: "About", path: "/tirupati-darshan-package-from-bangalore" },
-    { name: "Tirupati Packages", path: "/tirupati-package-from-bangalore" }, 
+    { name: "Tirupati Packages", path: "/tirupati-package-from-bangalore" },
     { name: "Contact", path: "/contact-us" },
   ];
 
@@ -39,8 +37,10 @@ const Header = () => {
           gap: "20px",
         }}
       >
-       
-        <div style={{ display: "flex", alignItems: "center", height: "100%", gap: "10px" }}>
+        {/* Logo + Text */}
+        <div
+          style={{ display: "flex", alignItems: "center", height: "100%", gap: "10px" }}
+        >
           <Link to="/" style={{ display: "flex", alignItems: "center", height: "100%" }}>
             <img
               src={logoImg}
@@ -61,17 +61,21 @@ const Header = () => {
                 color: "#6B4E3D",
                 fontFamily: "Inter, sans-serif",
                 whiteSpace: "nowrap",
+                wordSpacing: "4px",
               }}
             >
               Tirupati Package Tours
             </span>
-            <span className="text-sm text-gray-500" style={{ fontFamily: "Inter, sans-serif" }}>
+            <span
+              className="text-sm text-gray-500"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
               Managed by Sanchar6T
             </span>
           </div>
         </div>
 
-       
+        {/* Desktop Navigation */}
         <nav
           className="hidden md:flex"
           style={{
@@ -126,7 +130,7 @@ const Header = () => {
           </div>
         </nav>
 
-       
+        {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -137,7 +141,7 @@ const Header = () => {
         </div>
       </div>
 
-     
+      {/* Mobile Dropdown Menu */}
       {menuOpen && (
         <div
           className="md:hidden"
@@ -150,7 +154,6 @@ const Header = () => {
             gap: "16px",
           }}
         >
-        
           <div className="flex flex-col">
             <span
               style={{
@@ -159,16 +162,14 @@ const Header = () => {
                 color: "#6B4E3D",
                 fontFamily: "Inter, sans-serif",
                 whiteSpace: "nowrap",
+                wordSpacing: "4px", // ✅ Added to keep proper spacing
               }}
             >
-              TirupatiPackageTours
+              Tirupati Package Tours
             </span>
-            <span className="text-sm text-gray-500">
-              Managed by Sanchar6T
-            </span>
+            <span className="text-sm text-gray-500">Managed by Sanchar6T</span>
           </div>
 
-         
           <a
             href="tel:+918197882511"
             style={{
@@ -218,5 +219,3 @@ const Header = () => {
 };
 
 export default Header;
-
-

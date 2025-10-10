@@ -616,7 +616,7 @@ const Header = () => {
             onClick={() => setMenuOpen(!menuOpen)}
             style={{ background: "none", border: "none", cursor: "pointer" }}
           >
-            {menuOpen ? <X size={28} color="#6B4E3D" /> : <Menu size={28} color="#6B4E3D" />}
+            {menuOpen ? <X size={28} color="#6B4E3D" style={{position:"relative",top:"49px"}} /> : <Menu size={28} color="#6B4E3D" style={{position:"relative",top:"49px"}} />}
           </button>
         </div>
       </div>

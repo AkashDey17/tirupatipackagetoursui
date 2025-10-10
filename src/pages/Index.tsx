@@ -79,6 +79,7 @@ import ScrollVideo from "@/components/ScrollVideo";
 import TravelQuiz from "@/components/TravelQuiz";
 import ContactFloatingButton from "@/components/ContactFloatingButton";
 import poster from "@/assets/poster.jpeg";
+import poster2 from "@/assets/poster2.jpg";
 
 const Index = () => {
   const [showPoster, setShowPoster] = useState(true);
@@ -121,7 +122,7 @@ const Index = () => {
 
             {/* Poster Image */}
             <img
-              src={poster}
+              src={poster2}
               alt="Poster"
               className="max-h-[90vh] w-auto max-w-[90vw] sm:max-w-[700px] md:max-w-[800px] lg:max-w-[900px] rounded-lg shadow-lg object-contain"
             />

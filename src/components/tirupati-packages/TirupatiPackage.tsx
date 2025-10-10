@@ -41,7 +41,7 @@ const TirupatiPakage = () => {
       </h2>
       <button
         onClick={handleBookNow}
-        className="bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition text-base"
+        className="bg-[#ffce38] text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition text-base"
       >
         Book Now &gt;
       </button>
@@ -415,7 +415,7 @@ const TirupatiPakage = () => {
             <Mail className="w-6 h-6 text-[#6B4E3D]" /> Email: enquiry@tirupatipackagetours.com
           </p>
           <Link to="/contact-us">
-            <button className="mt-4 bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">
+            <button className="mt-4 bg-[#ffce38] text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">
               Contact Us &gt;
             </button>
           </Link>

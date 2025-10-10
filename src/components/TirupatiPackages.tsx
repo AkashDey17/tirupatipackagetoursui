@@ -301,7 +301,7 @@ const TirupatiPackages = () => {
             >
               <button
                 style={{
-                  backgroundColor: "#F59E0B",
+                  backgroundColor: "#ffce38",
                   color: "#6B4E3D",
                   fontSize: "clamp(16px, 2.5vw, 20px)",
                   fontWeight: "700",
@@ -386,7 +386,7 @@ const TirupatiPackages = () => {
             to="/tirupati-srikalahasti">
               <button
                 style={{
-                  backgroundColor: "#F59E0B",
+                  backgroundColor: "#ffce38",
                   color: "#6B4E3D",
                   fontSize: "clamp(16px, 2.5vw, 20px)",
                   fontWeight: "700",

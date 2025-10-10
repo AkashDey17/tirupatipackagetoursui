@@ -446,7 +446,7 @@ const quickLinks = {
       >
         <div className="max-w-7xl mx-auto">
           {/* Popular Searches */}
-          <section className="mb-20">
+          {/* <section className="mb-20">
             <h1 className="text-center mb-12 text-[20px] font-bold">
               <span
                 style={{
@@ -485,10 +485,10 @@ const quickLinks = {
                 )
               )}
             </div>
-          </section>
+          </section> */}
 
           {/* Quick Links */}
-          <section>
+          {/* <section>
             <h2 className="text-center mb-12 text-[20px] font-bold">
               <span
                 style={{
@@ -527,7 +527,106 @@ const quickLinks = {
                 )
               )}
             </div>
-          </section>
+          </section> */}
+          {/* Popular Searches */}
+<section className="mb-20">
+  <h1 className="text-center mb-12 text-[20px] font-bold">
+    <span
+      style={{
+        color: "#4d361b",
+        borderBottom: "4px solid #4d361b",
+        paddingBottom: "4px",
+      }}
+    >
+      Popular
+    </span>{" "}
+    <span
+      style={{
+        color: "#e1aa01",
+        borderBottom: "4px solid #e1aa01",
+        paddingBottom: "4px",
+      }}
+    >
+      Searches
+    </span>
+  </h1>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+    {[popularSearches.column1, popularSearches.column2, popularSearches.column3].map(
+      (column, idx) => (
+        <ul key={idx} className="space-y-4">
+          {column.map((item, i) => (
+            <li
+              key={i}
+              className="text-[18px] leading-relaxed flex"
+              style={{ color: "#000000" }}
+            >
+              <span className="mr-3">•</span>
+              <Link
+                to="/tirupati-package-from-bangalore"
+                className="hover:underline"
+                style={{ color: "#000000", textDecoration: "none" }}
+              >
+                {item}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )
+    )}
+  </div>
+</section>
+
+{/* Quick Links */}
+<section>
+  <h2 className="text-center mb-12 text-[20px] font-bold">
+    <span
+      style={{
+        color: "#3d2817",
+        borderBottom: "4px solid #3d2817",
+        paddingBottom: "4px",
+      }}
+    >
+      Quick
+    </span>{" "}
+    <span
+      style={{
+        color: "#d9a621",
+        borderBottom: "4px solid #d9a621",
+        paddingBottom: "4px",
+      }}
+    >
+      Links
+    </span>
+  </h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+    {[quickLinks.column1, quickLinks.column2, quickLinks.column3].map(
+      (column, idx) => (
+        <ul key={idx} className="space-y-4">
+          {column.map((item, i) => (
+            <li
+              key={i}
+              className="text-[18px] leading-relaxed flex"
+              style={{ color: "#000000" }}
+            >
+              <span className="mr-3">•</span>
+              <Link
+                to="/tirupati-package-from-bangalore"
+                className="hover:underline"
+                style={{ color: "#000000", textDecoration: "none" }}
+              >
+                {item}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )
+    )}
+  </div>
+</section>
+
+
+
+
         </div>
       </main>
 

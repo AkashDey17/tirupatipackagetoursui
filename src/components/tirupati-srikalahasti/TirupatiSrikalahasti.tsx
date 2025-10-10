@@ -135,7 +135,7 @@ const TirupatiSrikalahasti = () => {
       style={{ maxWidth: "700px" }}
     >
       <h2 className="text-white text-3xl font-bold mb-4 leading-snug">
-        Tirupati 1 Night / 1 Days Dharma Darshan Package
+        Tirupati 2 Night / 2 Days Dharma Darshan Package
         <span className="block text-[#ffea92] text-2xl font-semibold leading-relaxed mt-2">
           Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
         </span>
@@ -161,7 +161,7 @@ const TirupatiSrikalahasti = () => {
 >
   <div className="text-left mb-4 relative z-10">
     <h2 className="text-white text-xl font-bold mb-2 leading-snug">
-      Tirupati 1 Night / 1 Days Dharma Darshan Package
+      Tirupati 2 Night / 2 Days Dharma Darshan Package
       <span className="block text-[#ffea92] text-base font-semibold leading-relaxed mt-1">
         Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
       </span>

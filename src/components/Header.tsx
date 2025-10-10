@@ -97,7 +97,7 @@ const Header = () => {
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              animation: "blink 1s infinite",
+              // animation: "blink 1s infinite",
             }}
           >
             <Phone size={18} /> +91 8197882511
@@ -180,7 +180,7 @@ const Header = () => {
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              animation: "blink 1s infinite",
+              // animation: "blink 1s infinite",
             }}
           >
             <Phone size={18} /> +91 8197882511
@@ -205,7 +205,7 @@ const Header = () => {
         </div>
       )}
 
-      <style>
+      {/* <style>
         {`
           @keyframes blink {
             0% { opacity: 1; }
@@ -213,7 +213,7 @@ const Header = () => {
             100% { opacity: 1; }
           }
         `}
-      </style>
+      </style> */}
     </header>
   );
 };

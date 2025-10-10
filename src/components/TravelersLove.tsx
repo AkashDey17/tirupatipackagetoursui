@@ -439,7 +439,7 @@ const quickLinks = {
       <main className="min-h-screen py-16 px-4"
       style={{
     paddingTop: "4rem",
-    paddingBottom: "4rem",
+    paddingBottom: "0rem",
     paddingRight: "4rem",
     paddingLeft: "4rem",
   }}

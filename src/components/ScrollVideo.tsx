@@ -81,7 +81,7 @@
 
 
 import React from "react";
-import natGeoLogo from "@/assets/nat-geo.png"; // import your Nat Geo logo
+import natGeoLogo from "@/assets/nat-geo.png"; 
 
 const ScrollVideo: React.FC = () => {
   return (

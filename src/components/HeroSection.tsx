@@ -1,6 +1,14 @@
+
 // import { Link } from "react-router-dom";
 
 // const HeroSection = () => {
+//   // 🔹 WhatsApp redirect logic (same as your WhatsAppButton)
+//   const handleBookNow = () => {
+//     const phoneNumber = "918197882511";
+//     const message = "Hello! I’d like to know more about your services.";
+//     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
+//   };
+
 //   return (
 //     <section 
 //       style={{ 
@@ -37,7 +45,7 @@
 //       {/* Canva Background Image */}
 //       <img
 //         src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/ba62ffc1619478d5d53529924384308d.png"
-//         alt="Hero Background"
+//         alt="bangalore to tirupathi bus package"
 //         style={{
 //           position: "absolute",
 //           top: "50%",
@@ -66,15 +74,16 @@
 //         <div 
 //           style={{ 
 //             display: "flex", 
-//             justifyContent: "space-between", // pushes one left, one right
+//             justifyContent: "space-between", 
 //             alignItems: "center",
 //             width: "100%",
 //             gap: "20px",
 //             flexWrap: "wrap"
 //           }}
 //         >
-//           <Link to="/contact-us">
+//           {/* 🔹 Updated BOOK NOW button to redirect to WhatsApp */}
 //           <button 
+//             onClick={handleBookNow}
 //             style={{ 
 //               backgroundColor: "#F59E0B",
 //               color: "#6B4E3D",
@@ -91,63 +100,72 @@
 //           >
 //             &lt; BOOK NOW
 //           </button>
-//           </Link>
+
 //           <Link to="/contact-us">
-//           <button 
-//             style={{ 
-//               backgroundColor: "#F59E0B",
-//               color: "#6B4E3D",
-//               fontSize: "clamp(16px, 2.5vw, 20px)",
-//               fontWeight: "700",
-//               padding: "clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px)",
-//               border: "none",
-//               borderRadius: "50px",
-//               cursor: "pointer",
-//               boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-//               fontFamily: "Inter, sans-serif",
-//               whiteSpace: "nowrap"
-//             }}
-//           >
-//             CONTACT US &gt;
-//           </button>
+//             <button 
+//               style={{ 
+//                 backgroundColor: "#F59E0B",
+//                 color: "#6B4E3D",
+//                 fontSize: "clamp(16px, 2.5vw, 20px)",
+//                 fontWeight: "700",
+//                 padding: "clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px)",
+//                 border: "none",
+//                 borderRadius: "50px",
+//                 cursor: "pointer",
+//                 boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+//                 fontFamily: "Inter, sans-serif",
+//                 whiteSpace: "nowrap"
+//               }}
+//             >
+//               CONTACT US &gt;
+//             </button>
 //           </Link>
 //         </div>
 //       </div>
-
 //     </section>
 //   );
 // };
 
 // export default HeroSection;
+// the above code is correct but it is not responsive
 
-
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
-  // 🔹 WhatsApp redirect logic (same as your WhatsAppButton)
+  // WhatsApp redirect logic
   const handleBookNow = () => {
     const phoneNumber = "918197882511";
     const message = "Hello! I’d like to know more about your services.";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <section 
-      style={{ 
-        height: "80vh",
-        minHeight: "900px",
+    <section
+      style={{
+        height: isMobile ? "50vh" : "80vh",
+        minHeight: isMobile ? "0" : "900px",
+        maxHeight: isMobile ? "500px" : "none",
         position: "relative",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: "80px"
+        paddingTop: "80px",
       }}
     >
       {/* TIRUPATI Text Behind Image */}
-      <h1 
-        style={{ 
+      <h1
+        style={{
           position: "absolute",
-          top: "12%", 
+          top: "12%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           fontSize: "clamp(60px, 10vw, 220px)",
@@ -177,56 +195,96 @@ const HeroSection = () => {
           height: "100%",
           objectFit: "cover",
           zIndex: 2,
-          pointerEvents: "none"
+          pointerEvents: "none",
         }}
       />
 
       {/* Content (Centered) */}
-      <div 
-        style={{ 
+      <div
+        style={{
           position: "relative",
           zIndex: 3,
           textAlign: "center",
           padding: "0 20px",
           width: "100%",
-          maxWidth: "1200px"
+          maxWidth: "1200px",
         }}
       >
-        {/* Buttons */}
-        <div 
-          style={{ 
-            display: "flex", 
-            justifyContent: "space-between", 
-            alignItems: "center",
-            width: "100%",
-            gap: "20px",
-            flexWrap: "wrap"
-          }}
-        >
-          {/* 🔹 Updated BOOK NOW button to redirect to WhatsApp */}
-          <button 
-            onClick={handleBookNow}
-            style={{ 
-              backgroundColor: "#F59E0B",
-              color: "#6B4E3D",
-              fontSize: "clamp(16px, 2.5vw, 20px)",
-              fontWeight: "700",
-              padding: "clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px)",
-              border: "none",
-              borderRadius: "50px",
-              cursor: "pointer",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-              fontFamily: "Inter, sans-serif",
-              whiteSpace: "nowrap"
+        {isMobile ? (
+          // Mobile view: buttons stacked at bottom center
+          <div
+            style={{
+              position: "absolute",
+              // bottom: "20px",
+              bottom:"-130px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "12px",
+              width: "80%",
+              maxWidth: "200px",
+              zIndex: 5,
             }}
           >
-            &lt; BOOK NOW
-          </button>
+            <button
+              onClick={handleBookNow}
+              style={{
+                backgroundColor: "#FFCE38",
+                color: "#6B4E3D",
+                fontSize: "16px",
+                fontWeight: "700",
+                padding: "12px 24px",
+                border: "none",
+                borderRadius: "50px",
+                cursor: "pointer",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                fontFamily: "Inter, sans-serif",
+                whiteSpace: "nowrap",
+                width: "100%",
+              }}
+            >
+              &lt; BOOK NOW
+            </button>
 
-          <Link to="/contact-us">
-            <button 
-              style={{ 
-                backgroundColor: "#F59E0B",
+            <Link to="/contact-us" style={{ width: "100%" }}>
+              <button
+                style={{
+                  backgroundColor: "#FFCE38",
+                  color: "#6B4E3D",
+                  fontSize: "16px",
+                  fontWeight: "700",
+                  padding: "12px 24px",
+                  border: "none",
+                  borderRadius: "50px",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  fontFamily: "Inter, sans-serif",
+                  whiteSpace: "nowrap",
+                  width: "100%",
+                }}
+              >
+                CONTACT US &gt;
+              </button>
+            </Link>
+          </div>
+        ) : (
+          // Desktop view: original button layout
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+              gap: "20px",
+              flexWrap: "wrap",
+            }}
+          >
+            <button
+              onClick={handleBookNow}
+              style={{
+                backgroundColor: "#FFCE38",
                 color: "#6B4E3D",
                 fontSize: "clamp(16px, 2.5vw, 20px)",
                 fontWeight: "700",
@@ -236,16 +294,37 @@ const HeroSection = () => {
                 cursor: "pointer",
                 boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                 fontFamily: "Inter, sans-serif",
-                whiteSpace: "nowrap"
+                whiteSpace: "nowrap",
               }}
             >
-              CONTACT US &gt;
+              &lt; BOOK NOW
             </button>
-          </Link>
-        </div>
+
+            <Link to="/contact-us">
+              <button
+                style={{
+                  backgroundColor: "#FFCE38",
+                  color: "#6B4E3D",
+                  fontSize: "clamp(16px, 2.5vw, 20px)",
+                  fontWeight: "700",
+                  padding: "clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px)",
+                  border: "none",
+                  borderRadius: "50px",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  fontFamily: "Inter, sans-serif",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                CONTACT US &gt;
+              </button>
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
 export default HeroSection;
+

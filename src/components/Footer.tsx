@@ -254,6 +254,7 @@ const Footer = () => {
         position: "relative",
         overflow: "visible",
       }}
+     
     >
       <div
         style={{
@@ -286,6 +287,7 @@ const Footer = () => {
                 margin: "0 auto",
                 display: "block",
               }}
+              className="icon"
             />
             <p
               style={{
@@ -363,6 +365,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
+         
 
           {/* Right Column (Temple Image) */}
           <div
@@ -435,28 +438,61 @@ const Footer = () => {
         </div>
       </div>
 
-      <style>
-        {`
-          /* Mobile responsive footer */
-          @media (max-width: 768px) {
-            .footer-grid {
-              display: flex !important;
-              flex-direction: column !important;
-              align-items: center !important;
-              text-align: center !important;
-            }
+     <style>
+  {`
+    /* Mobile responsive footer */
+    @media (max-width: 768px) {
+      footer {
+        padding-top: 20px !important; /* reduce top padding for mobile */
+        padding-bottom: 20px !important; /* keep bottom padding same */
+      }
+        .icon{
+        margin: -20px !important;
+        }
 
-            .footer-grid > div {
-              margin-top: 20px !important;
-            }
+      .footer-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important; /* align all columns left */
+        text-align: left !important;
+        gap: 15px !important; /* reduce spacing */
+      }
 
-            .temple-img {
-              width: 200px !important;
-              margin-top: 20px !important;
-            }
-          }
-        `}
-      </style>
+      /* Logo Column */
+      .footer-grid > div:nth-child(1) {
+        width: 100% !important;
+        text-align: left !important;
+      }
+
+      /* Contact Column */
+      .footer-grid > div:nth-child(2) {
+        position: static !important;
+        top: 0 !important;
+        width: 100% !important;
+        text-align: left !important;
+      }
+
+      .footer-grid > div:nth-child(2) h3,
+      .footer-grid > div:nth-child(2) ol,
+      .footer-grid > div:nth-child(2) p {
+        text-align: left !important;
+      }
+
+      /* Temple Image Column */
+      .footer-grid > div:nth-child(3) {
+        display: flex !important;
+        justify-content: center !important; /* keep image centered */
+        width: 100% !important;
+      }
+
+      .temple-img {
+        width: 200px !important;
+        margin-top: -26px !important;
+      }
+    }
+  `}
+</style>
+
     </footer>
   );
 };

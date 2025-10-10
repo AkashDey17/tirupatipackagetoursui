@@ -506,7 +506,7 @@ const Header = () => {
             display: "flex",
             alignItems: "center",
             gap: "10px",
-            margin: "0 auto", // center desktop logo and text
+            margin: "0 auto", 
           }}
         >
           <Link to="/" style={{ display: "flex", alignItems: "center" }}>

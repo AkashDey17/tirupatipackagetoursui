@@ -5,7 +5,7 @@ import { Phone, Mail, Globe, MessageCircle } from "lucide-react";
 const TirupatiPakage = () => {
 
    const handleBookNow = () => {
-    const phoneNumber = "918197882511";
+    const phoneNumber = "919964060505";
     const message = "Hello! I’d like to know more about your services.";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
   };

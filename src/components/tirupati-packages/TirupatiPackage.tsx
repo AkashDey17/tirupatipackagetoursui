@@ -476,30 +476,30 @@ const TirupatiPakage = () => {
             <strong>Women</strong> - Saree or Half-Saree with blouse, or Churidar with Pyjama and upper cloth
           </p>
         </section>
-        <p className="mt-3 text-gray-400 text-xl leading-relaxed">
+        <p className="mt-3 text-gray-400 text-[16px] leading-relaxed">
   <strong>FINDS US ONLINE:</strong>{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati balaji darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     balaji package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati balaji darshan packages
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati balaji package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     apsrtc tirupati darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     aptdc tirupati darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     bangalore tirupati darshan
   </Link>
 </p>

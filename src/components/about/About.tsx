@@ -145,34 +145,34 @@ const AboutPage = () => {
       </section>
 
       {/* 🔗 Hidden SEO Links Section */}
-      <section className="text-center py-4 text-xl text-gray-400 opacity-70 px-4">
+      <section className="text-center py-4 text-[18px] text-gray-400 opacity-70 px-4">
        
 
         
-        <p className="mt-3 text-gray-400 text-xl leading-relaxed">
+        <p className="mt-3 text-gray-400 text-[16px] leading-relaxed">
   <strong>FINDS US ONLINE:</strong>{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati balaji darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     balaji package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati balaji darshan packages
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati balaji package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     apsrtc tirupati darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     aptdc tirupati darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     bangalore tirupati darshan
   </Link>
 </p>

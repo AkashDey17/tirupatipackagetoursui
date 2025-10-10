@@ -318,12 +318,12 @@ const TirupatiSrikalahasti = () => {
             <tbody>
               <tr>
                 <td className="border p-3 text-[22px]">Adult</td>
-                <td className="border p-3 text-[22px]">₹3,600</td>
+                <td className="border p-3 text-[22px]">₹5,750</td>
                 <td className="border p-3 text-[22px]">Includes both Tirupati & Srikalahasti temples</td>
               </tr>
               <tr>
                 <td className="border p-3 text-[22px]">Child (5–12 yrs)</td>
-                <td className="border p-3 text-[22px]">₹3,200</td>
+                <td className="border p-3 text-[22px]">₹5,750</td>
                 <td className="border p-3 text-[22px]">Shared accommodation with guardians</td>
               </tr>
               <tr>

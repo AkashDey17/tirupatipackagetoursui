@@ -316,7 +316,7 @@ const ContactSignup = () => {
     if (!email) return toast.error("Email is required");
     if (!phone) return toast.error("Phone number is required");
     if (!feedback) return toast.error("Feedback is required");
-    if (!selectedPackage) return toast.error("Please select a package");
+     if (!selectedPackage) return toast.error("Please select a package");
 
     try {
       const response = await fetch("https://tirupatipackagetoursbackend.onrender.com/api/submit-feedback", {
@@ -530,30 +530,30 @@ const ContactSignup = () => {
           Experience the difference of traveling with <strong>Sanchar6T</strong> - where devotion meets comfort, and every journey becomes a cherished spiritual memory. 
           Contact us now to plan your perfect Tirupati pilgrimage experience.
         </p>
-       <p className="mt-3 text-gray-400 text-xl leading-relaxed">
+       <p className="mt-3 text-gray-400 text-[16px] leading-relaxed">
   <strong>FINDS US ONLINE:</strong>{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati trip from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     1 day tirupati package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     kstdc tirupati package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati balaji package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     tirupati balaji darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     apsrtc tirupati darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     aptdc tirupati darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-blue-600 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     bangalore tirupati darshan
   </Link>
 </p>

@@ -330,6 +330,18 @@ const ContactSignup = () => {
           packageId: selectedPackage,
         }),
       });
+//     const response = await  fetch("http://localhost:5000/api/submit-feedback", {
+//   method: "POST",
+//   headers: { "Content-Type": "application/json" },
+//   body: JSON.stringify({
+//     name,
+//     emailId: email,
+//     contactNo: phone,
+//     userFeedback: feedback,
+//     packageId: selectedPackage,
+//   }),
+// });
+
 
       const data = await response.json();
       if (data.success) {
@@ -553,7 +565,7 @@ const ContactSignup = () => {
   <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
     aptdc tirupati darshan package from bangalore
   </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+  <Link to="/tirupati-package-from-bangalore" className="text-gray-600 hover:underline">
     bangalore tirupati darshan
   </Link>
 </p>

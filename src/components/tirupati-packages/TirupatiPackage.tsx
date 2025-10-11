@@ -411,9 +411,12 @@ const TirupatiPakage = () => {
           <p className="mb-3 text-[22px] flex items-center gap-2">
             <Globe className="w-6 h-6 text-[#6B4E3D]" /> Website: www.tirupatipackagetours.com
           </p>
-          <p className="mb-3 text-[22px] flex items-center gap-2">
-            <Mail className="w-6 h-6 text-[#6B4E3D]" /> Email: enquiry@tirupatipackagetours.com
-          </p>
+         <p className="mb-3 text-[20px] flex flex-col sm:flex-row items-start sm:items-center gap-2 break-words sm:text-base">
+  <Mail className="w-6 h-6 text-[#6B4E3D]" /> 
+  <span className="break-words">Email: enquiry@tirupatipackagetours.com</span>
+</p>
+
+
           <Link to="/contact-us">
             <button className="mt-4 bg-[#ffce38] text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition">
               Contact Us &gt;

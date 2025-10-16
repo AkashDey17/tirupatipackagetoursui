@@ -14,6 +14,12 @@ import Contact from "./pages/Contact";
 import AboutPage from "./pages/AboutPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+import BusBooking from "./pages/BusBooking";
+import NewBusBooking from "./pages/NewBusBooking";
+import BusBookingDetails from "./pages/BookingDetails";
+import Payment from "./pages/Payment";
+import PaymentResult from "./pages/PaymentResult";
+import Ticket from "./pages/Ticket";
 
 const queryClient = new QueryClient();
 const PageWrapper = ({ children }) => {
@@ -47,10 +53,16 @@ const App = () => (
            <Route path="/tirupati-package-from-bangalore" element={<TirupatiPackage />} />
            <Route path="/tirupati-srikalahasti" element={<TirupatiSrikalahasti />} />
            <Route path="/contact-us" element={<Contact />} />
+            <Route path="/bus-booking" element={<BusBooking />} />
+             <Route path="/booking-details" element={<BusBookingDetails />} />
            {/* <Route path="/about-us" element={<AboutPage />} /> */}
            <Route path="/tirupati-darshan-package-from-bangalore" element={<AboutPage />} />
            <Route path="/privacy-policy" element={<PrivacyPage />} />
+            <Route path="/payment" element={<Payment />} />
+              <Route path="/ticket" element={<Ticket />} />
            <Route path="/tc" element={<TermsAndConditionsPage />} />
+           <Route path="/payment-result" element={<PaymentResult />} />
+           <Route path="/new-bus-booking" element={<NewBusBooking />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

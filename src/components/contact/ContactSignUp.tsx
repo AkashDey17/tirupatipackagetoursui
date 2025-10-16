@@ -301,7 +301,7 @@ const ContactSignup = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await fetch("https://tirupatipackagetoursbackend.onrender.com/api/package-list");
+        const response = await fetch("http://tirupati-backend-env.eba-m5pspyps.ap-south-1.elasticbeanstalk.com/api/package-list");
         const data = await response.json();
         setPackages(data);
       } catch (err) {
@@ -316,37 +316,29 @@ const ContactSignup = () => {
     if (!email) return toast.error("Email is required");
     if (!phone) return toast.error("Phone number is required");
     if (!feedback) return toast.error("Feedback is required");
-     if (!selectedPackage) return toast.error("Please select a package");
+    if (!selectedPackage) return toast.error("Please select a package");
 
     try {
-      const response = await fetch("https://tirupatipackagetoursbackend.onrender.com/api/submit-feedback", {
+      const response = await fetch("http://tirupati-backend-env.eba-m5pspyps.ap-south-1.elasticbeanstalk.com/api/submit-feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name,
-          contactNo: phone,
           emailId: email,
+          contactNo: phone,
           userFeedback: feedback,
           packageId: selectedPackage,
         }),
       });
-//     const response = await  fetch("http://localhost:5000/api/submit-feedback", {
-//   method: "POST",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify({
-//     name,
-//     emailId: email,
-//     contactNo: phone,
-//     userFeedback: feedback,
-//     packageId: selectedPackage,
-//   }),
-// });
-
 
       const data = await response.json();
       if (data.success) {
         setShowPopup(true);
-        setName(""); setEmail(""); setPhone(""); setFeedback(""); setSelectedPackage("");
+        setName("");
+        setEmail("");
+        setPhone("");
+        setFeedback("");
+        setSelectedPackage("");
       } else toast.error("Failed to submit feedback");
     } catch (err) {
       console.error(err);
@@ -354,7 +346,6 @@ const ContactSignup = () => {
     }
   };
 
-  // Helper component for dot-in-circle list items
   const DotListItem = ({ children }) => (
     <li className="relative pl-10">
       <span className="absolute left-0 top-1 flex w-5 h-5 bg-gray-300 rounded-full items-center justify-center">
@@ -542,36 +533,34 @@ const ContactSignup = () => {
           Experience the difference of traveling with <strong>Sanchar6T</strong> - where devotion meets comfort, and every journey becomes a cherished spiritual memory. 
           Contact us now to plan your perfect Tirupati pilgrimage experience.
         </p>
-       <p className="mt-3 text-gray-400 text-[16px] leading-relaxed">
-  <strong>FINDS US ONLINE:</strong>{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
-    tirupati trip from bangalore
-  </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
-    1 day tirupati package from bangalore
-  </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
-    kstdc tirupati package from bangalore
-  </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
-    tirupati balaji package from bangalore
-  </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
-    tirupati balaji darshan package from bangalore
-  </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
-    apsrtc tirupati darshan package from bangalore
-  </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
-    aptdc tirupati darshan package from bangalore
-  </Link>,{" "}
-  <Link to="/tirupati-package-from-bangalore" className="text-gray-600 hover:underline">
-    bangalore tirupati darshan
-  </Link>
-</p>
-
+        <p className="mt-3 text-gray-400 text-[16px] leading-relaxed">
+          <strong>FINDS US ONLINE:</strong>{" "}
+          <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+            tirupati trip from bangalore
+          </Link>,{" "}
+          <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+            1 day tirupati package from bangalore
+          </Link>,{" "}
+          <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+            kstdc tirupati package from bangalore
+          </Link>,{" "}
+          <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+            tirupati balaji package from bangalore
+          </Link>,{" "}
+          <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+            tirupati balaji darshan package from bangalore
+          </Link>,{" "}
+          <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+            apsrtc tirupati darshan package from bangalore
+          </Link>,{" "}
+          <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+            aptdc tirupati darshan package from bangalore
+          </Link>,{" "}
+          <Link to="/tirupati-package-from-bangalore" className="text-gray-600 hover:underline">
+            bangalore tirupati darshan
+          </Link>
+        </p>
       </section>
-       
 
       {/* Popup */}
       {showPopup && (

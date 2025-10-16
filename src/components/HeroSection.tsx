@@ -134,11 +134,11 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   // WhatsApp redirect logic
-  const handleBookNow = () => {
-    const phoneNumber = "919964060505";
-    const message = "Hello! I’d like to know more about your services.";
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
-  };
+  // const handleBookNow = () => {
+  //   const phoneNumber = "919964060505";
+  //   const message = "Hello! I’d like to know more about your services.";
+  //   window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
+  // };
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -228,8 +228,9 @@ const HeroSection = () => {
               zIndex: 5,
             }}
           >
+            <Link to="/tirupati-package-from-bangalore">
             <button
-              onClick={handleBookNow}
+              //onClick={handleBookNow}
               style={{
                 backgroundColor: "#FFCE38",
                 color: "#6B4E3D",
@@ -247,6 +248,7 @@ const HeroSection = () => {
             >
               &lt; BOOK NOW
             </button>
+            </Link>
 
             <Link to="/contact-us" style={{ width: "100%" }}>
               <button
@@ -281,8 +283,9 @@ const HeroSection = () => {
               flexWrap: "wrap",
             }}
           >
+            <Link to="/tirupati-package-from-bangalore">
             <button
-              onClick={handleBookNow}
+              // onClick={handleBookNow}
               style={{
                 backgroundColor: "#FFCE38",
                 color: "#6B4E3D",
@@ -299,6 +302,7 @@ const HeroSection = () => {
             >
               &lt; BOOK NOW
             </button>
+            </Link>
 
             <Link to="/contact-us">
               <button

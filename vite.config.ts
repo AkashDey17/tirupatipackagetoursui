@@ -1,3 +1,36 @@
+// import { defineConfig } from "vite";
+// import react from "@vitejs/plugin-react-swc";
+// import path from "path";
+// import { componentTagger } from "lovable-tagger";
+
+// export default defineConfig(({ mode }) => ({
+//   server: {
+//     host: "::",
+//     port: 8080,
+//   },
+//   plugins: [
+//     react(), 
+//    mode === "development" && componentTagger(),
+     
+//   ].filter(Boolean),
+//   resolve: {
+//     alias: {
+//       "@": path.resolve(__dirname, "./src"),
+//     },
+//   },
+//   build: {
+//     target: "esnext",
+//     outDir: "dist",
+//     emptyOutDir: true, // ensures dist folder is cleaned before build
+//     rollupOptions: {
+//       // ✅ remove the external option for @react-refresh
+//       // do not reference dev-only modules in production
+//     },
+//   },
+// }));
+
+
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -7,11 +40,17 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      '/api': {
+        target: 'http://tirupati-backend-env.eba-m5pspyps.ap-south-1.elasticbeanstalk.com',
+        changeOrigin: true,
+        secure: false, // allows HTTP
+      },
+    },
   },
   plugins: [
-    react(), 
-   mode === "development" && componentTagger(),
-     
+    react(),
+    mode === "development" && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -21,14 +60,8 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: "esnext",
     outDir: "dist",
-    emptyOutDir: true, // ensures dist folder is cleaned before build
-    rollupOptions: {
-      // ✅ remove the external option for @react-refresh
-      // do not reference dev-only modules in production
-    },
+    emptyOutDir: true,
+    rollupOptions: {},
   },
 }));
-
-
-
 

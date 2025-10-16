@@ -301,7 +301,7 @@ const ContactSignup = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await fetch("http://tirupati-backend-env.eba-m5pspyps.ap-south-1.elasticbeanstalk.com/api/package-list");
+        const response = await fetch("/api/package-list");
         const data = await response.json();
         setPackages(data);
       } catch (err) {
@@ -319,7 +319,7 @@ const ContactSignup = () => {
     if (!selectedPackage) return toast.error("Please select a package");
 
     try {
-      const response = await fetch("http://tirupati-backend-env.eba-m5pspyps.ap-south-1.elasticbeanstalk.com/api/submit-feedback", {
+      const response = await fetch("/api/submit-feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

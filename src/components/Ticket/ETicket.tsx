@@ -9,6 +9,7 @@ import logoImg from "@/assets/logo.png";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
+
 export const ETicket = ({
   totalPrice = 0,
   travellerData = [],
@@ -321,7 +322,7 @@ export const ETicket = ({
               <p className="eticket-restriction-text !text-[15px]">Don't carry hazardous, <span className="eticket-restriction-bold">illegal, or flammable</span> items.</p>
             </div>
             <div className="eticket-restriction-item">
-              <img src={alcoholImg} alt="Alcohol" className="eticket-restriction-img" />
+              <img src={alcoholImg} alt="Alcohol" className="eticket-restriction-img" style={{width:"100px"}} />
               <p className="eticket-restriction-text !text-[15px]">Don't smoke, <span className="eticket-restriction-bold">consume alcohol, or</span> use drugs on board.</p>
             </div>
           </div>
@@ -350,6 +351,9 @@ export const ETicket = ({
             <li className="eticket-terms-item !text-[18px]">• Cancellations and refunds are as per operator policy. Eligible refunds will be processed within 7-10 working days.</li>
             <li className="eticket-terms-item !text-[18px]">• Rescheduling is subject to availability and fare difference, if any.</li>
           </ul>
+        </div>
+      <div style={{ position: "absolute", top: 20, right: 20 }}>
+           
         </div>
       </div>
       <div style={{ textAlign: "center", marginTop: "20px" }}>

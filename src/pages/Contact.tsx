@@ -2,6 +2,7 @@ import ContactSignup from "@/components/contact/ContactSignUp";
 import ContactFloatingButton from "@/components/ContactFloatingButton";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import LiveMoodIndicator from "@/components/LiveMoodIndicator";
 import { Helmet } from "react-helmet";
 
 const Contact = () => {
@@ -25,6 +26,7 @@ const Contact = () => {
       <h1 style={{ display: "none" }}>tirupati trip from bangalore</h1>
 
       <ContactSignup />
+     
       <Footer />
       <ContactFloatingButton />
     </div>

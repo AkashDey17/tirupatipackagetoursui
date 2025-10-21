@@ -271,6 +271,7 @@
 import React, { useState } from "react";
 import { Zap, RefreshCw } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
+import LiveMoodIndicator from "./LiveMoodIndicator";
 
 const TOUR_OPTIONS = [
   {
@@ -302,6 +303,7 @@ export default function ItineraryPlanner() {
 
   return (
     <div className="max-w-6xl mx-auto p-4 sm:p-6 font-sans relative">
+     
       <Toaster position="top-right" />
 
       {/* Header Card */}
@@ -310,7 +312,9 @@ export default function ItineraryPlanner() {
           <div>
             <h1 className="text-[22px] md:text-[20px] font-extrabold leading-tight">
               AI-Powered Darshan Planner
+             
             </h1>
+           
             <p className="text-[18px] opacity-90 mt-2">
               Smart schedules, darshan slots, hotels, & activities at a glance.
             </p>

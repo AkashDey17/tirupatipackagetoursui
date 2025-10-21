@@ -1,5 +1,5 @@
 // src/components/Preloader.jsx
-import logo from "@/assets/logo.png";
+import logo from "@/assets/tirupati-package-tours-logo.jpeg";
 
 const PreLoader = () => {
   return (

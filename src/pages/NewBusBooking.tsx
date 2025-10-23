@@ -236,6 +236,7 @@ import { Search, Phone, Mail, User, Star, IndianRupee, Clock, Calendar, ChevronD
 import Header from "@/components/Header";
 import busImg from "@/assets/a-man-with-bus.png";
 import swap from "@/assets/cross.png";
+import Sidebar from "./Sidebar";
 
 const NewBusBooking = () => {
   return (
@@ -384,9 +385,9 @@ const NewBusBooking = () => {
               </div>
             </div>
 
-            {/* Filters (top box) */}
-            <div className="bg-accent rounded-t-3xl p-6 relative overflow-hidden flex items-center border border-[#f4d03f] border-b-0">
-              <div className="absolute -right-12 top-0 bottom-0 w-32 bg-accent/50 transform rotate-12"></div>
+            {/* Filters (top box) bg-accent */}
+            <div className=" rounded-t-3xl p-6 relative overflow-hidden flex items-center border border-[#f4d03f] border-b-0">
+              {/* <div className="absolute -right-12 top-0 bottom-0 w-32 bg-accent/50 transform rotate-12"></div>
 
               <div className="space-y-3 relative z-10 flex-1 max-w-[220px]">
                 <button className="w-full bg-white hover:bg-white/90 text-[#020e68] font-bold py-4 px-8 rounded-full text-lg border-2 border-[#020e68] whitespace-nowrap">
@@ -413,10 +414,11 @@ const NewBusBooking = () => {
                     Customize it your way
                   </span>
                 </div>
-              </div>
+              </div> */}
+              <Sidebar />
             </div>
 
-            {/* Dropdown (bottom box, touching the top one) */}
+            {/* Dropdown (bottom box, touching the top one)
             <div className="bg-[#fff9e5] rounded-b-3xl overflow-hidden border border-[#f4d03f] border-t-0" style={{marginTop:"0px"}}>
               {[
                 "Departure Time From Source",
@@ -433,7 +435,7 @@ const NewBusBooking = () => {
                   <ChevronDown className="w-5 h-5 text-[#020e68]" />
                 </div>
               ))}
-            </div>
+            </div> */}
           </aside>
 
           {/* Bus Listings */}

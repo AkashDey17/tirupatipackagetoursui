@@ -3,7 +3,7 @@ import { FaWhatsapp, FaPhone, FaTimes, FaEnvelope } from "react-icons/fa";
 
 const ContactFloatingButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const phoneNumber = "919964060505";
+  const phoneNumber = "918197882511";
   const whatsappMessage = "Hello! I’d like to know more about your services.";
 
   return (

@@ -1,12 +1,11 @@
-
-
-
+///// please use this
 // import React, { useEffect, useState } from "react";
 // import { Button } from "@/components/ui/button";
 // import { Mail, Phone, User, MessageCircle } from "lucide-react";
 // import Logo from "@/assets/logo.png";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
+// import { Link } from "react-router-dom";
 
 // const ContactSignup = () => {
 //   const [packages, setPackages] = useState([]);
@@ -20,7 +19,7 @@
 //   useEffect(() => {
 //     const fetchPackages = async () => {
 //       try {
-//         const response = await fetch("http://localhost:5000/api/package-list");
+//         const response = await fetch("https://api.tirupatipackagetours.com/api/package-list");
 //         const data = await response.json();
 //         setPackages(data);
 //       } catch (err) {
@@ -38,13 +37,13 @@
 //     if (!selectedPackage) return toast.error("Please select a package");
 
 //     try {
-//       const response = await fetch("http://localhost:5000/api/submit-feedback", {
+//       const response = await fetch("https://api.tirupatipackagetours.com/api/submit-feedback", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({
 //           name,
-//           contactNo: phone,
 //           emailId: email,
+//           contactNo: phone,
 //           userFeedback: feedback,
 //           packageId: selectedPackage,
 //         }),
@@ -53,7 +52,11 @@
 //       const data = await response.json();
 //       if (data.success) {
 //         setShowPopup(true);
-//         setName(""); setEmail(""); setPhone(""); setFeedback(""); setSelectedPackage("");
+//         setName("");
+//         setEmail("");
+//         setPhone("");
+//         setFeedback("");
+//         setSelectedPackage("");
 //       } else toast.error("Failed to submit feedback");
 //     } catch (err) {
 //       console.error(err);
@@ -61,7 +64,6 @@
 //     }
 //   };
 
-//   // Helper component for dot-in-circle list items
 //   const DotListItem = ({ children }) => (
 //     <li className="relative pl-10">
 //       <span className="absolute left-0 top-1 flex w-5 h-5 bg-gray-300 rounded-full items-center justify-center">
@@ -79,7 +81,7 @@
 //         <div className="md:w-1/2 mb-6 md:mb-0">
 //           <img
 //             src="https://productcatalo.my.canva.site/sanchar6t/_assets/media/9e5e7cbcbd2a60a2f4f86dbddb6040af.jpg"
-//             alt="Temple"
+//             alt="tirupati trip from bangalore"
 //             className="w-full h-[400px] object-cover rounded-xl shadow-lg"
 //           />
 //         </div>
@@ -147,7 +149,7 @@
 //           <div className="md:w-1/2 flex flex-col items-center md:items-start">
 //             <img
 //               src={Logo}
-//               alt="Sanchar6T Logo"
+//               alt="tirupati trip from bangalore"
 //               className="h-72 w-auto rounded-xl "
 //             />
 //             <p className="mt-6 text-center md:text-left text-gray-700 text-lg leading-relaxed max-w-md">
@@ -249,6 +251,33 @@
 //           Experience the difference of traveling with <strong>Sanchar6T</strong> - where devotion meets comfort, and every journey becomes a cherished spiritual memory. 
 //           Contact us now to plan your perfect Tirupati pilgrimage experience.
 //         </p>
+//         <p className="mt-3 text-gray-400 text-[16px] leading-relaxed">
+//           <strong>FINDS US ONLINE:</strong>{" "}
+//           <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+//             tirupati trip from bangalore
+//           </Link>,{" "}
+//           <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+//             1 day tirupati package from bangalore
+//           </Link>,{" "}
+//           <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+//             kstdc tirupati package from bangalore
+//           </Link>,{" "}
+//           <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+//             tirupati balaji package from bangalore
+//           </Link>,{" "}
+//           <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+//             tirupati balaji darshan package from bangalore
+//           </Link>,{" "}
+//           <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+//             apsrtc tirupati darshan package from bangalore
+//           </Link>,{" "}
+//           <Link to="/tirupati-package-from-bangalore" className="text-gray-900 hover:underline">
+//             aptdc tirupati darshan package from bangalore
+//           </Link>,{" "}
+//           <Link to="/tirupati-package-from-bangalore" className="text-gray-600 hover:underline">
+//             bangalore tirupati darshan
+//           </Link>
+//         </p>
 //       </section>
 
 //       {/* Popup */}
@@ -275,12 +304,10 @@
 // };
 
 // export default ContactSignup;
+/// please use this
 
 
 
-
-
-///// please use this
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, User, MessageCircle } from "lucide-react";
@@ -297,6 +324,7 @@ const ContactSignup = () => {
   const [phone, setPhone] = useState("");
   const [feedback, setFeedback] = useState("");
   const [showPopup, setShowPopup] = useState(false);
+  const [loading, setLoading] = useState(false); // ✅ Added loading state
 
   useEffect(() => {
     const fetchPackages = async () => {
@@ -317,6 +345,8 @@ const ContactSignup = () => {
     if (!phone) return toast.error("Phone number is required");
     if (!feedback) return toast.error("Feedback is required");
     if (!selectedPackage) return toast.error("Please select a package");
+
+    setLoading(true); // ✅ Start spinner
 
     try {
       const response = await fetch("https://api.tirupatipackagetours.com/api/submit-feedback", {
@@ -343,6 +373,8 @@ const ContactSignup = () => {
     } catch (err) {
       console.error(err);
       toast.error("Server error, please try again later");
+    } finally {
+      setLoading(false); // ✅ Stop spinner
     }
   };
 
@@ -580,13 +612,16 @@ const ContactSignup = () => {
         </div>
       )}
 
+      {/* ✅ Loading Spinner */}
+      {loading && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </div>
   );
 };
 
 export default ContactSignup;
-/// please use this
-
-
-

@@ -810,6 +810,8 @@ const BusLayout: React.FC<BusLayoutProps> = ({ duration }) => {
   const [selectedDropPoint, setSelectedDropPoint] = useState<number | null>(null);
   const [bookedSeats, setBookedSeats] = useState<string[]>([]);
   const [remainingSeats, setRemainingSeats] = useState<number | null>(null);
+  const [seats, setSeats] = useState<Seat[]>([]);
+const [basePrice, setBasePrice] = useState<number>(0);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -852,57 +854,34 @@ const BusLayout: React.FC<BusLayoutProps> = ({ duration }) => {
 // }, [selectedBusId]);
     
 useEffect(() => {
-  if (!selectedBusId) return;
-
-  const fetchBookedSeats = async () => {
+  const fetchSeatLayout = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/bus/bookedSeats?busId=${selectedBusId}`);
+      const res = await fetch(`http://localhost:5000/api/bus/seatLayout?busId=${selectedBusId}`);
       const data = await res.json();
-
-      let fetchedBookedSeats: string[] = [];
-      if (data.success && Array.isArray(data.bookedSeats)) {
-        console.log("🎟️ Booked seats from DB:", data.bookedSeats);
-        fetchedBookedSeats = data.bookedSeats;
-      } else {
-        console.error("❌ Invalid bookedSeats response:", data);
-      }
-
-      // 🟢 Merge with locally booked seats (recently booked by this user)
-      const passengerData = JSON.parse(localStorage.getItem("passengerDetails") || "[]");
-      const locallyBookedSeats =
-        Array.isArray(passengerData) && passengerData.length > 0
-          ? passengerData.map((p: any) => p.seatNumber).filter(Boolean)
-          : [];
-
-      console.log("🪑 Locally booked (from passengerDetails):", locallyBookedSeats);
-
-      // 🟡 Merge both (avoid duplicates)
-      const mergedSeats = Array.from(new Set([...fetchedBookedSeats, ...locallyBookedSeats]));
-
-      setBookedSeats(mergedSeats);
-
-      // Optionally show remaining seats if backend provides
-      if (typeof data.remainingSeats === "number") {
+      if (data.success) {
+        console.log("🪑 Seat Layout API:", data);
+        setSeats(data.seatLayout);
+        setBasePrice(data.price);
+        setBookedSeats(data.bookedSeats || []);
         setRemainingSeats(data.remainingSeats);
       }
     } catch (err) {
-      console.error("❌ Error fetching booked seats:", err);
-      setBookedSeats([]);
+      console.error("Error fetching seat layout:", err);
     }
   };
 
-  // 🔹 Initial fetch
-  fetchBookedSeats();
+  fetchSeatLayout();
 
-  // 🔁 Refresh after payment
+  // 🔁 Re-fetch if seats were updated after booking
   const seatUpdateFlag = localStorage.getItem("seatsUpdated");
   if (seatUpdateFlag === "true") {
-    console.log("🔁 Seats updated flag found — refreshing seats...");
-    fetchBookedSeats().then(() => {
-      localStorage.removeItem("seatsUpdated");
-    });
+    console.log("🔁 Seats updated, refreshing UI...");
+    fetchSeatLayout();
+    localStorage.removeItem("seatsUpdated");
   }
 }, [selectedBusId]);
+
+
 
 
 

@@ -188,11 +188,14 @@ import PriceDetails from "@/components/booking-details/PriceDetails";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const BusBookingDetails = () => {
   const [travellerData, setTravellerData] = useState<any[]>([]);
   const [contactData, setContactData] = useState<any>({});
   const [gstData, setGSTData] = useState<any>({});
+  const navigate = useNavigate();
+
 
   // ✅ Fetch booking data from localStorage (added this)
   useEffect(() => {
@@ -312,13 +315,15 @@ const BusBookingDetails = () => {
 
       // ✅ After all seats booked
       localStorage.setItem("bookedSeats", JSON.stringify(selectedSeats));
+      localStorage.setItem("passengerDetails", JSON.stringify(travellerData));
       localStorage.setItem("seatsUpdated", "true");
       toast.success("🎉 Booking saved successfully!");
 
       // 🔁 Redirect back to seat layout page after success
-      setTimeout(() => {
-        window.location.href = `/bus-layout?busId=${busId}`;
-      }, 1500);
+      // setTimeout(() => {
+      //   window.location.href = `/bus-layout?busId=${busId}`;
+      // }, 1500);
+      setTimeout(() => navigate(`/bus-layout?busId=${busId}`), 1500);
 
     } catch (error: any) {
       console.error("❌ Error submitting booking:", error.response || error.message);

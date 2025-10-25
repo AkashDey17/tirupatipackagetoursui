@@ -39,7 +39,7 @@ const TirupatiPakage = () => {
           Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
         </span>
       </h2>
-      <Link to="/bus-booking">
+      <Link to="/new-bus-booking">
       <button
         // onClick={handleBookNow}
         className="bg-[#ffce38] text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition text-base"
@@ -289,56 +289,7 @@ const TirupatiPakage = () => {
         </section>
 
         {/* Fare */}
-      {/* <section>
-  <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4">Package Fare</h2>
-  <p className="text-gray-700 mb-4 text-[22px]"><strong>Competitive Tirupati Package Pricing</strong></p>
-  <p className="text-gray-700 mb-4 text-[22px]">
-    Our <strong>Tirupati package from Bangalore price</strong> offers exceptional value for complete spiritual experience:
-  </p>
-  <table className="w-full border border-gray-200 text-left">
-    <thead className="bg-yellow-100">
-      <tr>
-        <th className="border p-3 text-[22px]">Category</th>
-        <th className="border p-3 text-[22px]">Day</th>
-        <th className="border p-3 text-[22px]">Price</th>
-        <th className="border p-3 text-[22px]">Day</th>
-        <th className="border p-3 text-[22px]">Price</th>
-        <th className="border p-3 text-[22px]">Details</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td className="border p-3 text-[22px]">Adult</td>
-        <td className="border p-3 text-[22px]">Sun-Thur</td>
-        <td className="border p-3 text-[22px]">₹2,300</td>
-        <td className="border p-3 text-[22px]">Fri-Sat</td>
-        <td className="border p-3 text-[22px]">₹2,650</td>
-        <td className="border p-3 text-[22px]">Complete package with all inclusions</td>
-      </tr>
-      <tr>
-        <td className="border p-3 text-[22px]">Child (5-12 yrs)</td>
-        <td className="border p-3 text-[22px]">Sun-Thur</td>
-        <td className="border p-3 text-[22px]">₹2,300</td>
-        <td className="border p-3 text-[22px]">Fri-Sat</td>
-        <td className="border p-3 text-[22px]">₹2,650</td>
-        <td className="border p-3 text-[22px]">Child-friendly arrangements</td>
-      </tr>
-      <tr>
-        <td className="border p-3 text-[22px]">Child (Below 5 yrs)</td>
-        <td className="border p-3 text-[22px]">All Day</td>
-        <td className="border p-3 text-[22px]">₹0</td>
-        <td className="border p-3 text-[22px]">All Day</td>
-        <td className="border p-3 text-[22px]">₹0</td>
-        <td className="border p-3 text-[22px]">Special discounted rates</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p className="mt-3 italic text-gray-600 text-[20px]">
-    *All <strong>Tirupati package from Bangalore price</strong> rates are per person and subject to availability. 
-   <strong>Tirupati one day package from Bangalore</strong> rates available on request.
-  </p>
-</section> */}
+      
 
 <section>
   <h2 className="text-[22px] font-bold text-[#6B4E3D] mb-4 sm:text-xl">Package Fare</h2>

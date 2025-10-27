@@ -22,7 +22,7 @@ const BusListingContainer = () => {
   useEffect(() => {
     const fetchBusData = async () => {
       try {
-        const res = await fetch("https://api.tirupatipackagetours.com/api/bus-details"); // your API
+        const res = await fetch("http://localhost:5000/api/bus-details"); // your API
         const data = await res.json();
 
         const mappedData = data.map((bus: any) => {

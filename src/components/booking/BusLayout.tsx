@@ -13,7 +13,7 @@
 
 // interface BusLayoutProps {
 //   duration: string;
-  
+
 
 // }
 
@@ -178,19 +178,19 @@
 //     <div className="min-h-screen bg-background">
 //       <div className="max-w-7xl mx-auto p-4">
 
-      
+
 //         <h2 className="text-lg font-bold mb-4 text-[#3d85c6]">
 //           Trip Duration: {duration}
 //         </h2>
 
 //         <div className="grid grid-cols-2 gap-8">
-        
+
 //           <div>
 //             <h2 className="text-lg font-semibold mb-4">Select Seats</h2>
 //             {seatsVisible && (
 //               <div className="space-y-6">
 //                 <div className="flex gap-10">
-                
+
 //                   <div>
 //                     <h3 className="text-sm font-medium text-muted-foreground mb-3">
 //                       LOWER BERTH ({lowerBerthSeats.length})
@@ -201,7 +201,7 @@
 //                       ))}
 //                     </div>
 //                   </div>
-                 
+
 //                   <div>
 //                     <h3 className="text-sm font-medium text-muted-foreground mb-3">
 //                       UPPER BERTH ({upperBerthSeats.length})
@@ -217,11 +217,11 @@
 //             )}
 //           </div>
 
-        
+
 //           <div>
 //             <h2 className="text-lg font-semibold mb-4">Select Pickup & Drop Points</h2>
 //             <div className="grid grid-cols-2 gap-4">
-           
+
 //               <div className="space-y-2 text-sm">
 //                 <div className="flex items-center justify-between mb-2">
 //                   <h3 className="font-medium">BOARDING POINTS</h3>
@@ -247,7 +247,7 @@
 //                   ))}
 //                 </div>
 //               </div>
-            
+
 //               <div className="space-y-2 text-sm">
 //                 <div className="flex items-center justify-between mb-2">
 //                   <h3 className="font-medium">DROP POINTS</h3>
@@ -288,7 +288,7 @@
 //           </div>
 //         </div>
 
-       
+
 //         <div className="mt-8">
 //           <h2 className="text-lg font-semibold mb-4">Know your seats</h2>
 //           <div className="text-center py-8 text-muted-foreground">
@@ -318,7 +318,7 @@
 //           </div>
 //         </div>
 
-       
+
 //         {hoveredSeat && (
 //           <div
 //             className="fixed z-[9999] w-48 bg-[#3D85C6] border border-gray-300 rounded shadow-lg p-3 text-xs text-[#FFFFFF]"
@@ -395,7 +395,7 @@
 //   const [selectedBoardingPoint, setSelectedBoardingPoint] = useState<number | null>(null);
 //   const [selectedDropPoint, setSelectedDropPoint] = useState<number | null>(null);
 
-  
+
 
 //   const navigate = useNavigate();
 
@@ -819,96 +819,96 @@ const BusLayout: React.FC<BusLayoutProps> = ({ duration }) => {
   const busIdFromUrl = queryParams.get("busId");
   const selectedBusId = busIdFromUrl ? Number(busIdFromUrl) : 1;
 
-  
-// useEffect(() => {
-//   if (!selectedBusId) return;
 
-//   // ✅ Define a reusable function so we can call it again if seats were updated
-//   const fetchSeats = () => {
-//     fetch(`http://localhost:5000/api/bus/bookedSeats?busId=${selectedBusId}`)
-//       .then((res) => res.json())
-//       .then((data) => {
-//         if (data.success) {
-//           console.log('🎟️ Booked seats from API:', data);
-//           if (Array.isArray(data.bookedSeats)) setBookedSeats(data.bookedSeats);
-//           if (typeof data.remainingSeats === 'number') setRemainingSeats(data.remainingSeats);
-//         } else {
-//           console.error('Error fetching seats:', data.message);
-//         }
-//       })
-//       .catch((err) => console.error('Error loading seat data:', err));
-//   };
+  // useEffect(() => {
+  //   if (!selectedBusId) return;
 
-//   // ✅ Initial fetch
-//   fetchSeats();
+  //   // ✅ Define a reusable function so we can call it again if seats were updated
+  //   const fetchSeats = () => {
+  //     fetch(`http://localhost:5000/api/bus/bookedSeats?busId=${selectedBusId}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data.success) {
+  //           console.log('🎟️ Booked seats from API:', data);
+  //           if (Array.isArray(data.bookedSeats)) setBookedSeats(data.bookedSeats);
+  //           if (typeof data.remainingSeats === 'number') setRemainingSeats(data.remainingSeats);
+  //         } else {
+  //           console.error('Error fetching seats:', data.message);
+  //         }
+  //       })
+  //       .catch((err) => console.error('Error loading seat data:', err));
+  //   };
 
-//   // ✅ Check if seats were updated (after payment)
-//   const seatUpdateFlag = localStorage.getItem("seatsUpdated");
-//   if (seatUpdateFlag === "true") {
-//     console.log("🔁 Seats updated in DB, refreshing UI...");
-//     fetchSeats(); // refresh UI
-//     localStorage.removeItem("seatsUpdated"); // clear flag
-//   }
-// }, [selectedBusId]);
-    
-useEffect(() => {
-  if (!selectedBusId) return;
+  //   // ✅ Initial fetch
+  //   fetchSeats();
 
-  const fetchBookedSeats = async () => {
-    try {
-      const res = await fetch(`http://localhost:5000/api/bus/bookedSeats?busId=${selectedBusId}`);
-      const data = await res.json();
+  //   // ✅ Check if seats were updated (after payment)
+  //   const seatUpdateFlag = localStorage.getItem("seatsUpdated");
+  //   if (seatUpdateFlag === "true") {
+  //     console.log("🔁 Seats updated in DB, refreshing UI...");
+  //     fetchSeats(); // refresh UI
+  //     localStorage.removeItem("seatsUpdated"); // clear flag
+  //   }
+  // }, [selectedBusId]);
 
-      let fetchedBookedSeats: string[] = [];
-      if (data.success && Array.isArray(data.bookedSeats)) {
-        console.log("🎟️ Booked seats from DB:", data.bookedSeats);
-        fetchedBookedSeats = data.bookedSeats;
-      } else {
-        console.error("❌ Invalid bookedSeats response:", data);
+  useEffect(() => {
+    if (!selectedBusId) return;
+
+    const fetchBookedSeats = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/bus/bookedSeats?busId=${selectedBusId}`);
+        const data = await res.json();
+
+        let fetchedBookedSeats: string[] = [];
+        if (data.success && Array.isArray(data.bookedSeats)) {
+          console.log("🎟️ Booked seats from DB:", data.bookedSeats);
+          fetchedBookedSeats = data.bookedSeats;
+        } else {
+          console.error("❌ Invalid bookedSeats response:", data);
+        }
+
+        // 🟢 Merge with locally booked seats (recently booked by this user)
+        const passengerData = JSON.parse(localStorage.getItem("passengerDetails") || "[]");
+        const locallyBookedSeats =
+          Array.isArray(passengerData) && passengerData.length > 0
+            ? passengerData.map((p: any) => p.seatNumber).filter(Boolean)
+            : [];
+
+        console.log("🪑 Locally booked (from passengerDetails):", locallyBookedSeats);
+
+        // 🟡 Merge both (avoid duplicates)
+        const mergedSeats = Array.from(new Set([...fetchedBookedSeats, ...locallyBookedSeats]));
+
+        setBookedSeats(mergedSeats);
+
+        // Optionally show remaining seats if backend provides
+        if (typeof data.remainingSeats === "number") {
+          setRemainingSeats(data.remainingSeats);
+        }
+      } catch (err) {
+        console.error("❌ Error fetching booked seats:", err);
+        setBookedSeats([]);
       }
+    };
 
-      // 🟢 Merge with locally booked seats (recently booked by this user)
-      const passengerData = JSON.parse(localStorage.getItem("passengerDetails") || "[]");
-      const locallyBookedSeats =
-        Array.isArray(passengerData) && passengerData.length > 0
-          ? passengerData.map((p: any) => p.seatNumber).filter(Boolean)
-          : [];
+    // 🔹 Initial fetch
+    fetchBookedSeats();
 
-      console.log("🪑 Locally booked (from passengerDetails):", locallyBookedSeats);
-
-      // 🟡 Merge both (avoid duplicates)
-      const mergedSeats = Array.from(new Set([...fetchedBookedSeats, ...locallyBookedSeats]));
-
-      setBookedSeats(mergedSeats);
-
-      // Optionally show remaining seats if backend provides
-      if (typeof data.remainingSeats === "number") {
-        setRemainingSeats(data.remainingSeats);
-      }
-    } catch (err) {
-      console.error("❌ Error fetching booked seats:", err);
-      setBookedSeats([]);
+    // 🔁 Refresh after payment
+    const seatUpdateFlag = localStorage.getItem("seatsUpdated");
+    if (seatUpdateFlag === "true") {
+      console.log("🔁 Seats updated flag found — refreshing seats...");
+      fetchBookedSeats().then(() => {
+        localStorage.removeItem("seatsUpdated");
+      });
     }
-  };
-
-  // 🔹 Initial fetch
-  fetchBookedSeats();
-
-  // 🔁 Refresh after payment
-  const seatUpdateFlag = localStorage.getItem("seatsUpdated");
-  if (seatUpdateFlag === "true") {
-    console.log("🔁 Seats updated flag found — refreshing seats...");
-    fetchBookedSeats().then(() => {
-      localStorage.removeItem("seatsUpdated");
-    });
-  }
-}, [selectedBusId]);
+  }, [selectedBusId]);
 
 
 
 
 
-const lowerBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
+  const lowerBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
     id: `L${i + 1}`,
     price: 599 + (i % 6) * 100,
     isAvailable: true,
@@ -916,7 +916,7 @@ const lowerBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
     type: i < 12 ? 'seater' : 'sleeper',
   }));
 
-const upperBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
+  const upperBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
     id: `U${i + 1}`,
     price: 699 + (i % 6) * 100,
     isAvailable: true,
@@ -928,6 +928,19 @@ const upperBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
     ...seat,
     isAvailable: !Array.isArray(bookedSeats) ? true : !bookedSeats.includes(seat.id),
   }));
+
+  // after computing allSeats for L:
+  const allLowerSeats = allSeats.filter(s => s.id.startsWith('L'));
+
+  const rows = 6;
+  const leftSideSeats = allLowerSeats.slice(0, rows);
+  const rightSideSeats = allLowerSeats.slice(rows, rows + rows * 2);
+
+  const allUpperSeats = allSeats.filter(s => s.id.startsWith('U'));
+
+  const upperLeftSeats = allUpperSeats.slice(0, rows);
+  const upperRightSeats = allUpperSeats.slice(rows, rows + rows * 2);
+
 
   const [femaleSeatId] = useState(() => {
     const availableSeats = allSeats.filter((s) => s.isAvailable);
@@ -1021,20 +1034,39 @@ const upperBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
 
     return (
       <div
-        className={`relative cursor-pointer transition-all duration-300 ${
-          !seat.isAvailable ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
-        }`}
+        className={`relative cursor-pointer transition-all duration-300 ${!seat.isAvailable ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+          }`}
         onClick={() => seat.isAvailable && handleSeatClick(seat.id)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={() => setHoveredSeat(null)}
       >
-        <img
+        {/* <img
           src={seatImage}
           alt={seat.id}
-          className={`w-20 h-20 object-contain mx-auto transition-transform duration-300 ${
-            isSelected ? 'scale-110' : 'scale-100'
-          }`}
-        />
+          className={`w-[48px] h-[90px] object-contain mx-auto transition-transform duration-300 ${isSelected ? 'scale-110' : 'scale-100'
+            }`}
+        /> */}
+
+
+        <div className="relative">
+          <img
+            src="src/assets/output-onlinejpgtools (1).jpg"
+            alt={seat.id}
+            className="w-[48px] h-[90px] object-contain mx-auto rounded-lg"
+          />
+          {isSelected && (
+            <div className="absolute top-2 bottom-2 left-0 right-0 bg-blue-400/40 rounded-lg"></div>
+          )}
+          {seat.id === femaleSeatId && (
+            <div className="absolute top-2 bottom-2 left-0 right-0 border-[2px] border-pink-400 rounded-lg"></div>
+          )}
+
+
+        </div>
+
+
+
+
         <div className="text-[11px] text-price-text mt-1 text-center">₹{seat.price}</div>
       </div>
     );
@@ -1061,33 +1093,33 @@ const upperBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
   // };
 
   const handleContinue = () => {
-  if (!isFormComplete) {
-    // helpful feedback
-    console.warn("Form incomplete: selectedSeats, boarding or drop not selected");
-    return;
-  }
+    if (!isFormComplete) {
+      // helpful feedback
+      console.warn("Form incomplete: selectedSeats, boarding or drop not selected");
+      return;
+    }
 
-  const bookingData = {
-    busId: selectedBusId,
-    selectedSeats,
-    totalPrice: calculateTotalPrice(),
-    boardingPoint: boardingPoints[selectedBoardingPoint!],
-    droppingPoint: droppingPoints[selectedDropPoint!],
-    duration,
+    const bookingData = {
+      busId: selectedBusId,
+      selectedSeats,
+      totalPrice: calculateTotalPrice(),
+      boardingPoint: boardingPoints[selectedBoardingPoint!],
+      droppingPoint: droppingPoints[selectedDropPoint!],
+      duration,
+    };
+
+    // DEBUG: show what we are saving
+    console.log("📦 bookingData to save:", bookingData);
+
+    // Save to localStorage (this MUST be synchronous)
+    localStorage.setItem("bookingData", JSON.stringify(bookingData));
+
+    // Confirm saved value (read back immediately)
+    console.log("✅ bookingData saved:", localStorage.getItem("bookingData"));
+
+    // Navigate to booking-details
+    navigate("/booking-details", { state: bookingData });
   };
-
-  // DEBUG: show what we are saving
-  console.log("📦 bookingData to save:", bookingData);
-
-  // Save to localStorage (this MUST be synchronous)
-  localStorage.setItem("bookingData", JSON.stringify(bookingData));
-
-  // Confirm saved value (read back immediately)
-  console.log("✅ bookingData saved:", localStorage.getItem("bookingData"));
-
-  // Navigate to booking-details
-  navigate("/booking-details", { state: bookingData });
-};
 
   return (
     <div className="min-h-screen bg-background">
@@ -1118,21 +1150,25 @@ const upperBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
                         alt="Wheel Icon"
                         className="w-6 h-6 absolute top-2 right-3"
                       />
-                      <div className="flex gap-4">
-                        <div className="flex flex-col gap-5">
-                          {allSeats.filter(s => s.id.startsWith('L')).slice(0, 6).map(seat => (
+                      {/* Wrapper for left + gangway + right */}
+                      <div className="flex items-stretch min-h-[480px]">
+                        {/* Left side seats */}
+                        <div className="grid grid-cols-1 gap-x-1 gap-y-6">
+                          {leftSideSeats.map(seat => (
                             <SeatComponent key={seat.id} seat={seat} />
                           ))}
                         </div>
-                        <div className="w-10 relative flex items-center justify-center">
+
+                        {/* Gangway divider */}
+                        <div className="w-8 flex items-stretch mx-2">
                           <div className="w-4 h-full bg-red-500 flex items-center justify-center">
-                            <span className="absolute text-white text-[10px] rotate-90 whitespace-nowrap">
-                              GANGWAY
-                            </span>
+                            <span className="text-white text-[8px] rotate-90 whitespace-nowrap">GANGWAY</span>
                           </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-5">
-                          {allSeats.filter(s => s.id.startsWith('L')).slice(6, 18).map(seat => (
+
+                        {/* Right side seats */}
+                        <div className="grid grid-cols-2 gap-x-1 gap-y-6">
+                          {rightSideSeats.map(seat => (
                             <SeatComponent key={seat.id} seat={seat} />
                           ))}
                         </div>
@@ -1145,25 +1181,29 @@ const upperBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
                       UPPER BERTH ({upperBerthSeats.length})
                     </h3>
                     <div className="border rounded-lg p-4" style={{ paddingTop: '38px', minHeight: '480px' }}>
-                      <div className="flex gap-4">
-                        <div className="flex flex-col gap-5">
-                          {allSeats.filter(s => s.id.startsWith('U')).slice(0, 6).map(seat => (
+                      <div className="flex items-stretch min-h-[480px]">
+                        {/* Left side seats */}
+                        <div className="grid grid-cols-1 gap-x-1 gap-y-6">
+                          {upperLeftSeats.map(seat => (
                             <SeatComponent key={seat.id} seat={seat} />
                           ))}
                         </div>
-                        <div className="w-10 relative flex items-center justify-center">
+
+                        {/* Gangway divider */}
+                        <div className="w-8 flex items-stretch mx-2">
                           <div className="w-4 h-full bg-red-500 flex items-center justify-center">
-                            <span className="absolute text-white text-[10px] rotate-90 whitespace-nowrap">
-                              GANGWAY
-                            </span>
+                            <span className="text-white text-[8px] rotate-90 whitespace-nowrap">GANGWAY</span>
                           </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-5">
-                          {allSeats.filter(s => s.id.startsWith('U')).slice(6, 18).map(seat => (
+
+                        {/* Right side seats */}
+                        <div className="grid grid-cols-2 gap-x-1 gap-y-6">
+                          {upperRightSeats.map(seat => (
                             <SeatComponent key={seat.id} seat={seat} />
                           ))}
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -1183,11 +1223,10 @@ const upperBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
                   {boardingPoints.map((point, index) => (
                     <div
                       key={index}
-                      className={`border rounded p-2 cursor-pointer transition-colors ${
-                        selectedBoardingPoint === index
-                          ? 'border-primary bg-seat-selected'
-                          : 'border-tab-border hover:border-primary'
-                      }`}
+                      className={`border rounded p-2 cursor-pointer transition-colors ${selectedBoardingPoint === index
+                        ? 'border-primary bg-seat-selected'
+                        : 'border-tab-border hover:border-primary'
+                        }`}
                       onClick={() => handleBoardingPointSelect(index)}
                     >
                       <div className="font-medium text-xs">{point.time}</div>
@@ -1209,11 +1248,10 @@ const upperBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
                   {droppingPoints.map((point, index) => (
                     <div
                       key={index}
-                      className={`border rounded p-2 cursor-pointer transition-colors ${
-                        selectedDropPoint === index
-                          ? 'border-primary bg-seat-selected'
-                          : 'border-tab-border hover:border-primary'
-                      }`}
+                      className={`border rounded p-2 cursor-pointer transition-colors ${selectedDropPoint === index
+                        ? 'border-primary bg-seat-selected'
+                        : 'border-tab-border hover:border-primary'
+                        }`}
                       onClick={() => handleDropPointSelect(index)}
                     >
                       <div className="font-medium text-xs">{point.time}</div>

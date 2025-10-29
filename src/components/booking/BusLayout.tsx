@@ -893,13 +893,13 @@ const [basePrice, setBasePrice] = useState<number>(0);
       }
     };
 
-  fetchSeatLayout();
+  fetchBookedSeats();
 
   // 🔁 Re-fetch if seats were updated after booking
   const seatUpdateFlag = localStorage.getItem("seatsUpdated");
   if (seatUpdateFlag === "true") {
     console.log("🔁 Seats updated, refreshing UI...");
-    fetchSeatLayout();
+    fetchBookedSeats();
     localStorage.removeItem("seatsUpdated");
   }
 }, [selectedBusId]);

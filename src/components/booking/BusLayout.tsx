@@ -810,6 +810,8 @@ const BusLayout: React.FC<BusLayoutProps> = ({ duration }) => {
   const [selectedDropPoint, setSelectedDropPoint] = useState<number | null>(null);
   const [bookedSeats, setBookedSeats] = useState<string[]>([]);
   const [remainingSeats, setRemainingSeats] = useState<number | null>(null);
+  const [seats, setSeats] = useState<Seat[]>([]);
+const [basePrice, setBasePrice] = useState<number>(0);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -891,24 +893,24 @@ const BusLayout: React.FC<BusLayoutProps> = ({ duration }) => {
       }
     };
 
-    // 🔹 Initial fetch
-    fetchBookedSeats();
+  fetchSeatLayout();
 
-    // 🔁 Refresh after payment
-    const seatUpdateFlag = localStorage.getItem("seatsUpdated");
-    if (seatUpdateFlag === "true") {
-      console.log("🔁 Seats updated flag found — refreshing seats...");
-      fetchBookedSeats().then(() => {
-        localStorage.removeItem("seatsUpdated");
-      });
-    }
-  }, [selectedBusId]);
+  // 🔁 Re-fetch if seats were updated after booking
+  const seatUpdateFlag = localStorage.getItem("seatsUpdated");
+  if (seatUpdateFlag === "true") {
+    console.log("🔁 Seats updated, refreshing UI...");
+    fetchSeatLayout();
+    localStorage.removeItem("seatsUpdated");
+  }
+}, [selectedBusId]);
 
 
 
 
 
-  const lowerBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
+
+
+const lowerBerthSeats: Seat[] = Array.from({ length: 18 }, (_, i) => ({
     id: `L${i + 1}`,
     price: 599 + (i % 6) * 100,
     isAvailable: true,

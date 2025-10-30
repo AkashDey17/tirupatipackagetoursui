@@ -20,6 +20,7 @@ import BusBookingDetails from "./pages/BookingDetails";
 import Payment from "./pages/Payment";
 import PaymentResult from "./pages/PaymentResult";
 import Ticket from "./pages/Ticket";
+import PhonePeQrCode from "./pages/PhonePeQrCode";
 
 const queryClient = new QueryClient();
 const PageWrapper = ({ children }) => {
@@ -63,6 +64,7 @@ const App = () => (
            <Route path="/tc" element={<TermsAndConditionsPage />} />
            <Route path="/payment-result" element={<PaymentResult />} />
            <Route path="/new-bus-booking" element={<NewBusBooking />} />
+           <Route path="/payment-gateway" element={<PhonePeQrCode />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

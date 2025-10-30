@@ -13,13 +13,17 @@ const OffersSection = () => {
   return (
     <div className="bg-flixbus-card rounded-lg border border-flixbus-border p-4">
       <div className="flex items-center justify-between mb-4">
+<<<<<<< HEAD
         <h3 className="text-lg font-semibold text-[#4A4A4A]">
           {selectedSeats.length > 0 ? selectedSeats.join(", ") : "No Seats Selected"}
         </h3>
+=======
+        <h3 className="text-lg font-semibold text-[#4A4A4A]">Selected Seats are 1C, 2B</h3>
+>>>>>>> d55996f (added many logics)
         <button className="text-flixbus-blue text-sm underline">View Policies</button>
       </div>
       
-      <div className="mb-6">
+      {/* <div className="mb-6">
         <h4 className="font-bold mb-3">Offers</h4>
         
         <RadioGroup className="space-y-3">
@@ -60,7 +64,7 @@ const OffersSection = () => {
             APPLY
           </Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

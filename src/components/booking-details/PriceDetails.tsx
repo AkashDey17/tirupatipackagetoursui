@@ -14,91 +14,61 @@
 //   gstData: any;
 // }) => {
 //   const { state } = useLocation();
-//   const { totalPrice = 0 } = state || {};
+//   const { totalPrice = 0, busId, selectedSeats, boardingPoint, droppingPoint, duration } = state || {};
 //   const navigate = useNavigate();
 
 //   const [showPopup, setShowPopup] = useState(false);
 
 //   const handleContinueClick = () => setShowPopup(true);
 
-//   // const goToPayment = async (flag: "Y" | "N") => {
-//   //   try {
-//   //     // Save booking to backend
-//   //     await handleSubmit(flag);
-
-//   //     // Persist booking data locally
-//   //     localStorage.setItem(
-//   //       "bookingData",
-//   //       JSON.stringify({ totalPrice, travellerData, contactData, gstData })
-//   //     );
-
-//   //     setShowPopup(false);
-
-//   //     // Create PhonePe order
-//   //     const response = await axios.post(
-//   //       "http://localhost:5001/api/payment/create-order",
-//   //       {
-//   //         merchantOrderId: "ORDER" + Date.now(),
-//   //         amount: totalPrice * 100, // in paise
-//   //       }
-//   //     );
-
-//   //     const { phonepeResponse } = response.data;
-
-//   //     if (phonepeResponse?.redirectUrl) {
-//   //       window.location.href = phonepeResponse.redirectUrl; // full redirect
-//   //     } else {
-//   //       alert("Payment initiation failed. Check console for details.");
-//   //       console.log(phonepeResponse);
-//   //     }
-//   //   } catch (error: any) {
-//   //     console.error(
-//   //       "Error creating payment order:",
-//   //       error.response?.data || error.message
-//   //     );
-//   //     alert("Failed to initiate payment. Check console.");
-//   //   }
-//   // };
-
 //   const goToPayment = async (flag: "Y" | "N") => {
-//   try {
-//     // Save booking to backend
-//     await handleSubmit(flag);
+//     try {
+//       // ✅ Save traveller & passenger info to backend
+//       await handleSubmit(flag);
 
-//     // Persist booking data locally so we can read it after payment redirect
-//     localStorage.setItem(
-//       "bookingData",
-//       JSON.stringify({ totalPrice, travellerData, contactData, gstData })
-//     );
+//       // ✅ Store full booking info for PaymentResult.tsx
+//       localStorage.setItem(
+//         "bookingData",
+//         JSON.stringify({
+//           busId,                // ✅ Dynamic bus ID (no hardcode)
+//           selectedSeats,
+//           totalPrice,
+//           boardingPoint,
+//           droppingPoint,
+//           duration,
+//           travellerData,
+//           contactData,
+//           gstData,
+//         })
+//       );
 
-//     setShowPopup(false);
+//       setShowPopup(false);
 
-//     // Create PhonePe order
-//     const response = await axios.post(
-//       "http://localhost:5001/api/payment/create-order",
-//       {
-//         merchantOrderId: "ORDER" + Date.now(),
-//         amount: totalPrice * 100, // in paise
+//       // ✅ Create PhonePe order
+//       const response = await axios.post(
+//         "http://localhost:5000/api/payment/create-order",
+//         {
+//           merchantOrderId: "ORDER" + Date.now(),
+//           amount: totalPrice * 100, // in paise
+//         }
+//       );
+
+//       const { phonepeResponse } = response.data;
+
+//       if (phonepeResponse?.redirectUrl) {
+//         window.location.href = phonepeResponse.redirectUrl; // redirect to payment
+//       } else {
+//         alert("Payment initiation failed. Check console for details.");
+//         console.log(phonepeResponse);
 //       }
-//     );
-
-//     const { phonepeResponse } = response.data;
-
-//     if (phonepeResponse?.redirectUrl) {
-//       window.location.href = phonepeResponse.redirectUrl; // full redirect
-//     } else {
-//       alert("Payment initiation failed. Check console for details.");
-//       console.log(phonepeResponse);
+//     } catch (error: any) {
+//       console.error(
+//         "Error creating payment order:",
+//         error.response?.data || error.message
+//       );
+//       alert("Failed to initiate payment. Check console.");
 //     }
-//   } catch (error: any) {
-//     console.error(
-//       "Error creating payment order:",
-//       error.response?.data || error.message
-//     );
-//     alert("Failed to initiate payment. Check console.");
-//   }
-// };
-
+//   };
 
 //   return (
 //     <div className="bg-flixbus-card rounded-lg border border-flixbus-border p-4 relative">
@@ -159,10 +129,11 @@
 // };
 
 // export default PriceDetails;
+// the above code is redirecting to phone pe dummy payment page
+
 
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 
 const PriceDetails = ({
   handleSubmit,
@@ -176,23 +147,35 @@ const PriceDetails = ({
   gstData: any;
 }) => {
   const { state } = useLocation();
-  const { totalPrice = 0, busId, selectedSeats, boardingPoint, droppingPoint, duration } = state || {};
-  const navigate = useNavigate();
+  const {
+    totalPrice = 0,
+    busId,
+    selectedSeats,
+    boardingPoint,
+    droppingPoint,
+    duration,
+    departureTime,
+    arrivalTime,
+    busType,       // ✅ correct
+    busNumber,     // ✅ correct
+    operatorName,  // ✅ correct
+    selectedDate,
+  } = state || {};
 
+  const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
 
   const handleContinueClick = () => setShowPopup(true);
 
   const goToPayment = async (flag: "Y" | "N") => {
     try {
-      // ✅ Save traveller & passenger info to backend
       await handleSubmit(flag);
 
-      // ✅ Store full booking info for PaymentResult.tsx
+      // ✅ Save booking data for future use
       localStorage.setItem(
         "bookingData",
         JSON.stringify({
-          busId,                // ✅ Dynamic bus ID (no hardcode)
+          busId,
           selectedSeats,
           totalPrice,
           boardingPoint,
@@ -204,31 +187,36 @@ const PriceDetails = ({
         })
       );
 
+      // ✅ Save Trip details to localStorage (for Ticket page)
+      const tripInfo = {
+        boardingPoint,
+        droppingPoint,
+        travelDate: selectedDate,
+        departureTime: boardingPoint?.Time || departureTime,
+        arrivalTime: droppingPoint?.Time || arrivalTime,
+        coachType: busType,
+        busNumber,
+        operator: operatorName,
+        duration,
+      };
+
+      localStorage.setItem("tripData", JSON.stringify(tripInfo));
+
       setShowPopup(false);
 
-      // ✅ Create PhonePe order
-      const response = await axios.post(
-        "http://localhost:5001/api/payment/create-order",
-        {
-          merchantOrderId: "ORDER" + Date.now(),
-          amount: totalPrice * 100, // in paise
-        }
-      );
-
-      const { phonepeResponse } = response.data;
-
-      if (phonepeResponse?.redirectUrl) {
-        window.location.href = phonepeResponse.redirectUrl; // redirect to payment
-      } else {
-        alert("Payment initiation failed. Check console for details.");
-        console.log(phonepeResponse);
-      }
-    } catch (error: any) {
-      console.error(
-        "Error creating payment order:",
-        error.response?.data || error.message
-      );
-      alert("Failed to initiate payment. Check console.");
+      // ✅ Pass to payment page also
+      navigate("/payment-gateway", {
+        state: {
+          totalPrice,
+          travellerData,
+          contactData,
+          gstData,
+          tripData: tripInfo,
+        },
+      });
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong");
     }
   };
 
@@ -291,3 +279,4 @@ const PriceDetails = ({
 };
 
 export default PriceDetails;
+

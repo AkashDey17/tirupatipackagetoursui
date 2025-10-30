@@ -135,17 +135,24 @@ const TirupatiSrikalahasti = () => {
       style={{ maxWidth: "700px" }}
     >
       <h2 className="text-white text-3xl font-bold mb-4 leading-snug">
-        Tirupati 2 Night / 2 Days Dharma Darshan Package
+        Tirupati Srikalahasti 2 Night / 2 Days Dharma Darshan Package
         <span className="block text-[#ffea92] text-2xl font-semibold leading-relaxed mt-2">
           Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
         </span>
       </h2>
+      <Link to="/new-bus-booking" 
+    state={{
+    from: "Tirupati Srikalahasti 2Nights 2Days Dharma Darshan Package",
+    
+  }}
+    >
       <button
-        onClick={handleBookNow}
+       // onClick={handleBookNow}
         className="bg-[#ffce38] text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition text-base"
       >
         Book Now &gt;
       </button>
+      </Link>
     </div>
   </div>
 
@@ -166,12 +173,19 @@ const TirupatiSrikalahasti = () => {
         Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
       </span>
     </h2>
+    <Link to="/new-bus-booking" 
+    state={{
+    from: "Tirupati Srikalahasti 2D 2N Package",
+    
+  }}
+    >
     <button
-      onClick={handleBookNow}
+     // onClick={handleBookNow}
       className="bg-yellow-400 text-[#6B4E3D] font-bold px-6 py-2 rounded-full shadow-md hover:shadow-lg transition text-sm"
     >
       Book Now &gt;
     </button>
+    </Link>
   </div>
 
   <img

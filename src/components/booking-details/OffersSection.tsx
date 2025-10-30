@@ -19,7 +19,7 @@ const OffersSection = () => {
         <button className="text-flixbus-blue text-sm underline">View Policies</button>
       </div>
       
-      <div className="mb-6">
+      {/* <div className="mb-6">
         <h4 className="font-bold mb-3">Offers</h4>
         
         <RadioGroup className="space-y-3">
@@ -60,7 +60,7 @@ const OffersSection = () => {
             APPLY
           </Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

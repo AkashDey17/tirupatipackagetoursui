@@ -11,8 +11,8 @@ import ItineraryPlanner from "@/components/ItineraryPlanner";
 import ScrollVideo from "@/components/ScrollVideo";
 import TravelQuiz from "@/components/TravelQuiz";
 import ContactFloatingButton from "@/components/ContactFloatingButton";
-import poster from "@/assets/poster.jpeg";
-import poster2 from "@/assets/poster2.jpg";
+// import poster from "@/assets/poster.jpeg";
+// import poster2 from "@/assets/poster2.jpg";
 import LiveMoodIndicator from "@/components/LiveMoodIndicator";
 
 const Index = () => {
@@ -38,7 +38,7 @@ const Index = () => {
       </Helmet>
 
       {/* Centered Poster Popup */}
-      {showPoster && (
+      {/* {showPoster && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-40 px-4"
           onClick={handleClosePoster} // click outside closes poster
@@ -54,7 +54,7 @@ const Index = () => {
               ✕
             </button>
 
-            {/* Poster Image */}
+            
             <img
               src={poster2}
               alt="Poster"
@@ -62,7 +62,7 @@ const Index = () => {
             />
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Existing page content */}
       <Header />
@@ -108,9 +108,9 @@ export default Index;
 // import ScrollVideo from "@/components/ScrollVideo";
 // import TravelQuiz from "@/components/TravelQuiz";
 // import ContactFloatingButton from "@/components/ContactFloatingButton";
-// import poster from "@/assets/Happy Diwali.jpg"; // ✅ First image
-// import poster2 from "@/assets/poster2.jpg"; // ✅ Second image
-// import WheatherWidget from "./WheatherWidget";
+// import poster from "@/assets/poster.jpeg";
+// import poster2 from "@/assets/poster2.jpg";
+// import LiveMoodIndicator from "@/components/LiveMoodIndicator";
 
 // const Index = () => {
 //   const [showPoster, setShowPoster] = useState(true);

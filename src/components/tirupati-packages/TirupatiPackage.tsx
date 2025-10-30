@@ -39,7 +39,12 @@ const TirupatiPakage = () => {
           Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
         </span>
       </h2>
-      <Link to="/new-bus-booking">
+      <Link to="/new-bus-booking"
+      state={{
+    from: "Tirupati 1Day 1Night Dharma Darshan Package",
+    
+  }}
+      >
       <button
         // onClick={handleBookNow}
         className="bg-[#ffce38] text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition text-base"

@@ -1,4 +1,511 @@
-import React, { useRef } from "react";
+// import React, { useRef } from "react";
+// import luggageImg from "@/assets/luggage.jpg";
+// import busImg from "@/assets/bus1.jpg";
+// import dndImg from "@/assets/dnd.jpg";
+// import hazardousImg from "@/assets/danger.jpg";
+// import ticketImg from "@/assets/ticket.jpg";
+// import alcoholImg from "@/assets/alchohol.png";
+// import logoImg from "@/assets/logo.png";
+// import jsPDF from "jspdf";
+// import html2canvas from "html2canvas";
+// import { ArrowLeft } from "lucide-react";
+// import { useNavigate } from "react-router-dom";
+
+
+// export const ETicket = ({
+//   totalPrice = 0,
+//   travellerData = [],
+//   contactData = {},
+//   gstData = {},
+// }: {
+//   totalPrice?: number;
+//   travellerData?: any[];
+//   contactData?: any;
+//   gstData?: any;
+// }) => {
+  
+//    const ticketRef = useRef<HTMLDivElement>(null);
+//    const navigate = useNavigate();
+//   const passenger = travellerData?.[0] || {};
+//   const passengerName =
+//     `${passenger.FirstName || ""} ${passenger.LastName || ""}`.trim() || "ticket";
+
+//   const handleDownloadPDF = async () => {
+//     if (!ticketRef.current) return;
+
+//     const element = ticketRef.current;
+
+//     // Wait for all images to load completely before capture
+//     const images = element.querySelectorAll("img");
+//     await Promise.all(
+//       Array.from(images).map(
+//         (img) =>
+//           new Promise((resolve) => {
+//             if (img.complete) resolve(true);
+//             else {
+//               img.onload = img.onerror = () => resolve(true);
+//             }
+//           })
+//       )
+//     );
+  
+
+//     // Small delay to ensure layout is stable
+//     await new Promise((resolve) => setTimeout(resolve, 500));
+
+//     // Capture the entire visible area as one tall canvas
+//     const canvas = await html2canvas(element, {
+//       scale: 3, // higher scale = better quality
+//       useCORS: true,
+//       logging: false,
+//       windowWidth: element.scrollWidth,
+//       windowHeight: element.scrollHeight,
+//     });
+
+//     const imgData = canvas.toDataURL("image/png");
+//     const pdfWidth = 210; // A4 width in mm
+//     const imgHeight = (canvas.height * pdfWidth) / canvas.width;
+
+//     // Create a custom PDF height to fit the entire ticket in one page
+//     const pdf = new jsPDF("p", "mm", [imgHeight, pdfWidth]);
+
+//     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, imgHeight);
+
+//     pdf.save(`${passengerName.replace(/\s+/g, "_")}_ticket.pdf`);
+//   };
+
+
+//   return (
+//     <>
+//       <style>{`
+//         /* Custom E-Ticket Styles - Exact replica of PDF with larger fonts */
+//         .eticket-container { max-width: 900px; margin: 0 auto; background-color: #ffffff; border: 1px solid #d0d0d0; font-family: Arial, sans-serif; line-height: 1.3; }
+//         .eticket-header-notice { font-size: 14px; color: #000000; padding: 12px 20px; border-bottom: 1px solid #d0d0d0; text-align: left; }
+//         .eticket-main-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px; border-bottom: 1px solid #d0d0d0; }
+//         .eticket-title { font-size: 32px; font-weight: bold; color: #000000; margin: 0; line-height: 1; }
+//         .eticket-brand { font-size: 18px; color: #000000; margin: 4px 0 0 0; }
+//         .eticket-help-section { text-align: right; font-size: 14px; }
+//         .eticket-help-title { font-weight: bold; color: #000000; margin: 0; }
+//         .eticket-help-phone { color: #000000; margin: 2px 0; }
+//         .eticket-help-link { color: #0066cc; text-decoration: underline; cursor: pointer; margin: 0; }
+//         .eticket-trip-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #d0d0d0; }
+//         .eticket-trip-title { font-size: 20px; font-weight: bold; color: #000000; margin: 0; }
+//         .eticket-ticket-number { font-size: 16px; color: #000000; text-align: right; }
+//         .eticket-ticket-number-label { font-weight: normal; }
+//         .eticket-ticket-number-value { font-weight: bold; }
+//         .eticket-journey-details { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; padding: 20px; border-bottom: 1px solid #d0d0d0; }
+//         .eticket-detail-item { text-align: left; }
+//         .eticket-detail-label { font-size: 14px; font-weight: bold; color: #000000; margin: 0 0 4px 0; }
+//         .eticket-detail-value { font-size: 14px; color: #000000; margin: 0; }
+//         .eticket-boarding-section, .eticket-dropping-section { display: grid; grid-template-columns: 200px 170px 220px 1fr; gap: 20px; padding: 20px; border-bottom: 1px solid #d0d0d0; }
+//         .eticket-section-title { font-size: 14px; font-weight: bold; color: #000000; margin: 0; }
+//         .eticket-location-name { font-size: 14px; font-weight: bold; color: #000000; margin: 0 0 4px 0; }
+//         .eticket-location-type { font-size: 12px; color: #666666; margin: 0; }
+//         .eticket-location-text { font-size: 14px; color: #000000; margin: 0; }
+//         .eticket-address-text { font-size: 14px; color: #000000; margin: 0; line-height: 1.2; }
+//         .eticket-arrival-time { margin-top: 16px; }
+//         .eticket-arrival-label { font-size: 14px; font-weight: bold; color: #000000; margin: 0 0 4px 0; }
+//         .eticket-arrival-value { font-size: 14px; color: #000000; margin: 0; }
+//         .eticket-passenger-payment { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 20px; border-bottom: 1px solid #d0d0d0; }
+//         .eticket-passenger-section { flex: 1; }
+//         .eticket-passenger-title { font-size: 14px; font-weight: bold; color: #000000; margin: 0 0 12px 0; }
+//         .eticket-passenger-name { font-size: 14px; font-weight: bold; color: #000000; margin: 0 0 6px 0; }
+//         .eticket-passenger-info { font-size: 14px; color: #000000; margin: 0 0 20px 0; }
+//         .eticket-important-title { font-size: 14px; font-weight: bold; color: #000000; margin: 0 0 12px 0; }
+//         .eticket-important-text { font-size: 12px; color: #000000; margin: 0 0 6px 0; }
+//         .eticket-chat-link { font-size: 12px; color: #0066cc; text-decoration: underline; cursor: pointer; margin: 0 0 12px 0; }
+//         .eticket-note-text { font-size: 12px; color: #000000; margin: 0; }
+//         .eticket-payment-section { flex: 1; }
+//         .eticket-seat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+//         .eticket-seat-title { font-size: 14px; font-weight: bold; color: #000000; margin: 0; }
+//         .eticket-seat-number { font-size: 14px; font-weight: bold; color: #000000; margin: 0; }
+//         .eticket-payment-title { font-size: 14px; font-weight: bold; color: #000000; margin: 0 0 16px 0; }
+//         .eticket-payment-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+//         .eticket-payment-label { font-size: 14px; color: #000000; margin: 0; }
+//         .eticket-payment-amount { font-size: 14px; color: #000000; margin: 0; }
+//         .eticket-payment-total { border-top: 1px solid #d0d0d0; padding-top: 6px; margin-top: 6px; }
+//         .eticket-payment-total .eticket-payment-label { font-weight: bold; }
+//         .eticket-payment-total .eticket-payment-amount { font-weight: bold; }
+//         .eticket-savings { font-size: 14px; color: #008000; font-weight: bold; margin: 12px 0 0 0; }
+//         .eticket-guidelines { padding: 20px; }
+//         .eticket-guidelines-title { font-size: 20px; font-weight: bold; color: #000000; text-align: center; margin: 0 0 20px 0; }
+//         .eticket-restrictions-title { font-size: 14px; font-weight: bold; color: #000000; margin: 0 0 12px 0; }
+//         .eticket-restrictions-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+//         .eticket-restriction-item { text-align: center; }
+//         .eticket-restriction-text { font-size: 12px; color: #000000; margin: 0; line-height: 1.3; }
+//         .eticket-restriction-bold { font-weight: bold; }
+//         .eticket-terms-title { font-size: 14px; font-weight: bold; color: #000000; margin: 20px 0 12px 0; }
+//         .eticket-terms-list { list-style: none; padding: 0; margin: 0; }
+//         .eticket-terms-item { font-size: 12px; color: #000000; margin: 0 0 6px 0; line-height: 1.4; }
+
+//         /* New: make all restriction images same small size */
+        
+// .eticket-restriction-item {
+//   text-align: center;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// .eticket-restriction-img {
+//   width: 180px;       
+//   height: 180px;      
+//   object-fit: contain;
+//   margin-bottom: 10px; 
+// }
+
+//         @layer base { body { background-color: #f5f5f5; font-family: Arial, sans-serif; margin: 0; padding: 20px; } }
+//       `}</style>
+
+//  <div style={{ position: "absolute", top: 20, left: 20 }}>
+//         <button
+//           onClick={() => navigate("/new-bus-booking")}
+//           style={{
+//             display: "flex",
+//             alignItems: "center",
+//             gap: "8px",
+//             backgroundColor: "#3D85C6",
+//             color: "#fff",
+//             border: "none",
+//             padding: "8px 14px",
+//             borderRadius: "8px",
+//             fontSize: "14px",
+//             cursor: "pointer",
+//           }}
+//         >
+//           <ArrowLeft size={18} />
+//           Back to Bus Booking
+//         </button>
+//       </div>
+//       <div className="eticket-container" ref={ticketRef}>
+//         {/* Header Notice */}
+//         <div className="eticket-header-notice !text-[#dc2626]">
+//           Cancellation and refund are not applicable for Tirupati trips/packages.
+//         </div>
+
+//         {/* Main Header */}
+//         <div className="eticket-main-header">
+//           <div>
+//             <h1 className="eticket-title">eTICKET</h1>
+
+//             {/* ✅ Added Logo on top of Sanchar6T */}
+//             <img src={logoImg} alt="Sanchar6T Logo" style={{ height: "150px", marginBottom: "6px" }} />
+
+//             {/* <p className="eticket-brand !text-[#dc2626]">
+//               Sanchar6<strong className="text-[#020817]">T</strong>
+//             </p> */}
+//           </div>
+//           <div className="eticket-help-section">
+//             <p className="eticket-help-title">Need help with your trip? Boarding Point</p>
+//             <p className="eticket-help-phone">Ph. No.: +91 9731312275,<br /> +91 8197882511</p>
+//             <p className="eticket-help-link">Write to us here</p>
+//           </div>
+//         </div>
+
+//         {/* Trip Details Header */}
+//         <div className="eticket-trip-header">
+//           <h2 className="eticket-trip-title">Bengaluru → Tirupati: Saturday, October 18 2025</h2>
+//           <div className="eticket-ticket-number">
+//             <span className="eticket-ticket-number-label">Ticket no: </span>
+//             <span className="eticket-ticket-number-value">TM{Math.floor(Math.random() * 10000000000)}</span>
+//           </div>
+//         </div>
+
+//         {/* Journey Details */}
+//         <div className="eticket-journey-details">
+//           <div className="eticket-detail-item">
+//             <p className="eticket-detail-label">Coach Type</p>
+//             <p className="eticket-detail-value">A/C Sleeper</p>
+//             <p className="eticket-detail-value">(2+1)</p>
+//           </div>
+//           <div className="eticket-detail-item">
+//             <p className="eticket-detail-label">Reporting time</p>
+//             <p className="eticket-detail-value">5:45PM</p>
+//           </div>
+//           <div className="eticket-detail-item">
+//             <p className="eticket-detail-label">Departure time</p>
+//             <p className="eticket-detail-value">6:00PM</p>
+//           </div>
+//           <div className="eticket-detail-item">
+//             <p className="eticket-detail-label">Number of Passengers</p>
+//             <p className="eticket-detail-value" style={{ textAlign: "center" }}>{travellerData?.length || 1}</p>
+//           </div>
+//         </div>
+
+//         {/* Boarding Point */}
+//         <div className="eticket-boarding-section">
+//           <div><p className="eticket-section-title">Boarding point details</p></div>
+//           <div>
+//             <p className="eticket-location-name">Majestic Bus Stand</p>
+//             <p className="eticket-location-type">Location</p>
+//           </div>
+//           <div>
+//             <p className="eticket-location-text">Near Kempegowda Bus</p>
+//             <p className="eticket-location-text">Station, Majestic Metro,</p>
+//             <p className="eticket-location-text">central hub</p>
+//             <p className="eticket-location-type">Landmark</p>
+//           </div>
+//           <div>
+//             <p className="eticket-address-text">Majestic Bus Stand,</p>
+//             <p className="eticket-address-text">Opp. Bangalore City</p>
+//             <p className="eticket-address-text">Railway Station,</p>
+//             <p className="eticket-address-text">Near Majestic Metro</p>
+//             <p className="eticket-address-text">Station,</p>
+//             <p className="eticket-address-text">Dr. Rajkumar Road,</p>
+//             <p className="eticket-address-text">Majestic, Bengaluru,</p>
+//             <p className="eticket-address-text">Karnataka 560009</p>
+//             <p className="eticket-location-type">Address</p>
+//           </div>
+//         </div>
+
+//         {/* Dropping Point */}
+//         <div className="eticket-dropping-section">
+//           <div>
+//             <p className="eticket-section-title">Dropping point details</p>
+//             <div className="eticket-arrival-time">
+//               <p className="eticket-arrival-label">EST: Arrival Time</p>
+//               <p className="eticket-arrival-value">6:00AM</p>
+//             </div>
+//           </div>
+//           <div>
+//             <p className="eticket-location-name">Tirupati Bus Stand</p>
+//             <p className="eticket-location-type">Location</p>
+//           </div>
+//           <div>
+//             <p className="eticket-location-text">Near Tirupati Railway</p>
+//             <p className="eticket-location-text">Station, Central Bus Hub,</p>
+//             <p className="eticket-location-text">close to Alipiri Road</p>
+//             <p className="eticket-location-type">Landmark</p>
+//           </div>
+//           <div>
+//             <p className="eticket-address-text">Opp. Tirupati Railway</p>
+//             <p className="eticket-address-text">Station,</p>
+//             <p className="eticket-address-text">Near APSRTC Central</p>
+//             <p className="eticket-address-text">Bus Stand,</p>
+//             <p className="eticket-address-text">Alipiri Road Junction,</p>
+//             <p className="eticket-address-text">Tirupati, Andhra</p>
+//             <p className="eticket-address-text">Pradesh - 517501</p>
+//             <p className="eticket-location-type">Address</p>
+//           </div>
+//         </div>
+
+//         {/* Passenger & Payment Section */}
+//         <div className="eticket-passenger-payment">
+//           <div className="eticket-passenger-section">
+//             <p className="eticket-passenger-title">Passenger Details (Age, Gender)</p>
+//             <p className="eticket-passenger-name">{passengerName || "N/A"}</p>
+//             <p className="eticket-passenger-info">Age: {passenger?.Age || "-"} Gender: {passenger?.Gender || "-"}</p>
+//             <p className="eticket-passenger-info">Email: {contactData?.Email || "-"}</p>
+//             <p className="eticket-passenger-info">Phone: {contactData?.ContactNo || "-"}</p>
+
+//             <p className="eticket-important-title !text-[15px]">Important Information</p>
+//             <p className="eticket-important-text !text-[15px]">Please reach the boarding point by the reporting time</p>
+//             <p className="eticket-important-text !text-[15px]">Ensure your ticket is available for verification during boarding</p>
+//             <p className="eticket-chat-link !text-[15px]">Chat with us Link</p>
+
+//             <p className="eticket-note-text !text-[20px]">NOTE : This operator accepts mTicket, you need not carry a print out</p>
+//           </div>
+
+//           <div className="eticket-payment-section">
+//             <div className="eticket-seat-header">
+//               <p className="eticket-seat-title">Seat Number</p>
+//               <p className="eticket-seat-number">{passenger?.SeatNo || "-"}</p>
+//             </div>
+
+//             <p className="eticket-payment-title">Payment Details</p>
+
+//             <div className="eticket-payment-row">
+//               <span className="eticket-payment-label">Basic Fare</span>
+//               <span className="eticket-payment-amount">Rs. {totalPrice}</span>
+//             </div>
+
+//             <div className="eticket-payment-row eticket-payment-total">
+//               <span className="eticket-payment-label">Amount Paid</span>
+//               <span className="eticket-payment-amount">Rs. {totalPrice}</span>
+//             </div>
+
+//             <p className="eticket-savings">You saved Rs.50 via Sanchar6T</p>
+//           </div>
+//         </div>
+
+//         {/* Guidelines Section */}
+//         <div className="eticket-guidelines">
+//           <h3 className="eticket-guidelines-title !text-[20px]">Passenger Guidelines</h3>
+
+//           <h4 className="eticket-restrictions-title !text-[15px]">Travel Restrictions Important Don'ts During Travel</h4>
+
+//           {/* First row of restrictions */}
+//           <div className="eticket-restrictions-grid">
+//             <div className="eticket-restriction-item">
+//               <img src={ticketImg} alt="Ticket" className="eticket-restriction-img" />
+//               <p className="eticket-restriction-text !text-[15px]">Don't board without a <span className="eticket-restriction-bold">valid ticket and ID</span> proof.</p>
+//             </div>
+//             <div className="eticket-restriction-item">
+//               <img src={hazardousImg} alt="Hazardous" className="eticket-restriction-img" />
+//               <p className="eticket-restriction-text !text-[15px]">Don't carry hazardous, <span className="eticket-restriction-bold">illegal, or flammable</span> items.</p>
+//             </div>
+//             <div className="eticket-restriction-item">
+//               <img src={alcoholImg} alt="Alcohol" className="eticket-restriction-img" style={{width:"100px"}} />
+//               <p className="eticket-restriction-text !text-[15px]">Don't smoke, <span className="eticket-restriction-bold">consume alcohol, or</span> use drugs on board.</p>
+//             </div>
+//           </div>
+
+//           {/* Second row of restrictions */}
+//           <div className="eticket-restrictions-grid">
+//             <div className="eticket-restriction-item">
+//               <img src={dndImg} alt="Do Not Disturb" className="eticket-restriction-img" />
+//               <p className="eticket-restriction-text !text-[15px]">Don't cause disturbance <span className="eticket-restriction-bold">or inconvenience to</span> fellow passengers.</p>
+//             </div>
+//             <div className="eticket-restriction-item">
+//               <img src={luggageImg} alt="Luggage" className="eticket-restriction-img" />
+//               <p className="eticket-restriction-text !text-[15px]">Don't leave valuables <span className="eticket-restriction-bold">unattended or in luggage</span> storage.</p>
+//             </div>
+//             <div className="eticket-restriction-item">
+//               <img src={busImg} alt="Bus" className="eticket-restriction-img" />
+//               <p className="eticket-restriction-text !text-[15px]">Don't damage bus <span className="eticket-restriction-bold">property or package</span> facilities.</p>
+//             </div>
+//           </div>
+
+//           <h4 className="eticket-terms-title !text-[18px]">Terms and Conditions</h4>
+//           <ul className="eticket-terms-list">
+//             <li className="eticket-terms-item !text-[18px]">• Passenger must carry a valid government photo ID matching the ticket name.</li>
+//             <li className="eticket-terms-item !text-[18px]">• Report at the boarding point at least 30 minutes before departure. Late arrival may lead to seat cancellation without refund.</li>
+//             <li className="eticket-terms-item !text-[18px]">• Ticket is valid only for the passenger, date, and time mentioned. Non-transferable.</li>
+//             <li className="eticket-terms-item !text-[18px]">• Cancellations and refunds are as per operator policy. Eligible refunds will be processed within 7-10 working days.</li>
+//             <li className="eticket-terms-item !text-[18px]">• Rescheduling is subject to availability and fare difference, if any.</li>
+//           </ul>
+//         </div>
+//       <div style={{ position: "absolute", top: 20, right: 20 }}>
+           
+//         </div>
+//       </div>
+//       <div style={{ textAlign: "center", marginTop: "20px" }}>
+//         <button
+//           onClick={handleDownloadPDF}
+//           style={{
+//             backgroundColor: "#3D85C6",
+//             color: "#fff",
+//             border: "none",
+//             padding: "10px 20px",
+//             borderRadius: "8px",
+//             fontSize: "16px",
+//             cursor: "pointer",
+//           }}
+//         >
+//           Download Ticket PDF
+//         </button>
+//       </div>
+//     </>
+//   );
+// };
+
+
+
+
+// import { useEffect } from "react";
+
+// const ETicket = ({
+//   travellerData,
+//   contactData,
+//   gstData,
+//   totalPrice,
+//   tripData,
+// }) => {
+//   const {
+//     boardingPoint = {},
+//     droppingPoint = {},
+//     travelDate = "",
+//     departureTime = "",
+//     arrivalTime = "",
+//     coachType = "",
+//     busNumber = "",
+//     operator = "",
+//   } = tripData || {};
+
+//   // ✅ Convert travelDate to readable format
+//   const formattedDate = travelDate
+//     ? new Date(travelDate).toLocaleDateString("en-IN", {
+//         day: "2-digit",
+//         month: "short",
+//         year: "numeric",
+//       })
+//     : "";
+
+//   useEffect(() => {
+//     return () => localStorage.removeItem("tripData");
+//   }, []);
+
+//   return (
+//     <div className="p-4 max-w-4xl mx-auto bg-white shadow">
+//       <h2 className="text-xl font-bold text-center mb-4">E-Ticket</h2>
+
+//       {/* ✅ Bus & Journey Info */}
+//       <div className="border p-4 rounded mb-4 bg-gray-50">
+//         <p><strong>Bus Operator:</strong> Sanchar6T</p>
+//         <p><strong>Bus Type:</strong> {coachType}</p>
+//         <p><strong>Bus Number:</strong> {busNumber}</p>
+//         <p><strong>Travel Date:</strong> {formattedDate}</p>
+//         <p><strong>Departure:</strong> {departureTime}</p>
+//         <p><strong>Arrival:</strong> {arrivalTime}</p>
+//       </div>
+
+//       {/* ✅ Boarding */}
+//       <div className="border p-4 rounded mb-4">
+//         <h3 className="font-semibold">Boarding Point</h3>
+//         <p>{boardingPoint.PointName}</p>
+//         <p>{boardingPoint.AreaName}</p>
+//         <p>{boardingPoint.Landmark}</p>
+//         <p>{boardingPoint.Address}</p>
+//       </div>
+
+//       {/* ✅ Dropping */}
+//       <div className="border p-4 rounded mb-4">
+//         <h3 className="font-semibold">Dropping Point</h3>
+//         <p>{droppingPoint.PointName}</p>
+//         <p>{droppingPoint.AreaName}</p>
+//         <p>{droppingPoint.Landmark}</p>
+//         <p>{droppingPoint.Address}</p>
+//       </div>
+
+//       {/* ✅ Passenger Info */}
+//       <div className="border p-4 rounded mb-4">
+//         <h3 className="font-semibold">Passenger Details</h3>
+//         {travellerData?.map((t, i) => (
+//           <p key={i}>
+//             {t.FirstName} {t.LastName} — Seat {t.SeatNo || "-"}
+//           </p>
+//         ))}
+//       </div>
+
+//       {/* ✅ Contact Details */}
+//       <div className="border p-4 rounded mb-4">
+//         <h3 className="font-semibold">Contact</h3>
+//         <p>Email: {contactData.Email}</p>
+//         <p>Phone: {contactData.ContactNo}</p>
+//       </div>
+
+//       {/* ✅ GST */}
+//       {gstData?.RegisteredCompanyNumber && (
+//         <div className="border p-4 rounded mb-4">
+//           <h3 className="font-semibold">GST Details</h3>
+//           <p>Company: {gstData.RegisteredCompanyName}</p>
+//           <p>GST No: {gstData.RegisteredCompanyNumber}</p>
+//         </div>
+//       )}
+
+//       {/* ✅ Total Price */}
+//       <div className="text-right text-lg font-bold">
+//         Total Paid: ₹{totalPrice}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ETicket;
+
+
+
+import React, { useRef, useEffect } from "react";
 import luggageImg from "@/assets/luggage.jpg";
 import busImg from "@/assets/bus1.jpg";
 import dndImg from "@/assets/dnd.jpg";
@@ -8,73 +515,68 @@ import alcoholImg from "@/assets/alchohol.png";
 import logoImg from "@/assets/logo.png";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
+const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData }) => {
+  const {
+    boardingPoint = {},
+    droppingPoint = {},
+    travelDate = "",
+    departureTime = "",
+    arrivalTime = "",
+    coachType = "",
+    busNumber = "",
+    operator = "",
+  } = tripData || {};
 
-export const ETicket = ({
-  totalPrice = 0,
-  travellerData = [],
-  contactData = {},
-  gstData = {},
-}: {
-  totalPrice?: number;
-  travellerData?: any[];
-  contactData?: any;
-  gstData?: any;
-}) => {
-  
-   const ticketRef = useRef<HTMLDivElement>(null);
+  const ticketRef = useRef(null);
+  const navigate = useNavigate();
   const passenger = travellerData?.[0] || {};
-  const passengerName =
-    `${passenger.FirstName || ""} ${passenger.LastName || ""}`.trim() || "ticket";
+
+  const passengerName = `${passenger.FirstName || ""} ${passenger.LastName || ""}`.trim() || "Passenger";
+
+  const formattedDate = travelDate
+    ? new Date(travelDate).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })
+    : "";
+
+  useEffect(() => {
+    return () => localStorage.removeItem("tripData");
+  }, []);
 
   const handleDownloadPDF = async () => {
     if (!ticketRef.current) return;
-
     const element = ticketRef.current;
-
-    // Wait for all images to load completely before capture
     const images = element.querySelectorAll("img");
+
     await Promise.all(
-      Array.from(images).map(
-        (img) =>
-          new Promise((resolve) => {
-            if (img.complete) resolve(true);
-            else {
-              img.onload = img.onerror = () => resolve(true);
-            }
-          })
-      )
+      Array.from(images).map(img => new Promise(resolve => {
+        if (img.complete) resolve(true);
+        else img.onload = img.onerror = () => resolve(true);
+      }))
     );
-  
 
-    // Small delay to ensure layout is stable
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise(r => setTimeout(r, 500));
 
-    // Capture the entire visible area as one tall canvas
     const canvas = await html2canvas(element, {
-      scale: 3, // higher scale = better quality
+      scale: 3,
       useCORS: true,
-      logging: false,
       windowWidth: element.scrollWidth,
-      windowHeight: element.scrollHeight,
+      windowHeight: element.scrollHeight
     });
 
     const imgData = canvas.toDataURL("image/png");
-    const pdfWidth = 210; // A4 width in mm
+    const pdfWidth = 210;
     const imgHeight = (canvas.height * pdfWidth) / canvas.width;
-
-    // Create a custom PDF height to fit the entire ticket in one page
     const pdf = new jsPDF("p", "mm", [imgHeight, pdfWidth]);
 
     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, imgHeight);
-
     pdf.save(`${passengerName.replace(/\s+/g, "_")}_ticket.pdf`);
   };
 
-
   return (
     <>
-      <style>{`
+       <style>{`
         /* Custom E-Ticket Styles - Exact replica of PDF with larger fonts */
         .eticket-container { max-width: 900px; margin: 0 auto; background-color: #ffffff; border: 1px solid #d0d0d0; font-family: Arial, sans-serif; line-height: 1.3; }
         .eticket-header-notice { font-size: 14px; color: #000000; padding: 12px 20px; border-bottom: 1px solid #d0d0d0; text-align: left; }
@@ -154,208 +656,165 @@ export const ETicket = ({
         @layer base { body { background-color: #f5f5f5; font-family: Arial, sans-serif; margin: 0; padding: 20px; } }
       `}</style>
 
+      {/* Back Button */}
+      <div style={{ position: "absolute", top: 20, left: 20 }}>
+        <button
+          onClick={() => navigate("/new-bus-booking")}
+          style={{
+            display: "flex", alignItems: "center", gap: "8px",
+            backgroundColor: "#3D85C6", color: "#fff",
+            border: "none", padding: "8px 14px", borderRadius: "8px",
+            fontSize: "14px", cursor: "pointer",
+          }}
+        >
+          <ArrowLeft size={18} /> Back to Bus Booking
+        </button>
+      </div>
+
+      {/* Ticket */}
       <div className="eticket-container" ref={ticketRef}>
-        {/* Header Notice */}
+
         <div className="eticket-header-notice !text-[#dc2626]">
           Cancellation and refund are not applicable for Tirupati trips/packages.
         </div>
 
-        {/* Main Header */}
         <div className="eticket-main-header">
           <div>
             <h1 className="eticket-title">eTICKET</h1>
-
-            {/* ✅ Added Logo on top of Sanchar6T */}
-            <img src={logoImg} alt="Sanchar6T Logo" style={{ height: "150px", marginBottom: "6px" }} />
-
-            {/* <p className="eticket-brand !text-[#dc2626]">
-              Sanchar6<strong className="text-[#020817]">T</strong>
-            </p> */}
+            <img src={logoImg} alt="Logo" style={{ height: "150px", marginBottom: "6px" }} />
           </div>
+
           <div className="eticket-help-section">
-            <p className="eticket-help-title">Need help with your trip? Boarding Point</p>
+            <p className="eticket-help-title">Need help with your trip?</p>
             <p className="eticket-help-phone">Ph. No.: +91 9731312275,<br /> +91 8197882511</p>
             <p className="eticket-help-link">Write to us here</p>
           </div>
         </div>
 
-        {/* Trip Details Header */}
+        {/* Trip Header */}
         <div className="eticket-trip-header">
-          <h2 className="eticket-trip-title">Bengaluru → Tirupati: Saturday, October 18 2025</h2>
+          <h2 className="eticket-trip-title">{operator || "Bus"} → Trip on {formattedDate}</h2>
           <div className="eticket-ticket-number">
-            <span className="eticket-ticket-number-label">Ticket no: </span>
-            <span className="eticket-ticket-number-value">TM{Math.floor(Math.random() * 10000000000)}</span>
+            Ticket no: <strong>TM{Math.floor(Math.random() * 9999999999)}</strong>
           </div>
         </div>
 
         {/* Journey Details */}
         <div className="eticket-journey-details">
-          <div className="eticket-detail-item">
+          <div>
             <p className="eticket-detail-label">Coach Type</p>
-            <p className="eticket-detail-value">A/C Sleeper</p>
-            <p className="eticket-detail-value">(2+1)</p>
+            <p className="eticket-detail-value">{coachType}</p>
           </div>
-          <div className="eticket-detail-item">
+          <div>
             <p className="eticket-detail-label">Reporting time</p>
-            <p className="eticket-detail-value">5:45PM</p>
+            <p className="eticket-detail-value">{departureTime}</p>
           </div>
-          <div className="eticket-detail-item">
+          <div>
             <p className="eticket-detail-label">Departure time</p>
-            <p className="eticket-detail-value">6:00PM</p>
+            <p className="eticket-detail-value">{departureTime}</p>
           </div>
-          <div className="eticket-detail-item">
-            <p className="eticket-detail-label">Number of Passengers</p>
-            <p className="eticket-detail-value" style={{ textAlign: "center" }}>{travellerData?.length || 1}</p>
+          <div>
+            <p className="eticket-detail-label">Passengers</p>
+            <p className="eticket-detail-value">{travellerData?.length}</p>
           </div>
         </div>
 
-        {/* Boarding Point */}
+        {/* Boarding */}
         <div className="eticket-boarding-section">
-          <div><p className="eticket-section-title">Boarding point details</p></div>
+          <p className="eticket-section-title">Boarding Point</p>
+          <p className="eticket-location-name">{boardingPoint?.PointName}</p>
           <div>
-            <p className="eticket-location-name">Majestic Bus Stand</p>
-            <p className="eticket-location-type">Location</p>
+            <p className="eticket-location-text">{boardingPoint?.Landmark}</p>
           </div>
           <div>
-            <p className="eticket-location-text">Near Kempegowda Bus</p>
-            <p className="eticket-location-text">Station, Majestic Metro,</p>
-            <p className="eticket-location-text">central hub</p>
-            <p className="eticket-location-type">Landmark</p>
-          </div>
-          <div>
-            <p className="eticket-address-text">Majestic Bus Stand,</p>
-            <p className="eticket-address-text">Opp. Bangalore City</p>
-            <p className="eticket-address-text">Railway Station,</p>
-            <p className="eticket-address-text">Near Majestic Metro</p>
-            <p className="eticket-address-text">Station,</p>
-            <p className="eticket-address-text">Dr. Rajkumar Road,</p>
-            <p className="eticket-address-text">Majestic, Bengaluru,</p>
-            <p className="eticket-address-text">Karnataka 560009</p>
-            <p className="eticket-location-type">Address</p>
+            <p className="eticket-address-text">{boardingPoint?.Address}</p>
           </div>
         </div>
 
-        {/* Dropping Point */}
+        {/* Dropping */}
         <div className="eticket-dropping-section">
+          <p className="eticket-section-title">Dropping Point</p>
+          <p className="eticket-location-name">{droppingPoint?.PointName}</p>
           <div>
-            <p className="eticket-section-title">Dropping point details</p>
-            <div className="eticket-arrival-time">
-              <p className="eticket-arrival-label">EST: Arrival Time</p>
-              <p className="eticket-arrival-value">6:00AM</p>
-            </div>
+            <p className="eticket-location-text">{droppingPoint?.Landmark}</p>
           </div>
           <div>
-            <p className="eticket-location-name">Tirupati Bus Stand</p>
-            <p className="eticket-location-type">Location</p>
-          </div>
-          <div>
-            <p className="eticket-location-text">Near Tirupati Railway</p>
-            <p className="eticket-location-text">Station, Central Bus Hub,</p>
-            <p className="eticket-location-text">close to Alipiri Road</p>
-            <p className="eticket-location-type">Landmark</p>
-          </div>
-          <div>
-            <p className="eticket-address-text">Opp. Tirupati Railway</p>
-            <p className="eticket-address-text">Station,</p>
-            <p className="eticket-address-text">Near APSRTC Central</p>
-            <p className="eticket-address-text">Bus Stand,</p>
-            <p className="eticket-address-text">Alipiri Road Junction,</p>
-            <p className="eticket-address-text">Tirupati, Andhra</p>
-            <p className="eticket-address-text">Pradesh - 517501</p>
-            <p className="eticket-location-type">Address</p>
+            <p className="eticket-address-text">{droppingPoint?.Address}</p>
           </div>
         </div>
 
-        {/* Passenger & Payment Section */}
+        {/* Passenger & Payment */}
         <div className="eticket-passenger-payment">
-          <div className="eticket-passenger-section">
-            <p className="eticket-passenger-title">Passenger Details (Age, Gender)</p>
-            <p className="eticket-passenger-name">{passengerName || "N/A"}</p>
-            <p className="eticket-passenger-info">Age: {passenger?.Age || "-"} Gender: {passenger?.Gender || "-"}</p>
-            <p className="eticket-passenger-info">Email: {contactData?.Email || "-"}</p>
-            <p className="eticket-passenger-info">Phone: {contactData?.ContactNo || "-"}</p>
-
-            <p className="eticket-important-title !text-[15px]">Important Information</p>
-            <p className="eticket-important-text !text-[15px]">Please reach the boarding point by the reporting time</p>
-            <p className="eticket-important-text !text-[15px]">Ensure your ticket is available for verification during boarding</p>
-            <p className="eticket-chat-link !text-[15px]">Chat with us Link</p>
-
-            <p className="eticket-note-text !text-[20px]">NOTE : This operator accepts mTicket, you need not carry a print out</p>
+          <div>
+            <p className="eticket-passenger-name">{passengerName}</p>
+            <p className="eticket-passenger-info">Age: {passenger?.Age}</p>
+            <p className="eticket-passenger-info">Gender: {passenger?.Gender}</p>
+            <p className="eticket-passenger-info">Email: {contactData?.Email}</p>
+            <p className="eticket-passenger-info">Phone: {contactData?.ContactNo}</p>
           </div>
 
-          <div className="eticket-payment-section">
-            <div className="eticket-seat-header">
-              <p className="eticket-seat-title">Seat Number</p>
-              <p className="eticket-seat-number">{passenger?.SeatNo || "-"}</p>
-            </div>
-
+          <div>
             <p className="eticket-payment-title">Payment Details</p>
-
-            <div className="eticket-payment-row">
-              <span className="eticket-payment-label">Basic Fare</span>
-              <span className="eticket-payment-amount">Rs. {totalPrice}</span>
-            </div>
-
-            <div className="eticket-payment-row eticket-payment-total">
-              <span className="eticket-payment-label">Amount Paid</span>
-              <span className="eticket-payment-amount">Rs. {totalPrice}</span>
-            </div>
-
-            <p className="eticket-savings">You saved Rs.50 via Sanchar6T</p>
+            <p>Amount Paid: Rs. {totalPrice}</p>
           </div>
         </div>
 
-        {/* Guidelines Section */}
+        {/* Guidelines + Images (unchanged) */}
+        {/* ...your restriction images UI stays exactly same... */}
         <div className="eticket-guidelines">
-          <h3 className="eticket-guidelines-title !text-[20px]">Passenger Guidelines</h3>
+           <h3 className="eticket-guidelines-title !text-[20px]">Passenger Guidelines</h3>
 
-          <h4 className="eticket-restrictions-title !text-[15px]">Travel Restrictions Important Don'ts During Travel</h4>
+           <h4 className="eticket-restrictions-title !text-[15px]">Travel Restrictions Important Don'ts During Travel</h4>
 
-          {/* First row of restrictions */}
-          <div className="eticket-restrictions-grid">
-            <div className="eticket-restriction-item">
-              <img src={ticketImg} alt="Ticket" className="eticket-restriction-img" />
-              <p className="eticket-restriction-text !text-[15px]">Don't board without a <span className="eticket-restriction-bold">valid ticket and ID</span> proof.</p>
-            </div>
-            <div className="eticket-restriction-item">
-              <img src={hazardousImg} alt="Hazardous" className="eticket-restriction-img" />
-              <p className="eticket-restriction-text !text-[15px]">Don't carry hazardous, <span className="eticket-restriction-bold">illegal, or flammable</span> items.</p>
-            </div>
-            <div className="eticket-restriction-item">
-              <img src={alcoholImg} alt="Alcohol" className="eticket-restriction-img" style={{width:"100px"}} />
-              <p className="eticket-restriction-text !text-[15px]">Don't smoke, <span className="eticket-restriction-bold">consume alcohol, or</span> use drugs on board.</p>
-            </div>
-          </div>
+           {/* First row of restrictions */}
+           <div className="eticket-restrictions-grid">
+             <div className="eticket-restriction-item">
+               <img src={ticketImg} alt="Ticket" className="eticket-restriction-img" />
+               <p className="eticket-restriction-text !text-[15px]">Don't board without a <span className="eticket-restriction-bold">valid ticket and ID</span> proof.</p>
+             </div>
+             <div className="eticket-restriction-item">
+               <img src={hazardousImg} alt="Hazardous" className="eticket-restriction-img" />
+               <p className="eticket-restriction-text !text-[15px]">Don't carry hazardous, <span className="eticket-restriction-bold">illegal, or flammable</span> items.</p>
+             </div>
+             <div className="eticket-restriction-item">
+               <img src={alcoholImg} alt="Alcohol" className="eticket-restriction-img" style={{width:"100px"}} />
+               <p className="eticket-restriction-text !text-[15px]">Don't smoke, <span className="eticket-restriction-bold">consume alcohol, or</span> use drugs on board.</p>
+             </div>
+           </div>
 
-          {/* Second row of restrictions */}
-          <div className="eticket-restrictions-grid">
-            <div className="eticket-restriction-item">
-              <img src={dndImg} alt="Do Not Disturb" className="eticket-restriction-img" />
-              <p className="eticket-restriction-text !text-[15px]">Don't cause disturbance <span className="eticket-restriction-bold">or inconvenience to</span> fellow passengers.</p>
-            </div>
-            <div className="eticket-restriction-item">
-              <img src={luggageImg} alt="Luggage" className="eticket-restriction-img" />
-              <p className="eticket-restriction-text !text-[15px]">Don't leave valuables <span className="eticket-restriction-bold">unattended or in luggage</span> storage.</p>
-            </div>
-            <div className="eticket-restriction-item">
-              <img src={busImg} alt="Bus" className="eticket-restriction-img" />
-              <p className="eticket-restriction-text !text-[15px]">Don't damage bus <span className="eticket-restriction-bold">property or package</span> facilities.</p>
-            </div>
-          </div>
+           {/* Second row of restrictions */}
+           <div className="eticket-restrictions-grid">
+             <div className="eticket-restriction-item">
+               <img src={dndImg} alt="Do Not Disturb" className="eticket-restriction-img" />
+               <p className="eticket-restriction-text !text-[15px]">Don't cause disturbance <span className="eticket-restriction-bold">or inconvenience to</span> fellow passengers.</p>
+             </div>
+             <div className="eticket-restriction-item">
+               <img src={luggageImg} alt="Luggage" className="eticket-restriction-img" />
+               <p className="eticket-restriction-text !text-[15px]">Don't leave valuables <span className="eticket-restriction-bold">unattended or in luggage</span> storage.</p>
+             </div>
+             <div className="eticket-restriction-item">
+               <img src={busImg} alt="Bus" className="eticket-restriction-img" />
+               <p className="eticket-restriction-text !text-[15px]">Don't damage bus <span className="eticket-restriction-bold">property or package</span> facilities.</p>
+             </div>
+           </div>
 
-          <h4 className="eticket-terms-title !text-[18px]">Terms and Conditions</h4>
-          <ul className="eticket-terms-list">
-            <li className="eticket-terms-item !text-[18px]">• Passenger must carry a valid government photo ID matching the ticket name.</li>
-            <li className="eticket-terms-item !text-[18px]">• Report at the boarding point at least 30 minutes before departure. Late arrival may lead to seat cancellation without refund.</li>
-            <li className="eticket-terms-item !text-[18px]">• Ticket is valid only for the passenger, date, and time mentioned. Non-transferable.</li>
-            <li className="eticket-terms-item !text-[18px]">• Cancellations and refunds are as per operator policy. Eligible refunds will be processed within 7-10 working days.</li>
-            <li className="eticket-terms-item !text-[18px]">• Rescheduling is subject to availability and fare difference, if any.</li>
-          </ul>
-        </div>
-      <div style={{ position: "absolute", top: 20, right: 20 }}>
+           <h4 className="eticket-terms-title !text-[18px]">Terms and Conditions</h4>
+           <ul className="eticket-terms-list">
+             <li className="eticket-terms-item !text-[18px]">• Passenger must carry a valid government photo ID matching the ticket name.</li>
+             <li className="eticket-terms-item !text-[18px]">• Report at the boarding point at least 30 minutes before departure. Late arrival may lead to seat cancellation without refund.</li>
+             <li className="eticket-terms-item !text-[18px]">• Ticket is valid only for the passenger, date, and time mentioned. Non-transferable.</li>
+             <li className="eticket-terms-item !text-[18px]">• Cancellations and refunds are as per operator policy. Eligible refunds will be processed within 7-10 working days.</li>
+             <li className="eticket-terms-item !text-[18px]">• Rescheduling is subject to availability and fare difference, if any.</li>
+           </ul>
+         </div>
+       <div style={{ position: "absolute", top: 20, right: 20 }}>
            
-        </div>
+         </div>
       </div>
+
+      
+
+      {/* Download Button */}
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <button
           onClick={handleDownloadPDF}
@@ -375,3 +834,5 @@ export const ETicket = ({
     </>
   );
 };
+
+export default ETicket;

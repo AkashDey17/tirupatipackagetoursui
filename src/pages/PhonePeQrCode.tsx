@@ -29,7 +29,7 @@ export default function PhonePeQrCode() {
 
       <p className="text-lg font-semibold mb-2 text-black">Amount: ₹{totalPrice}</p>
 
-      <img src={qrImage} alt="QR Code" className="w-60 h-60 border p-2 rounded-lg shadow-lg mb-4" />
+      <img src={qrImage} alt="QR Code" className="w-70 h-70 border p-2 rounded-lg shadow-lg mb-4" />
 
       <p className="text-xs text-gray-700 text-center mb-4">
         DISCLAIMER: This ticket is temporary. Our operator will call you for confirmation.<br />

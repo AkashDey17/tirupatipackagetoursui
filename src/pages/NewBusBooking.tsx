@@ -246,7 +246,7 @@ const NewBusBooking = () => {
   const [busCount, setBusCount] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/bus-count")
+    fetch("https://api.tirupatipackagetours.com/api/bus-count")
       .then((res) => res.json())
       .then((data) => setBusCount(data.count || 0))
       .catch(() => setBusCount(0));
@@ -260,7 +260,7 @@ const NewBusBooking = () => {
   };
 
   const location = useLocation();
-  const { from } = location.state || { from: "Majestic" };
+  const { from,packageId } = location.state || { from: "Majestic",packageId:2 };
 
   return (
     <div className="min-h-screen bg-background">
@@ -425,7 +425,7 @@ const NewBusBooking = () => {
 
           {/* Bus Listings */}
           <main className="flex-1 space-y-6">
-            <BusListingContainer selectedDate={selectedDate} />
+            <BusListingContainer selectedDate={selectedDate} packageId={packageId} />
           </main>
         </div>
       </div>

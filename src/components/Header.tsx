@@ -300,7 +300,8 @@ const Header = () => {
               src={logoImg1}
               alt="Sanchar6T"
               style={{
-                height: "50px",
+                // height: "50px",
+                height:"80px",
                 width: "auto",
                 objectFit: "contain",
               }}

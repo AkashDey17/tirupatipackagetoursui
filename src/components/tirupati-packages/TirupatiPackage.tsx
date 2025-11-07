@@ -41,6 +41,7 @@ const TirupatiPakage = () => {
       </h2>
       <Link to="/new-bus-booking"
       state={{
+         packageId: 2,
     from: "Tirupati 1Day 1Night Dharma Darshan Package",
     
   }}

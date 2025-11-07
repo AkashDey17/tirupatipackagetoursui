@@ -503,6 +503,7 @@
 
 // export default ETicket;
 
+// the abive is with phone pe dummy
 
 
 import React, { useRef, useEffect } from "react";
@@ -528,6 +529,12 @@ const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData }) 
     coachType = "",
     busNumber = "",
     operator = "",
+    
+          duration,
+          
+         
+          selectedSeats,
+          busType
   } = tripData || {};
 
   const ticketRef = useRef(null);
@@ -657,7 +664,7 @@ const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData }) 
       `}</style>
 
       {/* Back Button */}
-      <div style={{ position: "absolute", top: 20, left: 20 }}>
+      {/* <div style={{ position: "absolute", top: 20, left: 20 }}>
         <button
           onClick={() => navigate("/new-bus-booking")}
           style={{
@@ -669,7 +676,7 @@ const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData }) 
         >
           <ArrowLeft size={18} /> Back to Bus Booking
         </button>
-      </div>
+      </div> */}
 
       {/* Ticket */}
       <div className="eticket-container" ref={ticketRef}>
@@ -703,7 +710,7 @@ const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData }) 
         <div className="eticket-journey-details">
           <div>
             <p className="eticket-detail-label">Coach Type</p>
-            <p className="eticket-detail-value">{coachType}</p>
+            <p className="eticket-detail-value">{ busType}</p>
           </div>
           <div>
             <p className="eticket-detail-label">Reporting time</p>
@@ -745,15 +752,24 @@ const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData }) 
 
         {/* Passenger & Payment */}
         <div className="eticket-passenger-payment">
+          {travellerData?.map((p, index) => {
+            const name = `${p.FirstName || ""} ${p.LastName || ""}`.trim() || "Passenger";
+            return (
+              <div key={index} style={{ marginBottom: "12px" }}>
+                <p className="eticket-passenger-name">{name}</p>
+                <p className="eticket-passenger-info">Age: {p.Age || ""}</p>
+                <p className="eticket-passenger-info">Gender: {p.Gender || "N/A"}</p>
+                <p className="eticket-passenger-info">
+                  Seat No: <strong>{p.SeatNo || p.SeatNumber || "N/A"}</strong>
+                </p>
+              </div>
+            );
+          })}
+
+          {/* Contact & Payment (optional, single block) */}
           <div>
-            <p className="eticket-passenger-name">{passengerName}</p>
-            <p className="eticket-passenger-info">Age: {passenger?.Age}</p>
-            <p className="eticket-passenger-info">Gender: {passenger?.Gender}</p>
             <p className="eticket-passenger-info">Email: {contactData?.Email}</p>
             <p className="eticket-passenger-info">Phone: {contactData?.ContactNo}</p>
-          </div>
-
-          <div>
             <p className="eticket-payment-title">Payment Details</p>
             <p>Amount Paid: Rs. {totalPrice}</p>
           </div>

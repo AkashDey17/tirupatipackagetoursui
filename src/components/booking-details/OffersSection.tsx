@@ -1,25 +1,13 @@
-
-
-import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 
 const OffersSection = () => {
-  const { state } = useLocation();
-  const { selectedSeats = [] } = state || {};
-
   return (
     <div className="bg-flixbus-card rounded-lg border border-flixbus-border p-4">
       <div className="flex items-center justify-between mb-4">
-<<<<<<< HEAD
-        <h3 className="text-lg font-semibold text-[#4A4A4A]">
-          {selectedSeats.length > 0 ? selectedSeats.join(", ") : "No Seats Selected"}
-        </h3>
-=======
         <h3 className="text-lg font-semibold text-[#4A4A4A]">Selected Seats are 1C, 2B</h3>
->>>>>>> d55996f (added many logics)
         <button className="text-flixbus-blue text-sm underline">View Policies</button>
       </div>
       
@@ -27,9 +15,13 @@ const OffersSection = () => {
         <h4 className="font-bold mb-3">Offers</h4>
         
         <RadioGroup className="space-y-3">
-          <div className="rounded-lg p-3 bg-[#f2f2f28f]">
+          <div className=" rounded-lg p-3 bg-[#f2f2f28f]">
             <div className="flex items-center space-x-2 mb-2">
-              <RadioGroupItem value="megabusseo" id="megabusseo" />
+              <RadioGroupItem 
+                value="megabusseo" 
+                id="megabusseo" 
+                className="border-flixbus-border text-flixbus-blue"
+              />
               <Label htmlFor="megabusseo" className="font-semibold text-flixbus-text">
                 MEGABUSSEO
               </Label>
@@ -41,7 +33,11 @@ const OffersSection = () => {
           
           <div className="bg-[#f2f2f28f] rounded-lg p-3">
             <div className="flex items-center space-x-2 mb-2">
-              <RadioGroupItem value="bustrainpass" id="bustrainpass" />
+              <RadioGroupItem 
+                value="bustrainpass" 
+                id="bustrainpass" 
+                className="border-flixbus-border text-flixbus-blue"
+              />
               <Label htmlFor="bustrainpass" className="font-semibold text-flixbus-text">
                 BUSTRAINPASS
               </Label>

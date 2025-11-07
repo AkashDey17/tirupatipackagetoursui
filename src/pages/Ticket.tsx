@@ -22,7 +22,10 @@ const Ticket = () => {
   //   gstData = {},
   //   tripData = {}
   // } = state || {};
-  const { travellerData, contactData, gstData, totalPrice, tripData } = state || {};
+  const { travellerData, contactData, gstData, totalPrice, tripData,travelDate,boardingPoint,
+    droppingPoint,
+    departureTime,
+    arrivalTime, selectedSeats, duration, busType } = state || {};
 
 
   return (
@@ -32,7 +35,19 @@ const Ticket = () => {
         travellerData={travellerData}
         contactData={contactData}
         gstData={gstData}
-         tripData={tripData}
+        
+         tripData={{
+         
+          boardingPoint,
+          droppingPoint,
+          departureTime,
+          arrivalTime,
+           busType,
+          duration,
+          travelDate,
+         
+          selectedSeats,
+        }}
       />
     </div>
   );

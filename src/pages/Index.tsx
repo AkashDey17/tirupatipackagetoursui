@@ -11,13 +11,8 @@ import ItineraryPlanner from "@/components/ItineraryPlanner";
 import ScrollVideo from "@/components/ScrollVideo";
 import TravelQuiz from "@/components/TravelQuiz";
 import ContactFloatingButton from "@/components/ContactFloatingButton";
-<<<<<<< HEAD
-import poster from "@/assets/poster.jpeg";
-import poster2 from "@/assets/poster2.jpg";
-=======
 // import poster from "@/assets/poster.jpeg";
 // import poster2 from "@/assets/poster2.jpg";
->>>>>>> d55996f (added many logics)
 import LiveMoodIndicator from "@/components/LiveMoodIndicator";
 
 const Index = () => {
@@ -43,11 +38,7 @@ const Index = () => {
       </Helmet>
 
       {/* Centered Poster Popup */}
-<<<<<<< HEAD
-      {showPoster && (
-=======
       {/* {showPoster && (
->>>>>>> d55996f (added many logics)
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-40 px-4"
           onClick={handleClosePoster} // click outside closes poster
@@ -63,11 +54,7 @@ const Index = () => {
               ✕
             </button>
 
-<<<<<<< HEAD
-            {/* Poster Image */}
-=======
             
->>>>>>> d55996f (added many logics)
             <img
               src={poster2}
               alt="Poster"
@@ -75,11 +62,7 @@ const Index = () => {
             />
           </div>
         </div>
-<<<<<<< HEAD
-      )}
-=======
       )} */}
->>>>>>> d55996f (added many logics)
 
       {/* Existing page content */}
       <Header />

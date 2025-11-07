@@ -255,7 +255,6 @@ const BusBookingDetails = () => {
     selectedDate,
   } = location.state || {};
 
-  console.log("🚌 Bus ID (state):", busId);
   console.log("👨‍💼 Operator ID (state):", operatorId);
   console.log("📄 BusBookingDetails ID (state):", busBookingDetailsId);
   console.log("🗓️ Selected Date (state):", selectedDate);

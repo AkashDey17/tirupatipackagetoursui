@@ -801,11 +801,18 @@ const handleContinue = () => {
     duration,
     busBookingDetailsId,
     operatorId: operatorId ?? localOperatorId,
-    selectedDate: dateOnly, // ✅ Pass date without time zone
+    selectedDate: dateOnly, // Pass date without time zone
   };
 
-  // ✅ Navigate with clean state
-  navigate("/booking-details", { state: bookingData });
+ // Save to localStorage to persist across reloads
+  localStorage.setItem("bookingData", JSON.stringify(bookingData));
+  console.log("bookingData saved:", bookingData);
+
+  // Small delay ensures storage completes before route change
+  setTimeout(() => {
+    console.log("Navigating with bookingData:", bookingData);
+    navigate("/booking-details", { state: bookingData });
+  }, 100);
 };
 
 

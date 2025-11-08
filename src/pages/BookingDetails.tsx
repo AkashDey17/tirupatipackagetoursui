@@ -112,7 +112,7 @@
 //       // Create / Get PRIMARY User
 //       const primaryTraveller = travellerData[0];
 //       const userResponse = await axios.post(
-//         "https://api.tirupatipackagetours.com/api/user/get-or-create",
+//         "http://localhost:5000/api/user/get-or-create",
 //         {
 //           ...primaryTraveller,
 //           Email: contactData.Email,
@@ -126,7 +126,7 @@
 //       if (saveFlag === "Y") {
 //         await Promise.all(
 //           travellerData.map(t =>
-//             axios.post("https://api.tirupatipackagetours.com/api/user/get-or-create", {
+//             axios.post("http://localhost:5000/api/user/get-or-create", {
 //               ...t,
 //               Email: contactData.Email,
 //               ContactNo: primaryTraveller.ContactNo || contactData.ContactNo,
@@ -175,7 +175,7 @@
 //         };
 
 //         console.log("Seat Assigned:", selectedSeats[i], "→", traveller.FirstName);
-//         await axios.post("https://api.tirupatipackagetours.com/api/bus-booking-seat", payload);
+//         await axios.post("http://localhost:5000/api/bus-booking-seat", payload);
 //       }
 
 //       localStorage.setItem("bookedSeats", JSON.stringify(selectedSeats));
@@ -342,7 +342,7 @@ const BusBookingDetails = () => {
       // ✅ Create / Get PRIMARY User
       const primaryTraveller = travellerData[0];
       const userResponse = await axios.post(
-        "https://api.tirupatipackagetours.com/api/user/get-or-create",
+        "http://localhost:5000/api/user/get-or-create",
         {
           ...primaryTraveller,
           Email: contactData.Email,
@@ -357,7 +357,7 @@ const BusBookingDetails = () => {
       if (saveFlag === "Y") {
         await Promise.all(
           travellerData.map((t) =>
-            axios.post("https://api.tirupatipackagetours.com/api/user/get-or-create", {
+            axios.post("http://localhost:5000/api/user/get-or-create", {
               ...t,
               Email: contactData.Email,
               ContactNo: t.ContactNo || contactData.ContactNo,
@@ -407,7 +407,7 @@ const BusBookingDetails = () => {
         console.log("🧾 Payload being sent to /api/bus-booking-seat:", payload);
         console.log("🗓️ JourneyDate in payload:", payload.JourneyDate);
         console.log("🪑 Seat Assigned:", selectedSeats[i], "→", traveller.FirstName);
-        await axios.post("https://api.tirupatipackagetours.com/api/bus-booking-seat", payload);
+        await axios.post("http://localhost:5000/api/bus-booking-seat", payload);
 
 
       }

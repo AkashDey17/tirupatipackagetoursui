@@ -223,7 +223,7 @@
 // export default NewBusBooking;
 
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import BusListingContainer from "@/components/booking/BusListingContainer";
 import { Button } from "@/components/ui/button";
 import bus from "@/assets/bus.png";
@@ -244,9 +244,10 @@ const NewBusBooking = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
   const [busCount, setBusCount] = useState(0);
+  const calendarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    fetch("https://api.tirupatipackagetours.com/api/bus-count")
+    fetch("http://localhost:5000/api/bus-count")
       .then((res) => res.json())
       .then((data) => setBusCount(data.count || 0))
       .catch(() => setBusCount(0));
@@ -261,6 +262,27 @@ const NewBusBooking = () => {
 
   const location = useLocation();
   const { from,packageId } = location.state || { from: "Majestic",packageId:2 };
+
+  useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      calendarRef.current &&
+      !calendarRef.current.contains(event.target as Node)
+    ) {
+      setShowCalendar(false);
+    }
+  };
+
+  if (showCalendar) {
+    document.addEventListener("mousedown", handleClickOutside);
+  } else {
+    document.removeEventListener("mousedown", handleClickOutside);
+  }
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [showCalendar]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -327,7 +349,7 @@ const NewBusBooking = () => {
                 </button>
 
                 {/* Calendar Dropdown */}
-                {showCalendar && (
+                {/* {showCalendar && (
                   <div className="absolute top-14 right-0 z-50 bg-white p-4 rounded-2xl shadow-2xl border border-gray-200 w-[320px] sm:w-[360px] md:w-[380px]">
                     <div className="text-center mb-3">
                       <h3 className="text-lg font-semibold text-[#020e68]">Select Your Journey Date</h3>
@@ -361,7 +383,45 @@ const NewBusBooking = () => {
                       </button>
                     </div>
                   </div>
-                )}
+                )} */}
+                {showCalendar && (
+  <div
+    ref={calendarRef}
+    className="absolute top-14 right-0 z-50 bg-white p-4 rounded-2xl shadow-2xl border border-gray-200 w-[320px] sm:w-[360px] md:w-[380px]"
+  >
+    <div className="text-center mb-3">
+                      <h3 className="text-lg font-semibold text-[#020e68]">Select Your Journey Date</h3>
+                      <p className="text-sm text-gray-500">Only from today up to 1 month ahead</p>
+                    </div>
+
+                    <div className="rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                      <CalendarComp
+                        onChange={(date) => {
+                          setSelectedDate(date as Date);
+                          setShowCalendar(false);
+                        }}
+                        value={selectedDate}
+                        minDate={new Date()}
+                        maxDate={new Date(new Date().setMonth(new Date().getMonth() + 1))}
+                      />
+                    </div>
+
+                    <div className="flex justify-center gap-3 mt-4">
+                      <button
+                        onClick={handleToday}
+                        className="px-4 py-2 bg-[#f5f7ff] text-[#020e68] rounded-full font-medium hover:bg-[#d9e2ff] transition-all duration-200"
+                      >
+                        Today
+                      </button>
+                      <button
+                        onClick={handleTomorrow}
+                        className="px-4 py-2 bg-[#f5f7ff] text-[#020e68] rounded-full font-medium hover:bg-[#d9e2ff] transition-all duration-200"
+                      >
+                        Tomorrow
+                      </button>
+                    </div>
+  </div>
+)}
               </div>
 
               {/* Today/Tomorrow buttons */}

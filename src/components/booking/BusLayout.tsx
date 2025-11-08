@@ -483,6 +483,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import seatImg from "@/assets/seat-img.jpeg";
 
 interface Seat {
   id: string;
@@ -892,7 +893,7 @@ const SeatComponent = ({ seat }: { seat: Seat }) => {
         onMouseLeave={() => setHoveredSeat(null)}
       >
         <img
-          src="src/assets/seat-img.jpeg"
+          src={seatImg}
           alt={seat.id}
           className={seatClasses}
         />

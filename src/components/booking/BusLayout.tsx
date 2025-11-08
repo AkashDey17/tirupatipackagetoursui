@@ -865,44 +865,41 @@ const SeatComponent = ({ seat }: { seat: Seat }) => {
     const isBooked = !seat.isAvailable;
 
     const base = "w-20 h-20 mx-auto rounded-md flex items-center justify-center transition-all duration-200";
-   const seatClasses = `${base} ${
-  isBooked
-    ? "opacity-40 grayscale cursor-not-allowed"
-    : "cursor-pointer hover:scale-105"
-} ${
-  isSelected && !isFemaleSeat
-    ? "bg-blue-200 border-2 border-blue-400"
-    : ""
-} ${
-  !isSelected && isFemaleSeat
-    ? "border-2 border-pink-400 bg-pink-100"
-    : ""
-} ${
-  isSelected && isFemaleSeat
-    ? "bg-pink-600 border-2 border-pink-700 text-white"
-    : ""
-}`;
+    const seatClasses = `${base} ${isBooked
+        ? "opacity-40 grayscale cursor-not-allowed"
+        : "cursor-pointer hover:scale-105"
+      } ${isSelected && !isFemaleSeat ? "bg-blue-200 border-2 border-blue-400" : ""
+      } ${!isSelected && isFemaleSeat ? "border-2 border-pink-400 bg-pink-100" : ""
+      } ${isSelected && isFemaleSeat ? "bg-pink-600 border-2 border-pink-700 text-white" : ""
+      }`;
 
-
-    const mouseEnter = (e: any) => {
-      const r = e.target.getBoundingClientRect();
-      setHoveredSeat({ seat, x: r.right, y: r.top });
+    const handleClick = () => {
+      if (!seat.isAvailable) return;
+      handleSeatClick(seat.id);
     };
 
     return (
-      <div
-        className="relative"
-        onClick={() => seat.isAvailable && handleSeatClick(seat.id)}
-        onMouseEnter={mouseEnter}
-        onMouseLeave={() => setHoveredSeat(null)}
-      >
+      <div className="relative group" onClick={handleClick}>
         <img
-          //src="src/assets/seat-img.jpeg"
           src={seatImg}
           alt={seat.id}
           className={seatClasses}
         />
-        <div className="text-[11px] text-price-text mt-1 text-center">₹{seat.price}</div>
+        <div className="text-[11px] text-price-text mt-1 text-center">
+          ₹{seat.price}
+        </div>
+
+        {/* Tooltip box: appears above on hover */}
+        <div className="
+        invisible opacity-0
+        group-hover:visible group-hover:opacity-100
+        absolute bottom-full mb-1 left-1/2 transform -translate-x-1/2
+        w-[7rem] bg-[#3D85C6] text-white text-xs rounded shadow-lg p-2 z-50
+        pointer-events-none
+      ">
+          <div className="font-semibold">Seat No: {seat.id}</div>
+          <div>Fare: ₹{seat.price.toFixed(2)}</div>
+        </div>
       </div>
     );
   };

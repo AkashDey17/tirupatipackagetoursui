@@ -247,7 +247,7 @@ const NewBusBooking = () => {
   const calendarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/bus-count")
+    fetch("https://api.tirupatipackagetours.com/api/bus-count")
       .then((res) => res.json())
       .then((data) => setBusCount(data.count || 0))
       .catch(() => setBusCount(0));

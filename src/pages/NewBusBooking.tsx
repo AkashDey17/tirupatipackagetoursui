@@ -255,9 +255,9 @@ const NewBusBooking = () => {
 
   const handleToday = () => setSelectedDate(new Date());
   const handleTomorrow = () => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    setSelectedDate(tomorrow);
+    const newDate = new Date(selectedDate);
+    newDate.setDate(newDate.getDate() + 1);
+    setSelectedDate(newDate);
   };
 
   const location = useLocation();
@@ -313,7 +313,7 @@ const NewBusBooking = () => {
               </div>
 
               {/* Swap Button */}
-              <button className="bg-[#b1c9eb] w-14 h-14 rounded-full flex items-center justify-center overflow-hidden p-2">
+             <button className="bg-[#b1c9eb] w-14 h-14 rounded-full flex items-center justify-center overflow-hidden p-2 mr-[45px]">
                 <img src={swap} alt="Swap" className="w-full h-full object-contain" />
               </button>
 

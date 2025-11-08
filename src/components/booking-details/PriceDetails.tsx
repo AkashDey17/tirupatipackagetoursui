@@ -396,17 +396,26 @@ const handleContinueClick = () => {
 
 const goToPayment = async (flag: "Y" | "N") => {
   try {
-   
-    await handleSubmit(flag);
+    // Call parent submit (likely inserts booking)
+    const bookingResponse: any = await handleSubmit(flag);
 
-    // ✅ Generate sessionId if not exists
+    // ✅ Extract IDs safely
+    const userId = bookingResponse?.UserID || contactData?.UserID || 1; // fallback to logged-in or guest
+    const bookingdtlsId = bookingResponse?.BookingdtlsID || bookingResponse?.bookingId || null;
+
+    if (!bookingdtlsId) {
+      toast.error("Booking details not found. Please retry.");
+      return;
+    }
+
+    // ✅ Generate or reuse session ID
     let sessionId = localStorage.getItem("sessionId");
     if (!sessionId) {
       sessionId = "USER-" + Date.now();
       localStorage.setItem("sessionId", sessionId);
     }
 
-    // ✅ Lock all selected seats (wait for all to complete)
+    // ✅ Lock selected seats
     if (selectedSeats?.length > 0) {
       console.log("🔒 Locking seats before payment:", selectedSeats);
       await Promise.all(
@@ -414,13 +423,18 @@ const goToPayment = async (flag: "Y" | "N") => {
           fetch("https://api.tirupatipackagetours.com/api/seat/lock", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ busId, seatNo: seat, sessionId , journeyDate: selectedDate,}),
+            body: JSON.stringify({
+              busId,
+              seatNo: seat,
+              sessionId,
+              journeyDate: selectedDate,
+            }),
           })
         )
       );
     }
 
-    // ✅ Prepare complete booking data
+    // ✅ Prepare full booking data
     const bookingData = {
       boardingPoint,
       droppingPoint,
@@ -440,25 +454,26 @@ const goToPayment = async (flag: "Y" | "N") => {
       passengerCount: travellerData?.length || selectedSeats?.length || 1,
     };
 
-    // ✅ Save it to localStorage for PaymentResult
+    // Save to localStorage for later use
     localStorage.setItem("bookingData", JSON.stringify(bookingData));
 
     setShowPopup(false);
 
-    // ✅ Call PhonePe API only after seats are securely locked
+    // ✅ Create PhonePe order
     const response = await fetch("https://api.tirupatipackagetours.com/api/payment/create-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         merchantOrderId: "ORDER" + Date.now(),
-        amount: totalPrice * 100, // convert to paise
+        amount: totalPrice * 100,
+        userId: userId,
+        bookingdtlsId: bookingdtlsId,
       }),
     });
 
     const data = await response.json();
     const { phonepeResponse } = data;
 
-    // ✅ Small delay to ensure backend lock transaction finishes
     await new Promise((res) => setTimeout(res, 500));
 
     if (phonepeResponse?.redirectUrl) {
@@ -473,6 +488,7 @@ const goToPayment = async (flag: "Y" | "N") => {
     alert("Something went wrong while locking seats or starting payment.");
   }
 };
+
 
 
   return (

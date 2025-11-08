@@ -893,7 +893,7 @@ const SeatComponent = ({ seat }: { seat: Seat }) => {
         onMouseLeave={() => setHoveredSeat(null)}
       >
         <img
-          src={seatImg}
+          src="src/assets/seat-img.jpeg"
           alt={seat.id}
           className={seatClasses}
         />

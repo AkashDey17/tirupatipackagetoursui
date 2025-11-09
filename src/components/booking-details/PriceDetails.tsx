@@ -452,8 +452,9 @@ const goToPayment = async (flag: "Y" | "N") => {
     // ✅ Extract IDs safely
     const userId = bookingResponse?.UserID || contactData?.UserID || 1; // fallback to logged-in or guest
     const bookingdtlsId = bookingResponse?.BookingdtlsID || bookingResponse?.bookingId || null;
-
-    if (!bookingdtlsId) {
+     const busBookingSeatId = bookingResponse?.BusBookingSeatID || null;
+    if
+     (!bookingdtlsId) {
       toast.error("Booking details not found. Please retry.");
       return;
     }
@@ -518,6 +519,7 @@ const goToPayment = async (flag: "Y" | "N") => {
         amount: totalPrice * 100,
         userId: userId,
         bookingdtlsId: bookingdtlsId,
+        busBookingSeatId: busBookingSeatId,
       }),
     });
 

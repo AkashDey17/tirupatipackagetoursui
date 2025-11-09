@@ -745,6 +745,7 @@ const BusListing = (props: Props) => {
     selectedDate,
     packageId
   } = props;
+console.log("🎯 BusListing packageId:", packageId, "Type:", typeof packageId, "Selected Date:", selectedDate);
 
   const [showSeats, setShowSeats] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<
@@ -841,33 +842,13 @@ const BusListing = (props: Props) => {
       return { fromDate: "", toDate: "" };
     }
   })();
+// ✅ Compute journey date range based on packageId
+
 
   // ✅ New state for live seat info
   const [remainingSeats, setRemainingSeats] = useState<number | null>(null);
   const [loadingSeats, setLoadingSeats] = useState(true);
-  //  useEffect(() => {
-  //   const fetchRemainingSeats = async () => {
-  //     try {
-  //       const res = await fetch(
-  //         `https://api.tirupatipackagetours.com/api/bus/seatLayout?busId=${busBookingDetailsId}`
-  //       );
-  //       const data = await res.json();
-  //       if (data?.success) {
-  //         setRemainingSeats(data.remainingSeats ?? seatsAvailable);
-  //       } else {
-  //         setRemainingSeats(seatsAvailable);
-  //       }
-  //     } catch (error) {
-  //       console.error("❌ Error fetching remaining seats:", error);
-  //       setRemainingSeats(seatsAvailable);
-  //     } finally {
-  //       setLoadingSeats(false);
-  //     }
-  //   };
-
-  //   fetchRemainingSeats();
-  // }, [busBookingDetailsId]);
-  // const hasSeats = seatsAvailable > 0;
+  
   useEffect(() => {
     const fetchRemainingSeats = async () => {
       try {
@@ -941,7 +922,7 @@ const BusListing = (props: Props) => {
           </div>
 
           {/* Arrival */}
-          <div>
+          {/* <div>
             <div className="text-2xl font-bold text-[#020e68]">{arrivalTime}</div>
             <div className="text-xs text-gray-500">
               {toDate
@@ -952,7 +933,21 @@ const BusListing = (props: Props) => {
                 })
                 : ""}
             </div>
-          </div>
+          </div> */}
+       <div className="text-xs text-gray-500">
+  {toDate
+    ? new Date(
+        new Date(selectedDate).setDate(
+          new Date(selectedDate).getDate() + (packageId === 3 ? 4 : 1)
+        )
+      ).toLocaleDateString("en-US", {
+        weekday: "short",
+        month: "short",
+        day: "2-digit",
+      })
+    : ""}
+</div>
+
         </div>
 
 

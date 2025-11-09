@@ -353,8 +353,45 @@ const PriceDetails = ({
     };
   }, [busId, selectedSeats]);
 
-  // const handleContinueClick = () => setShowPopup(true);
-const handleContinueClick = () => {
+  
+// const handleContinueClick = () => {
+//   // ✅ Basic traveller validation
+//   if (!travellerData || travellerData.length === 0) {
+//     toast.error("Please fill traveller details before continuing");
+//     return;
+//   }
+
+//   for (let i = 0; i < travellerData.length; i++) {
+//     const t = travellerData[i];
+//     if (!t.FirstName?.trim()) {
+//       toast.error(`Enter name for traveller ${i + 1}`);
+//       return;
+//     }
+//     if (!t.Age || Number(t.Age) <= 0) {
+//       toast.error(`Enter valid age for traveller ${i + 1}`);
+//       return;
+//     }
+//     if (!t.Gender) {
+//       toast.error(`Select gender for traveller ${i + 1}`);
+//       return;
+//     }
+//   }
+
+//   // ✅ Contact details validation
+//   if (!contactData?.Email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactData.Email)) {
+//     toast.error("Enter valid email address");
+//     return;
+//   }
+//   if (!contactData?.ContactNo || !/^[6-9]\d{9}$/.test(contactData.ContactNo)) {
+//     toast.error("Enter valid 10-digit mobile number");
+//     return;
+//   }
+
+//   // ✅ If all ok, show popup
+//   setShowPopup(true);
+// };
+
+ const handleContinueClick = () => {
   // ✅ Basic traveller validation
   if (!travellerData || travellerData.length === 0) {
     toast.error("Please fill traveller details before continuing");
@@ -375,6 +412,20 @@ const handleContinueClick = () => {
       toast.error(`Select gender for traveller ${i + 1}`);
       return;
     }
+
+    // ✅ Document validation (fix)
+    const hasDocType =
+      t.AadharNo || t.PancardNo || t.DrivingLicence || t.PassportNo || t.VoterID || t.RationCard || t.Others;
+
+    if (hasDocType) {
+      const docValue =
+        t.AadharNo || t.PancardNo || t.DrivingLicence || t.PassportNo || t.VoterID || t.RationCard || t.Others;
+
+      if (!docValue?.trim()) {
+        toast.error(`Enter document number for traveller ${i + 1}`);
+        return;
+      }
+    }
   }
 
   // ✅ Contact details validation
@@ -391,7 +442,6 @@ const handleContinueClick = () => {
   setShowPopup(true);
 };
 
- 
 
 
 const goToPayment = async (flag: "Y" | "N") => {

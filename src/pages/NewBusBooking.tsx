@@ -349,41 +349,7 @@ const NewBusBooking = () => {
                 </button>
 
                 {/* Calendar Dropdown */}
-                {/* {showCalendar && (
-                  <div className="absolute top-14 right-0 z-50 bg-white p-4 rounded-2xl shadow-2xl border border-gray-200 w-[320px] sm:w-[360px] md:w-[380px]">
-                    <div className="text-center mb-3">
-                      <h3 className="text-lg font-semibold text-[#020e68]">Select Your Journey Date</h3>
-                      <p className="text-sm text-gray-500">Only from today up to 1 month ahead</p>
-                    </div>
-
-                    <div className="rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-                      <CalendarComp
-                        onChange={(date) => {
-                          setSelectedDate(date as Date);
-                          setShowCalendar(false);
-                        }}
-                        value={selectedDate}
-                        minDate={new Date()}
-                        maxDate={new Date(new Date().setMonth(new Date().getMonth() + 1))}
-                      />
-                    </div>
-
-                    <div className="flex justify-center gap-3 mt-4">
-                      <button
-                        onClick={handleToday}
-                        className="px-4 py-2 bg-[#f5f7ff] text-[#020e68] rounded-full font-medium hover:bg-[#d9e2ff] transition-all duration-200"
-                      >
-                        Today
-                      </button>
-                      <button
-                        onClick={handleTomorrow}
-                        className="px-4 py-2 bg-[#f5f7ff] text-[#020e68] rounded-full font-medium hover:bg-[#d9e2ff] transition-all duration-200"
-                      >
-                        Tomorrow
-                      </button>
-                    </div>
-                  </div>
-                )} */}
+                
                 {showCalendar && (
   <div
     ref={calendarRef}

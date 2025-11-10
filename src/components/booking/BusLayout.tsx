@@ -76,7 +76,7 @@
 
 //     const fetchSeatLayout = async () => {
 //       try {
-//         const res = await fetch(`https://api.tirupatipackagetours.com/api/bus/seatLayout?busId=${busBookingId}`);
+//         const res = await fetch(`http://localhost:5000/api/bus/seatLayout?busId=${busBookingId}`);
 //         const data = await res.json();
 
 //         if (data.success) {
@@ -108,8 +108,8 @@
 //     const fetchPoints = async () => {
 //       try {
 //         const [boardingRes, droppingRes] = await Promise.all([
-//           fetch(`https://api.tirupatipackagetours.com/api/bus/boardingPoints/${busBookingId}`),
-//           fetch(`https://api.tirupatipackagetours.com/api/bus/droppingPoints/${busBookingId}`)
+//           fetch(`http://localhost:5000/api/bus/boardingPoints/${busBookingId}`),
+//           fetch(`http://localhost:5000/api/bus/droppingPoints/${busBookingId}`)
 //         ]);
 
 //         const boardingData = await boardingRes.json();
@@ -567,56 +567,7 @@ const BusLayout: React.FC<BusLayoutProps> = ({
 
   
   // ✅ Fetch Seat Layout + Prices
-  // useEffect(() => {
-  //   if (!busBookingId) return;
-
-  //   const fetchSeatLayout = async () => {
-  //     try {
-  //       const res = await fetch(`https://api.tirupatipackagetours.com/api/bus/seatLayout?busId=${busBookingId}`);
-  //       const data = await res.json();
-
-  //       if (data.success) {
-  //         // ✅ Base price setup
-  //         setBasePrice({
-  //           weekday: finalSeatPrice?.weekday ?? Number(data.price.weekday || data.price.default),
-  //           weekend: finalSeatPrice?.weekend ?? Number(data.price.weekend || data.price.default),
-  //         });
-
-  //         // ✅ Combine booked + locked seats only from server
-  //         let allBlockedSeats = [
-  //           ...(data.bookedSeats || []),
-  //           ...(data.lockedSeats || []),
-  //         ];
-
-  //         // ✅ Check for local blocked seats (only keep if not expired)
-  //         const local = JSON.parse(localStorage.getItem("blockedSeats") || "{}");
-
-  //         // Optional cleanup: remove seats that are now free on the server
-  //         if (local[busBookingId]) {
-  //           const stillValidLocalSeats = local[busBookingId].filter(
-  //             (s: string) => allBlockedSeats.includes(s)
-  //           );
-  //           local[busBookingId] = stillValidLocalSeats;
-  //           localStorage.setItem("blockedSeats", JSON.stringify(local));
-  //         }
-
-  //         // ✅ Final booked seats come only from backend (source of truth)
-  //         setBookedSeats([...new Set(allBlockedSeats)]);
-
-  //         // ✅ Handle female-only seats (if any)
-  //         if (data.femaleSeatNo) {
-  //           const parsed = data.femaleSeatNo.split(",").map((s: string) => s.trim());
-  //           setFemaleSeats(parsed);
-  //         }
-  //       }
-  //     } catch (err) {
-  //       console.error("❌ Error fetching seat layout:", err);
-  //     }
-  //   };
-
-  //   fetchSeatLayout();
-
-  // }, [busBookingId, finalSeatPrice]);
+ 
   useEffect(() => {
   if (!busBookingId || !selectedDate) return;
 
@@ -630,7 +581,7 @@ const BusLayout: React.FC<BusLayoutProps> = ({
   console.log("✅ Journey Date being passed:", journeyDate);
 
       const res = await fetch(
-        `https://api.tirupatipackagetours.com/api/bus/seatLayout?busId=${busBookingId}&journeyDate=${journeyDate}`
+        `http://localhost:5000/api/bus/seatLayout?busId=${busBookingId}&journeyDate=${journeyDate}`
       );
 
       const data = await res.json();
@@ -689,8 +640,8 @@ const BusLayout: React.FC<BusLayoutProps> = ({
     const fetchPoints = async () => {
       try {
         const [boardingRes, droppingRes] = await Promise.all([
-          fetch(`https://api.tirupatipackagetours.com/api/bus/boardingPoints/${busBookingId}`),
-          fetch(`https://api.tirupatipackagetours.com/api/bus/droppingPoints/${busBookingId}`)
+          fetch(`http://localhost:5000/api/bus/boardingPoints/${busBookingId}`),
+          fetch(`http://localhost:5000/api/bus/droppingPoints/${busBookingId}`)
         ]);
 
         const boardingData = await boardingRes.json();

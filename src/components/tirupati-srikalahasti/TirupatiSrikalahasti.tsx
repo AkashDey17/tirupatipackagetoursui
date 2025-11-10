@@ -376,12 +376,22 @@ const TirupatiSrikalahasti = () => {
            <Mail className="w-6 h-6 text-[#6B4E3D]" /> 
            <span className="break-words">Email: enquiry@tirupatipackagetours.com</span>
          </p>
+          <Link to="/new-bus-booking" 
+    state={{
+       packageId: 3,
+    from: "Tirupati Srikalahasti 2Nights 2Days Dharma Darshan Package",
+    
+  }}
+    >
           <button
             onClick={handleBookNow}
             className="mt-4 bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition"
           >
             Book Now &gt;
+
+
           </button>
+          </Link>
         </section>
 
         {/* Terms & Conditions */}

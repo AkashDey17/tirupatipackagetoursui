@@ -133,13 +133,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
-  // WhatsApp redirect logic
-  // const handleBookNow = () => {
-  //   const phoneNumber = "919964060505";
-  //   const message = "Hello! I’d like to know more about your services.";
-  //   window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
-  // };
-
+ 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {

@@ -384,7 +384,7 @@ const TirupatiSrikalahasti = () => {
   }}
     >
           <button
-            onClick={handleBookNow}
+           // onClick={handleBookNow}
             className="mt-4 bg-yellow-400 text-[#6B4E3D] font-bold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition"
           >
             Book Now &gt;

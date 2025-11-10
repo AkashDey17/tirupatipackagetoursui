@@ -174,19 +174,19 @@ const TirupatiSrikalahasti = () => {
         Experience Divine Blessings with Sanchar6T's Premium Pilgrimage Journey
       </span>
     </h2>
-    <Link to="/new-bus-booking" 
+    {/* <Link to="/new-bus-booking" 
     state={{
     from: "Tirupati Srikalahasti 2D 2N Package",
     
   }}
-    >
+    > */}
     <button
-     // onClick={handleBookNow}
+      onClick={handleBookNow}
       className="bg-yellow-400 text-[#6B4E3D] font-bold px-6 py-2 rounded-full shadow-md hover:shadow-lg transition text-sm"
     >
       Book Now &gt;
     </button>
-    </Link>
+    {/* </Link> */}
   </div>
 
   <img

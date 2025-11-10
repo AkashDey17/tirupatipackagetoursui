@@ -112,7 +112,7 @@
 //     // ✅ Create / Get PRIMARY User
 //     const primaryTraveller = travellerData[0];
 //     const userResponse = await axios.post(
-//       "http://localhost:5000/api/user/get-or-create",
+//       "https://api.tirupatipackagetours.com/api/user/get-or-create",
 //       {
 //         ...primaryTraveller,
 //         Email: contactData.Email,
@@ -128,7 +128,7 @@
 //     if (saveFlag === "Y") {
 //       await Promise.all(
 //         travellerData.map((t) =>
-//           axios.post("http://localhost:5000/api/user/get-or-create", {
+//           axios.post("https://api.tirupatipackagetours.com/api/user/get-or-create", {
 //             ...t,
 //             Email: contactData.Email,
 //             ContactNo: t.ContactNo || contactData.ContactNo,
@@ -177,7 +177,7 @@
 //         SavePassengerDetails: saveFlag,
 //       };
 
-//       const response = await axios.post("http://localhost:5000/api/bus-booking-seat", payload);
+//       const response = await axios.post("https://api.tirupatipackagetours.com/api/bus-booking-seat", payload);
       
 
 //       // ✅ Capture bookingdtlsId from backend response (if provided)
@@ -319,7 +319,7 @@ const BusBookingDetails = () => {
 
       // Get primary user
       const primaryTraveller = travellerData[0];
-      const userResponse = await axios.post("http://localhost:5000/api/user/get-or-create", {
+      const userResponse = await axios.post("https://api.tirupatipackagetours.com/api/user/get-or-create", {
         ...primaryTraveller,
         Email: contactData.Email,
         ContactNo: primaryTraveller?.ContactNo || contactData.ContactNo,
@@ -330,7 +330,7 @@ const BusBookingDetails = () => {
       // Optionally save all travellers
       if (saveFlag === "Y") {
         await Promise.all(travellerData.map(t =>
-          axios.post("http://localhost:5000/api/user/get-or-create", {
+          axios.post("https://api.tirupatipackagetours.com/api/user/get-or-create", {
             ...t,
             Email: contactData.Email,
             ContactNo: t.ContactNo || contactData.ContactNo,
@@ -379,7 +379,7 @@ const BusBookingDetails = () => {
           SavePassengerDetails: saveFlag,
         };
 
-        const response = await axios.post("http://localhost:5000/api/bus-booking-seat", payload);
+        const response = await axios.post("https://api.tirupatipackagetours.com/api/bus-booking-seat", payload);
 console.log("Seat booking response:", response.data);
         // ✅ Capture BusBookingSeatID
         if (response.data?.BusBookingSeatID) busBookingSeatId = response.data.BusBookingSeatID;

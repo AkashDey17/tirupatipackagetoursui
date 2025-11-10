@@ -15,7 +15,7 @@ const Payment = () => {
 
   const handlePaymentDone = async () => {
   try {
-    const response = await axios.post("https://api.tirupatipackagetours.com/api/payment/create-order", {
+    const response = await axios.post("http://localhost:5000/api/payment/create-order", {
       merchantOrderId: "ORDER" + Date.now(),
       amount: totalPrice * 100, // convert INR to paise
     });

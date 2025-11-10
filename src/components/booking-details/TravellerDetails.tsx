@@ -1,13 +1,27 @@
-
 // import { useLocation } from "react-router-dom";
 // import { useState, useEffect } from "react";
 // import { Input } from "@/components/ui/input";
 // import { Label } from "@/components/ui/label";
-// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
 // import maleImg from "@/assets/male.png";
 // import femaleImg from "@/assets/female.png";
+// import { toast } from "react-hot-toast";
 
-// const TravellerDetails = ({ setTravellerData, }: { setTravellerData: any }) => {
+// const TravellerDetails = ({
+//   setTravellerData,
+   
+//   femaleSeats = [],
+// }: {
+//   setTravellerData: any;
+//   selectedSeats: any[];
+//   femaleSeats: any[];
+// }) => {
 //   const { state } = useLocation();
 //   const { selectedSeats = [] } = state || {};
 //   const [docTypes, setDocTypes] = useState<{ [key: number]: string }>({});
@@ -30,17 +44,47 @@
 //     return ["aadhar", "pan", "dl", "passport", "voter", "ration", "others"];
 //   };
 
+//   // 🧩 Updated with women-only seat validation
 //   const handleInputChange = (index: number, field: string, value: any) => {
+//     const seat = selectedSeats[index];
+
+//     // ✅ Gender validation: if women-only seat
+//     if (field === "gender" && seat) {
+//       const isWomenSeat =
+//         seat.isLadiesSeat === true ||
+//         seat.genderType === "W" ||
+//         seat.seatType?.toLowerCase() === "women";
+
+//       if (isWomenSeat && value === "male") {
+//         toast.error(
+//           `Seat ${seat.SeatNo || seat.seatNumber || index + 1} is reserved for women. Please select a different seat or change gender.`
+//         );
+//         return; // ❌ Stop update
+//       }
+
+//       if (isWomenSeat && value === "female") {
+//         toast.success(
+//           `Seat ${seat.SeatNo || seat.seatNumber || index + 1} is reserved for women.`
+//         );
+//       }
+//     }
+
+//     // ✅ Normal update logic
 //     setFormData((prev) => ({
 //       ...prev,
 //       [index]: {
 //         ...prev[index],
 //         [field]: value,
-//         ...(field === "gender" && value === "male" ? { pregnant: false } : {}),
-//         ...(field === "pregnant" && value === true ? { gender: "female" } : {}),
-//       }
+//         ...(field === "gender" && value === "male"
+//           ? { pregnant: false }
+//           : {}),
+//         ...(field === "pregnant" && value === true
+//           ? { gender: "female" }
+//           : {}),
+//       },
 //     }));
 //   };
+
 //   const handleDocTypeChange = (index: number, value: string) => {
 //     setDocTypes((prev) => ({ ...prev, [index]: value }));
 //     handleInputChange(index, "docType", value);
@@ -64,7 +108,7 @@
 //     });
 //   };
 
-//   // ✅ Map Aadhaar/PAN/etc. properly
+//   // ✅ Map traveller data payload
 //   useEffect(() => {
 //     const payload = selectedSeats.map((seatId, i) => {
 //       const t = formData[i] || {};
@@ -75,7 +119,7 @@
 //         FirstName: t.name || "",
 //         MiddleName: t.middleName || "",
 //         LastName: t.lastName || "",
-//         Age:t.Age || "",
+//         Age: t.Age || "",
 //         Gender: t.gender || "",
 //         DOB: t.dob || null,
 //         AadharNo: docType === "aadhar" ? t.docNo || "" : "",
@@ -95,23 +139,30 @@
 //     setTravellerData(payload);
 //   }, [formData, docTypes, selectedSeats, setTravellerData]);
 
-  
 //   return (
 //     <div className="bg-flixbus-card rounded-lg border border-flixbus-border p-6">
 //       <div className="flex justify-between items-center mb-6">
-//         <h2 className="text-xl font-bold text-[#3D85C6]">Traveller Details</h2>
+//         <h2 className="text-xl font-bold text-[#3D85C6]">
+//           Traveller Details
+//         </h2>
 //         <div className="flex items-center space-x-2">
 //           <span className="text-sm text-[#3D85C6] font-medium">IND</span>
 //           <button
 //             type="button"
 //             className={`relative inline-flex items-center h-6 w-12 rounded-full transition-colors duration-300 ${
-//               travellerType === "NRI" ? "bg-[#3d85c6]" : "bg-gray-300"
+//               travellerType === "NRI"
+//                 ? "bg-[#3d85c6]"
+//                 : "bg-gray-300"
 //             }`}
-//             onClick={() => setTravellerType(travellerType === "IND" ? "NRI" : "IND")}
+//             onClick={() =>
+//               setTravellerType(travellerType === "IND" ? "NRI" : "IND")
+//             }
 //           >
 //             <span
 //               className={`inline-block w-5 h-5 transform bg-white rounded-full shadow-md transition-transform duration-300 ${
-//                 travellerType === "NRI" ? "translate-x-6" : "translate-x-1"
+//                 travellerType === "NRI"
+//                   ? "translate-x-6"
+//                   : "translate-x-1"
 //               }`}
 //             ></span>
 //           </button>
@@ -131,7 +182,10 @@
 //               if (checked) copyFirstTraveller();
 //             }}
 //           />
-//           <Label htmlFor="copyFromFirst" className="text-sm text-[#3D85C6] font-medium">
+//           <Label
+//             htmlFor="copyFromFirst"
+//             className="text-sm text-[#3D85C6] font-medium"
+//           >
 //             Copy details from 1st traveller
 //           </Label>
 //         </div>
@@ -139,22 +193,30 @@
 
 //       {selectedSeats.map((seatId: string, index: number) => (
 //         <div key={seatId} className="mb-8">
-//           {/* Seat Info */}
 //           <div className="flex items-center mb-4 justify-between">
 //             <div className="flex items-center">
 //               <span className="text-sm text-[#4A4A4A] mr-1">Seat</span>
-//               <span className="px-2 py-1 rounded text-sm font-bold">{seatId}</span>
+//               <span className="px-2 py-1 rounded text-sm font-bold">
+//                 {seatId}
+//               </span>
 //             </div>
 //           </div>
 
-//           {/* Row 1: Name, Age, Gender, Document */}
 //           <div className="grid grid-cols-1 md:grid-cols-6 gap-6 items-end">
+//             {/* Name */}
 //             <div className="md:col-span-2 flex flex-col">
-//               <Label htmlFor={`name${index}`} className="text-sm font-medium text-[#3D85C6]">Name</Label>
+//               <Label
+//                 htmlFor={`name${index}`}
+//                 className="text-sm font-medium text-[#3D85C6]"
+//               >
+//                 Name
+//               </Label>
 //               <Input
 //                 id={`name${index}`}
 //                 value={formData[index]?.name || ""}
-//                 onChange={(e) => handleInputChange(index, "name", e.target.value)}
+//                 onChange={(e) =>
+//                   handleInputChange(index, "name", e.target.value)
+//                 }
 //                 placeholder="Type here"
 //                 className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-48"
 //               />
@@ -162,42 +224,64 @@
 
 //             {/* Age */}
 //             <div className="md:col-span-1 flex flex-col">
-//               <Label htmlFor={`age${index}`} className="text-sm font-medium text-[#3D85C6]">Age</Label>
+//               <Label
+//                 htmlFor={`age${index}`}
+//                 className="text-sm font-medium text-[#3D85C6]"
+//               >
+//                 Age
+//               </Label>
 //               <Input
-//                   id={`age${index}`}
-//                   type="number"
-//                   value={formData[index]?.Age || ""}
-//                   onChange={(e) => {
-//                     const value = e.target.value;
-//                     // allow empty or number ≤ 120
-//                     if (value === "" || (+value >= 0 && +value <= 120)) {
-//                       handleInputChange(index, "Age", value);
-//                     }
-//                   }}
-//                   placeholder="eg: 24"
-//                   className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-20"
-//                 />
+//                 id={`age${index}`}
+//                 type="number"
+//                 value={formData[index]?.Age || ""}
+//                 onChange={(e) => {
+//                   const value = e.target.value;
+//                   if (value === "" || (+value >= 0 && +value <= 120)) {
+//                     handleInputChange(index, "Age", value);
+//                   }
+//                 }}
+//                 placeholder="eg: 24"
+//                 className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-20"
+//               />
 //             </div>
 
 //             {/* Gender */}
 //             <div className="md:col-span-1 flex flex-col">
-//               <Label className="text-sm font-medium text-[#3D85C6]">Gender</Label>
+//               <Label className="text-sm font-medium text-[#3D85C6]">
+//                 Gender
+//               </Label>
 //               <div className="flex gap-4 mt-1">
 //                 <div
 //                   className={`flex items-center justify-center w-16 aspect-square rounded-full border cursor-pointer ${
-//                     formData[index]?.gender === "male" ? "border-[#3D85C6] bg-[#e0f2fe]" : "border-gray-300 bg-white"
+//                     formData[index]?.gender === "male"
+//                       ? "border-[#3D85C6] bg-[#e0f2fe]"
+//                       : "border-gray-300 bg-white"
 //                   }`}
-//                   onClick={() => handleInputChange(index, "gender", "male")}
+//                   onClick={() =>
+//                     handleInputChange(index, "gender", "male")
+//                   }
 //                 >
-//                   <img src={maleImg} alt="Male" className="w-12 h-12 object-contain" />
+//                   <img
+//                     src={maleImg}
+//                     alt="Male"
+//                     className="w-12 h-12 object-contain"
+//                   />
 //                 </div>
 //                 <div
 //                   className={`flex items-center justify-center w-16 aspect-square rounded-full border cursor-pointer ${
-//                     formData[index]?.gender === "female" ? "border-[#3D85C6] bg-[#ffe4e6]" : "border-gray-300 bg-white"
+//                     formData[index]?.gender === "female"
+//                       ? "border-[#3D85C6] bg-[#ffe4e6]"
+//                       : "border-gray-300 bg-white"
 //                   }`}
-//                   onClick={() => handleInputChange(index, "gender", "female")}
+//                   onClick={() =>
+//                     handleInputChange(index, "gender", "female")
+//                   }
 //                 >
-//                   <img src={femaleImg} alt="Female" className="w-12 h-12 object-contain" />
+//                   <img
+//                     src={femaleImg}
+//                     alt="Female"
+//                     className="w-12 h-12 object-contain"
+//                   />
 //                 </div>
 //               </div>
 //             </div>
@@ -207,17 +291,23 @@
 //               {travellerType === "IND" ? (
 //                 <>
 //                   <div className="flex-1 flex flex-col">
-//                     <Label className="text-sm font-medium text-[#3D85C6]">Document</Label>
+//                     <Label className="text-sm font-medium text-[#3D85C6]">
+//                       Document
+//                     </Label>
 //                     <Select
 //                       value={docTypes[index] || ""}
-//                       onValueChange={(value) => handleDocTypeChange(index, value)}
+//                       onValueChange={(value) =>
+//                         handleDocTypeChange(index, value)
+//                       }
 //                     >
 //                       <SelectTrigger className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-full">
 //                         <SelectValue placeholder="Select" />
 //                       </SelectTrigger>
 //                       <SelectContent>
 //                         {getDocumentOptions().map((doc) => (
-//                           <SelectItem key={doc} value={doc}>{docLabels[doc]}</SelectItem>
+//                           <SelectItem key={doc} value={doc}>
+//                             {docLabels[doc]}
+//                           </SelectItem>
 //                         ))}
 //                       </SelectContent>
 //                     </Select>
@@ -226,11 +316,18 @@
 //                   <div className="flex-1 flex flex-col">
 //                     {docTypes[index] && (
 //                       <>
-//                         <Label htmlFor={`docNo${index}`} className="text-sm font-medium text-[#3D85C6]">{docLabels[docTypes[index]]}</Label>
+//                         <Label
+//                           htmlFor={`docNo${index}`}
+//                           className="text-sm font-medium text-[#3D85C6]"
+//                         >
+//                           {docLabels[docTypes[index]]}
+//                         </Label>
 //                         <Input
 //                           id={`docNo${index}`}
 //                           value={formData[index]?.docNo || ""}
-//                           onChange={(e) => handleInputChange(index, "docNo", e.target.value)}
+//                           onChange={(e) =>
+//                             handleInputChange(index, "docNo", e.target.value)
+//                           }
 //                           placeholder={`Enter ${docLabels[docTypes[index]]}`}
 //                           className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-full"
 //                         />
@@ -240,11 +337,18 @@
 //                 </>
 //               ) : (
 //                 <div className="flex-1 flex flex-col">
-//                   <Label htmlFor={`passport${index}`} className="text-sm font-medium text-[#3D85C6]">Passport No</Label>
+//                   <Label
+//                     htmlFor={`passport${index}`}
+//                     className="text-sm font-medium text-[#3D85C6]"
+//                   >
+//                     Passport No
+//                   </Label>
 //                   <Input
 //                     id={`passport${index}`}
 //                     value={formData[index]?.passport || ""}
-//                     onChange={(e) => handleInputChange(index, "passport", e.target.value)}
+//                     onChange={(e) =>
+//                       handleInputChange(index, "passport", e.target.value)
+//                     }
 //                     placeholder="Enter Passport No"
 //                     className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-full"
 //                   />
@@ -260,43 +364,43 @@
 //                 type="checkbox"
 //                 id={`disabled${index}`}
 //                 checked={formData[index]?.disabled || false}
-//                 onChange={(e) => handleInputChange(index, "disabled", e.target.checked)}
+//                 onChange={(e) =>
+//                   handleInputChange(index, "disabled", e.target.checked)
+//                 }
 //                 className="h-4 w-4"
 //               />
-//               <Label htmlFor={`disabled${index}`} className="text-sm text-[#3D85C6]">NRI</Label>
+//               <Label
+//                 htmlFor={`disabled${index}`}
+//                 className="text-sm text-[#3D85C6]"
+//               >
+//                 NRI
+//               </Label>
 //             </div>
-//             {/* <div className="flex items-center space-x-2">
+
+//             <div className="flex items-center space-x-2">
 //               <input
 //                 type="checkbox"
 //                 id={`pregnant${index}`}
 //                 checked={formData[index]?.pregnant || false}
-//                 onChange={(e) => handleInputChange(index, "pregnant", e.target.checked)}
-//                 className="h-4 w-4"
+//                 disabled={formData[index]?.gender === "male"} // ✅ Disable for males
+//                 onChange={(e) =>
+//                   handleInputChange(index, "pregnant", e.target.checked)
+//                 }
+//                 className={`h-4 w-4 ${
+//                   formData[index]?.gender === "male"
+//                     ? "opacity-50 cursor-not-allowed"
+//                     : ""
+//                 }`}
 //               />
-//               <Label htmlFor={`pregnant${index}`} className="text-sm text-[#3D85C6]">Pregnant Woman</Label>
-//             </div> */}
-
-//             <div className="flex items-center space-x-2">
-//   <input
-//     type="checkbox"
-//     id={`pregnant${index}`}
-//     checked={formData[index]?.pregnant || false}
-//     disabled={formData[index]?.gender === "male"} // ✅ Disable if male selected
-//     onChange={(e) => handleInputChange(index, "pregnant", e.target.checked)}
-//     className={`h-4 w-4 ${
-//       formData[index]?.gender === "male" ? "opacity-50 cursor-not-allowed" : ""
-//     }`}
-//   />
-//   <Label
-//     htmlFor={`pregnant${index}`}
-//     className={`text-sm text-[#3D85C6] ${
-//       formData[index]?.gender === "male" ? "opacity-50" : ""
-//     }`}
-//   >
-//     Pregnant Woman
-//   </Label>
-// </div>
-
+//               <Label
+//                 htmlFor={`pregnant${index}`}
+//                 className={`text-sm text-[#3D85C6] ${
+//                   formData[index]?.gender === "male" ? "opacity-50" : ""
+//                 }`}
+//               >
+//                 Pregnant Woman
+//               </Label>
+//             </div>
 //           </div>
 //         </div>
 //       ))}
@@ -324,8 +428,11 @@ import { toast } from "react-hot-toast";
 
 const TravellerDetails = ({
   setTravellerData,
+  femaleSeats = [],
 }: {
   setTravellerData: any;
+  selectedSeats: any[];
+  femaleSeats: any[];
 }) => {
   const { state } = useLocation();
   const { selectedSeats = [] } = state || {};
@@ -349,43 +456,29 @@ const TravellerDetails = ({
     return ["aadhar", "pan", "dl", "passport", "voter", "ration", "others"];
   };
 
-  // 🧩 Updated with women-only seat validation
+  // ✅ Gender & input validation
   const handleInputChange = (index: number, field: string, value: any) => {
     const seat = selectedSeats[index];
+    const seatNo = seat?.SeatNo || seat?.seatNumber || seat?.id || seat;
+    const isWomenSeat = femaleSeats.includes(seatNo?.toString());
 
-    // ✅ Gender validation: if women-only seat
-    if (field === "gender" && seat) {
-      const isWomenSeat =
-        seat.isLadiesSeat === true ||
-        seat.genderType === "W" ||
-        seat.seatType?.toLowerCase() === "women";
-
+    if (field === "gender") {
       if (isWomenSeat && value === "male") {
         toast.error(
-          `Seat ${seat.SeatNo || seat.seatNumber || index + 1} is reserved for women. Please select a different seat or change gender.`
+          `Seat ${seatNo} is reserved for women only. Please select Female or choose another seat.`
         );
-        return; // ❌ Stop update
-      }
-
-      if (isWomenSeat && value === "female") {
-        toast.success(
-          `Seat ${seat.SeatNo || seat.seatNumber || index + 1} is reserved for women.`
-        );
+        return; // ❌ Block male selection completely
       }
     }
 
-    // ✅ Normal update logic
+    // ✅ Normal field updates
     setFormData((prev) => ({
       ...prev,
       [index]: {
         ...prev[index],
         [field]: value,
-        ...(field === "gender" && value === "male"
-          ? { pregnant: false }
-          : {}),
-        ...(field === "pregnant" && value === true
-          ? { gender: "female" }
-          : {}),
+        ...(field === "gender" && value === "male" ? { pregnant: false } : {}),
+        ...(field === "pregnant" && value === true ? { gender: "female" } : {}),
       },
     }));
   };
@@ -418,7 +511,6 @@ const TravellerDetails = ({
     const payload = selectedSeats.map((seatId, i) => {
       const t = formData[i] || {};
       const docType = docTypes[i];
-
       return {
         SeatNo: seatId,
         FirstName: t.name || "",
@@ -447,17 +539,13 @@ const TravellerDetails = ({
   return (
     <div className="bg-flixbus-card rounded-lg border border-flixbus-border p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-[#3D85C6]">
-          Traveller Details
-        </h2>
+        <h2 className="text-xl font-bold text-[#3D85C6]">Traveller Details</h2>
         <div className="flex items-center space-x-2">
           <span className="text-sm text-[#3D85C6] font-medium">IND</span>
           <button
             type="button"
             className={`relative inline-flex items-center h-6 w-12 rounded-full transition-colors duration-300 ${
-              travellerType === "NRI"
-                ? "bg-[#3d85c6]"
-                : "bg-gray-300"
+              travellerType === "NRI" ? "bg-[#3d85c6]" : "bg-gray-300"
             }`}
             onClick={() =>
               setTravellerType(travellerType === "IND" ? "NRI" : "IND")
@@ -465,9 +553,7 @@ const TravellerDetails = ({
           >
             <span
               className={`inline-block w-5 h-5 transform bg-white rounded-full shadow-md transition-transform duration-300 ${
-                travellerType === "NRI"
-                  ? "translate-x-6"
-                  : "translate-x-1"
+                travellerType === "NRI" ? "translate-x-6" : "translate-x-1"
               }`}
             ></span>
           </button>
@@ -496,221 +582,211 @@ const TravellerDetails = ({
         </div>
       )}
 
-      {selectedSeats.map((seatId: string, index: number) => (
-        <div key={seatId} className="mb-8">
-          <div className="flex items-center mb-4 justify-between">
-            <div className="flex items-center">
-              <span className="text-sm text-[#4A4A4A] mr-1">Seat</span>
-              <span className="px-2 py-1 rounded text-sm font-bold">
-                {seatId}
-              </span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 items-end">
-            {/* Name */}
-            <div className="md:col-span-2 flex flex-col">
-              <Label
-                htmlFor={`name${index}`}
-                className="text-sm font-medium text-[#3D85C6]"
-              >
-                Name
-              </Label>
-              <Input
-                id={`name${index}`}
-                value={formData[index]?.name || ""}
-                onChange={(e) =>
-                  handleInputChange(index, "name", e.target.value)
-                }
-                placeholder="Type here"
-                className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-48"
-              />
-            </div>
-
-            {/* Age */}
-            <div className="md:col-span-1 flex flex-col">
-              <Label
-                htmlFor={`age${index}`}
-                className="text-sm font-medium text-[#3D85C6]"
-              >
-                Age
-              </Label>
-              <Input
-                id={`age${index}`}
-                type="number"
-                value={formData[index]?.Age || ""}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  if (value === "" || (+value >= 0 && +value <= 120)) {
-                    handleInputChange(index, "Age", value);
-                  }
-                }}
-                placeholder="eg: 24"
-                className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-20"
-              />
-            </div>
-
-            {/* Gender */}
-            <div className="md:col-span-1 flex flex-col">
-              <Label className="text-sm font-medium text-[#3D85C6]">
-                Gender
-              </Label>
-              <div className="flex gap-4 mt-1">
-                <div
-                  className={`flex items-center justify-center w-16 aspect-square rounded-full border cursor-pointer ${
-                    formData[index]?.gender === "male"
-                      ? "border-[#3D85C6] bg-[#e0f2fe]"
-                      : "border-gray-300 bg-white"
-                  }`}
-                  onClick={() =>
-                    handleInputChange(index, "gender", "male")
-                  }
-                >
-                  <img
-                    src={maleImg}
-                    alt="Male"
-                    className="w-12 h-12 object-contain"
-                  />
-                </div>
-                <div
-                  className={`flex items-center justify-center w-16 aspect-square rounded-full border cursor-pointer ${
-                    formData[index]?.gender === "female"
-                      ? "border-[#3D85C6] bg-[#ffe4e6]"
-                      : "border-gray-300 bg-white"
-                  }`}
-                  onClick={() =>
-                    handleInputChange(index, "gender", "female")
-                  }
-                >
-                  <img
-                    src={femaleImg}
-                    alt="Female"
-                    className="w-12 h-12 object-contain"
-                  />
-                </div>
+      {selectedSeats.map((seatId: string, index: number) => {
+        const seatNo = seatId?.toString();
+        const isWomenSeat = femaleSeats.includes(seatNo);
+        return (
+          <div key={seatId} className="mb-8">
+            <div className="flex items-center mb-4 justify-between">
+              <div className="flex items-center">
+                <span className="text-sm text-[#4A4A4A] mr-1">Seat</span>
+                <span className="px-2 py-1 rounded text-sm font-bold">
+                  {seatId}
+                </span>
+                {isWomenSeat && (
+                  <span className="ml-2 text-xs text-pink-600 font-semibold">
+                    (Women Only)
+                  </span>
+                )}
               </div>
             </div>
 
-            {/* Document */}
-            <div className="md:col-span-2 flex gap-4 w-full">
-              {travellerType === "IND" ? (
-                <>
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-6 items-end">
+              {/* Name */}
+              <div className="md:col-span-2 flex flex-col">
+                <Label className="text-sm font-medium text-[#3D85C6]">
+                  Name
+                </Label>
+                <Input
+                  value={formData[index]?.name || ""}
+                  onChange={(e) =>
+                    handleInputChange(index, "name", e.target.value)
+                  }
+                  placeholder="Type here"
+                  className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-48"
+                />
+              </div>
+
+              {/* Age */}
+              <div className="md:col-span-1 flex flex-col">
+                <Label className="text-sm font-medium text-[#3D85C6]">Age</Label>
+                <Input
+                  type="number"
+                  value={formData[index]?.Age || ""}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value === "" || (+value >= 0 && +value <= 120)) {
+                      handleInputChange(index, "Age", value);
+                    }
+                  }}
+                  placeholder="eg: 24"
+                  className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-20"
+                />
+              </div>
+
+              {/* Gender */}
+              <div className="md:col-span-1 flex flex-col">
+                <Label className="text-sm font-medium text-[#3D85C6]">
+                  Gender
+                </Label>
+                <div className="flex gap-4 mt-1">
+                  <div
+                    className={`flex items-center justify-center w-16 aspect-square rounded-full border cursor-pointer ${
+                      formData[index]?.gender === "male"
+                        ? "border-[#3D85C6] bg-[#e0f2fe]"
+                        : "border-gray-300 bg-white"
+                    }`}
+                    onClick={() => handleInputChange(index, "gender", "male")}
+                  >
+                    <img
+                      src={maleImg}
+                      alt="Male"
+                      className="w-12 h-12 object-contain"
+                    />
+                  </div>
+                  <div
+                    className={`flex items-center justify-center w-16 aspect-square rounded-full border cursor-pointer ${
+                      formData[index]?.gender === "female"
+                        ? "border-[#3D85C6] bg-[#ffe4e6]"
+                        : "border-gray-300 bg-white"
+                    }`}
+                    onClick={() =>
+                      handleInputChange(index, "gender", "female")
+                    }
+                  >
+                    <img
+                      src={femaleImg}
+                      alt="Female"
+                      className="w-12 h-12 object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Document */}
+              <div className="md:col-span-2 flex gap-4 w-full">
+                {travellerType === "IND" ? (
+                  <>
+                    <div className="flex-1 flex flex-col">
+                      <Label className="text-sm font-medium text-[#3D85C6]">
+                        Document
+                      </Label>
+                      <Select
+                        value={docTypes[index] || ""}
+                        onValueChange={(value) =>
+                          handleDocTypeChange(index, value)
+                        }
+                      >
+                        <SelectTrigger className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-full">
+                          <SelectValue placeholder="Select" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {getDocumentOptions().map((doc) => (
+                            <SelectItem key={doc} value={doc}>
+                              {docLabels[doc]}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="flex-1 flex flex-col">
+                      {docTypes[index] && (
+                        <>
+                          <Label className="text-sm font-medium text-[#3D85C6]">
+                            {docLabels[docTypes[index]]}
+                          </Label>
+                          <Input
+                            value={formData[index]?.docNo || ""}
+                            onChange={(e) =>
+                              handleInputChange(index, "docNo", e.target.value)
+                            }
+                            placeholder={`Enter ${docLabels[docTypes[index]]}`}
+                            className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-full"
+                          />
+                        </>
+                      )}
+                    </div>
+                  </>
+                ) : (
                   <div className="flex-1 flex flex-col">
                     <Label className="text-sm font-medium text-[#3D85C6]">
-                      Document
+                      Passport No
                     </Label>
-                    <Select
-                      value={docTypes[index] || ""}
-                      onValueChange={(value) =>
-                        handleDocTypeChange(index, value)
+                    <Input
+                      value={formData[index]?.passport || ""}
+                      onChange={(e) =>
+                        handleInputChange(index, "passport", e.target.value)
                       }
-                    >
-                      <SelectTrigger className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-full">
-                        <SelectValue placeholder="Select" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {getDocumentOptions().map((doc) => (
-                          <SelectItem key={doc} value={doc}>
-                            {docLabels[doc]}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                      placeholder="Enter Passport No"
+                      className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-full"
+                    />
                   </div>
+                )}
+              </div>
+            </div>
 
-                  <div className="flex-1 flex flex-col">
-                    {docTypes[index] && (
-                      <>
-                        <Label
-                          htmlFor={`docNo${index}`}
-                          className="text-sm font-medium text-[#3D85C6]"
-                        >
-                          {docLabels[docTypes[index]]}
-                        </Label>
-                        <Input
-                          id={`docNo${index}`}
-                          value={formData[index]?.docNo || ""}
-                          onChange={(e) =>
-                            handleInputChange(index, "docNo", e.target.value)
-                          }
-                          placeholder={`Enter ${docLabels[docTypes[index]]}`}
-                          className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-full"
-                        />
-                      </>
-                    )}
-                  </div>
-                </>
-              ) : (
-                <div className="flex-1 flex flex-col">
-                  <Label
-                    htmlFor={`passport${index}`}
-                    className="text-sm font-medium text-[#3D85C6]"
-                  >
-                    Passport No
-                  </Label>
-                  <Input
-                    id={`passport${index}`}
-                    value={formData[index]?.passport || ""}
-                    onChange={(e) =>
-                      handleInputChange(index, "passport", e.target.value)
-                    }
-                    placeholder="Enter Passport No"
-                    className="mt-1 border-flixbus-border focus:border-flixbus-blue focus:ring-flixbus-blue w-full"
-                  />
-                </div>
-              )}
+            {/* Row 2 */}
+            <div className="flex items-center gap-8 mt-6">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id={`disabled${index}`}
+                  checked={formData[index]?.disabled || false}
+                  onChange={(e) =>
+                    handleInputChange(index, "disabled", e.target.checked)
+                  }
+                  className="h-4 w-4"
+                />
+                <Label
+                  htmlFor={`disabled${index}`}
+                  className="text-sm text-[#3D85C6]"
+                >
+                  NRI
+                </Label>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id={`pregnant${index}`}
+                  checked={formData[index]?.pregnant || false}
+                  disabled={formData[index]?.gender === "male"}
+                  onChange={(e) =>
+                    handleInputChange(index, "pregnant", e.target.checked)
+                  }
+                  className={`h-4 w-4 ${
+                    formData[index]?.gender === "male"
+                      ? "opacity-50 cursor-not-allowed"
+                      : ""
+                  }`}
+                />
+                <Label
+                  htmlFor={`pregnant${index}`}
+                  className={`text-sm text-[#3D85C6] ${
+                    formData[index]?.gender === "male" ? "opacity-50" : ""
+                  }`}
+                >
+                  Pregnant Woman
+                </Label>
+              </div>
             </div>
           </div>
-
-          {/* Row 2 */}
-          <div className="flex items-center gap-8 mt-6">
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id={`disabled${index}`}
-                checked={formData[index]?.disabled || false}
-                onChange={(e) =>
-                  handleInputChange(index, "disabled", e.target.checked)
-                }
-                className="h-4 w-4"
-              />
-              <Label
-                htmlFor={`disabled${index}`}
-                className="text-sm text-[#3D85C6]"
-              >
-                NRI
-              </Label>
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id={`pregnant${index}`}
-                checked={formData[index]?.pregnant || false}
-                disabled={formData[index]?.gender === "male"} // ✅ Disable for males
-                onChange={(e) =>
-                  handleInputChange(index, "pregnant", e.target.checked)
-                }
-                className={`h-4 w-4 ${
-                  formData[index]?.gender === "male"
-                    ? "opacity-50 cursor-not-allowed"
-                    : ""
-                }`}
-              />
-              <Label
-                htmlFor={`pregnant${index}`}
-                className={`text-sm text-[#3D85C6] ${
-                  formData[index]?.gender === "male" ? "opacity-50" : ""
-                }`}
-              >
-                Pregnant Woman
-              </Label>
-            </div>
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
 
 export default TravellerDetails;
+

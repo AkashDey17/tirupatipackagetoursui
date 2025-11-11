@@ -15,17 +15,11 @@ import  ETicket  from "@/components/Ticket/ETicket";
 
 const Ticket = () => {
   const { state } = useLocation();
-  // const {
-  //   totalPrice = 0,
-  //   travellerData = [],
-  //   contactData = {},
-  //   gstData = {},
-  //   tripData = {}
-  // } = state || {};
+  
   const { travellerData, contactData, gstData, totalPrice, tripData,travelDate,boardingPoint,
     droppingPoint,
     departureTime,
-    arrivalTime, selectedSeats, duration, busType } = state || {};
+    arrivalTime, selectedSeats, duration, busType,packageId, from} = state || {};
 
 
   return (
@@ -35,6 +29,8 @@ const Ticket = () => {
         travellerData={travellerData}
         contactData={contactData}
         gstData={gstData}
+        packageId={packageId}
+        from={from}
         
          tripData={{
          

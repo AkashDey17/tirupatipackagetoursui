@@ -150,11 +150,14 @@ const PaymentResult = () => {
     console.log("📞 Contact Details:", booking?.contactData);
     console.log("🧾 GST Details:", booking?.gstData);
     console.log("Bus Type", booking?.busType);
+     console.log("📦 Package ID:", booking?.packageId);
+     console.log("From",booking?.from);
     console.log("----------------------------------------");
 
     // ✅ Check payment result (mock)
     const params = new URLSearchParams(location.search);
     const orderId = params.get("orderId");
+    
 
     if (!orderId) {
       console.error("❌ No orderId found in URL. Payment failed.");
@@ -164,6 +167,7 @@ const PaymentResult = () => {
 
     // ✅ Assume payment success for now
     console.log("✅ Payment successful for orderId:", orderId);
+   
     setStatus("success");
 
     // ✅ Prepare payload for seat reduction
@@ -213,7 +217,9 @@ const PaymentResult = () => {
               className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
               onClick={() =>
                 navigate("/ticket", {
-                  state: bookingData, // ✅ pass booking data to ticket page
+                  state: bookingData,
+                   packageId: bookingData?.packageId, 
+                   from:bookingData?.from
                 })
               }
             >

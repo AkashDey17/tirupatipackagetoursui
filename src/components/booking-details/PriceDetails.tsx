@@ -311,6 +311,9 @@ const PriceDetails = ({
   gstData,
   busId,
   selectedSeats,
+  packageId, 
+  from
+
 }: {
   handleSubmit: (flag: "Y" | "N") => void;
   travellerData: any[];
@@ -318,6 +321,8 @@ const PriceDetails = ({
   gstData: any;
   busId: any;
   selectedSeats: any[];
+  packageId?: number;
+  from?:string
 }) => {
   const { state } = useLocation();
   const {
@@ -444,7 +449,103 @@ const PriceDetails = ({
 
 
 
-const goToPayment = async (flag: "Y" | "N") => {
+// const goToPayment = async (flag: "Y" | "N") => {
+//   try {
+//     // Call parent submit (likely inserts booking)
+//     const bookingResponse: any = await handleSubmit(flag);
+
+//     // ✅ Extract IDs safely
+//     const userId = bookingResponse?.UserID || contactData?.UserID || 1; // fallback to logged-in or guest
+//     const bookingdtlsId = bookingResponse?.BookingdtlsID || bookingResponse?.bookingId || null;
+//      const busBookingSeatId = bookingResponse?.BusBookingSeatID || null;
+//     if
+//      (!bookingdtlsId) {
+//       toast.error("Booking details not found. Please retry.");
+//       return;
+//     }
+
+//     // ✅ Generate or reuse session ID
+//     let sessionId = localStorage.getItem("sessionId");
+//     if (!sessionId) {
+//       sessionId = "USER-" + Date.now();
+//       localStorage.setItem("sessionId", sessionId);
+//     }
+
+//     // ✅ Lock selected seats
+//     if (selectedSeats?.length > 0) {
+//       console.log("🔒 Locking seats before payment:", selectedSeats);
+//       await Promise.all(
+//         selectedSeats.map((seat) =>
+//           fetch("https://api.tirupatipackagetours.com/api/seat/lock", {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify({
+//               busId,
+//               seatNo: seat,
+//               sessionId,
+//               journeyDate: selectedDate,
+//             }),
+//           })
+//         )
+//       );
+//     }
+
+//     // ✅ Prepare full booking data
+//     const bookingData = {
+//       boardingPoint,
+//       droppingPoint,
+//       travelDate: selectedDate,
+//       departureTime: boardingPoint?.Time || departureTime,
+//       arrivalTime: droppingPoint?.Time || arrivalTime,
+//       coachType: busType,
+//       busNumber,
+//       operator: operatorName,
+//       duration,
+//       travellerData,
+//       contactData,
+//       gstData,
+//       selectedSeats,
+//       busId,
+//       totalPrice,
+//       passengerCount: travellerData?.length || selectedSeats?.length || 1,
+//     };
+
+//     // Save to localStorage for later use
+//     localStorage.setItem("bookingData", JSON.stringify(bookingData));
+
+//     setShowPopup(false);
+
+//     // ✅ Create PhonePe order
+//     const response = await fetch("https://api.tirupatipackagetours.com/api/payment/create-order", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({
+//         merchantOrderId: "ORDER" + Date.now(),
+//         amount: totalPrice * 100,
+//         userId: userId,
+//         bookingdtlsId: bookingdtlsId,
+//         busBookingSeatId: busBookingSeatId,
+//       }),
+//     });
+
+//     const data = await response.json();
+//     const { phonepeResponse } = data;
+
+//     await new Promise((res) => setTimeout(res, 500));
+
+//     if (phonepeResponse?.redirectUrl) {
+//       console.log("✅ Redirecting to PhonePe:", phonepeResponse.redirectUrl);
+//       window.location.href = phonepeResponse.redirectUrl;
+//     } else {
+//       alert("Payment initiation failed. Check console for details.");
+//       console.error(phonepeResponse);
+//     }
+//   } catch (error: any) {
+//     console.error("❌ Error during goToPayment:", error);
+//     alert("Something went wrong while locking seats or starting payment.");
+//   }
+// };
+ const goToPayment = async (flag: "Y" | "N") => {
   try {
     // Call parent submit (likely inserts booking)
     const bookingResponse: any = await handleSubmit(flag);
@@ -466,24 +567,24 @@ const goToPayment = async (flag: "Y" | "N") => {
       localStorage.setItem("sessionId", sessionId);
     }
 
-    // ✅ Lock selected seats
-    if (selectedSeats?.length > 0) {
-      console.log("🔒 Locking seats before payment:", selectedSeats);
-      await Promise.all(
-        selectedSeats.map((seat) =>
-          fetch("https://api.tirupatipackagetours.com/api/seat/lock", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              busId,
-              seatNo: seat,
-              sessionId,
-              journeyDate: selectedDate,
-            }),
-          })
-        )
-      );
-    }
+    // // ✅ Lock selected seats
+    // if (selectedSeats?.length > 0) {
+    //   console.log("🔒 Locking seats before payment:", selectedSeats);
+    //   await Promise.all(
+    //     selectedSeats.map((seat) =>
+    //       fetch("https://api.tirupatipackagetours.com/api/seat/lock", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({
+    //           busId,
+    //           seatNo: seat,
+    //           sessionId,
+    //           journeyDate: selectedDate,
+    //         }),
+    //       })
+    //     )
+    //   );
+    // }
 
     // ✅ Prepare full booking data
     const bookingData = {
@@ -503,6 +604,8 @@ const goToPayment = async (flag: "Y" | "N") => {
       busId,
       totalPrice,
       passengerCount: travellerData?.length || selectedSeats?.length || 1,
+       packageId,
+       from
     };
 
     // Save to localStorage for later use
@@ -520,6 +623,9 @@ const goToPayment = async (flag: "Y" | "N") => {
         userId: userId,
         bookingdtlsId: bookingdtlsId,
         busBookingSeatId: busBookingSeatId,
+        selectedDate: selectedDate,
+         packageId: packageId,
+         from:from
       }),
     });
 
@@ -540,7 +646,6 @@ const goToPayment = async (flag: "Y" | "N") => {
     alert("Something went wrong while locking seats or starting payment.");
   }
 };
-
 
 
   return (

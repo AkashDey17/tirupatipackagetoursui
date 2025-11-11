@@ -235,9 +235,10 @@ import BusLoader from "@/utility/BusLoader";
 interface Props {
   selectedDate: Date;
   packageId?: number | string;
+  from :string;
 }
 
-const BusListingContainer = ({ selectedDate, packageId }: Props) => {
+const BusListingContainer = ({ selectedDate, packageId,from  }: Props) => {
   const [busData, setBusData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -335,7 +336,7 @@ const BusListingContainer = ({ selectedDate, packageId }: Props) => {
       ) : (
         <div className="animate-fadeIn">
           {busData.map((bus, index) => (
-            <BusListing key={index} {...bus} selectedDate={selectedDate} packageId={packageId} />
+            <BusListing key={index} {...bus} selectedDate={selectedDate} packageId={packageId} from={from} />
           ))}
         </div>
       )}

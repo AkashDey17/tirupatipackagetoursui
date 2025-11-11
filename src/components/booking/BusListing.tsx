@@ -724,6 +724,7 @@ interface Props {
   viaStops: number;
   boardingPoints: string[];
   selectedDate: Date;
+  from: string;
 
 }
 
@@ -743,7 +744,8 @@ const BusListing = (props: Props) => {
     isVia,
     viaStops,
     selectedDate,
-    packageId
+    packageId,
+    from
   } = props;
 console.log("🎯 BusListing packageId:", packageId, "Type:", typeof packageId, "Selected Date:", selectedDate);
 
@@ -823,7 +825,7 @@ console.log("🎯 BusListing packageId:", packageId, "Type:", typeof packageId, 
 
       // Package-based logic
       if (packageId === 3) {
-        end.setDate(start.getDate() + 4);
+        end.setDate(start.getDate() + 2);
       } else {
         end.setDate(start.getDate() + 1);
       }
@@ -929,7 +931,7 @@ console.log("🎯 BusListing packageId:", packageId, "Type:", typeof packageId, 
   {toDate
     ? new Date(
         new Date(selectedDate).setDate(
-          new Date(selectedDate).getDate() + (packageId === 3 ? 4 : 1)
+          new Date(selectedDate).getDate() + (packageId === 3 ? 2 : 1)
         )
       ).toLocaleDateString("en-US", {
         weekday: "short",
@@ -1100,6 +1102,8 @@ console.log("🎯 BusListing packageId:", packageId, "Type:", typeof packageId, 
             busBookingId={busBookingDetailsId}
             finalSeatPrice={finalSeatPrice}
             busBookingDetailsId={busBookingDetailsId}
+             packageId={ packageId}
+              from={from}
           />
         </div>
       )}

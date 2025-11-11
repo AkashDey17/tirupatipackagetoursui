@@ -211,7 +211,12 @@ const BusBookingDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { operatorId, busBookingDetailsId, selectedDate } = location.state || {};
+  const { operatorId, busBookingDetailsId, selectedDate, packageId,from } = location.state || {};
+  useEffect(() => {
+  console.log("🎯 Received packageId:", packageId);
+   console.log(" Received From:", from);
+}, [packageId]);
+
 
   useEffect(() => {
     const bookingData = JSON.parse(localStorage.getItem("bookingData") || "{}");
@@ -378,6 +383,8 @@ const BusBookingDetails = () => {
               gstData={gstData}
               busId={busId}
               selectedSeats={selectedSeats}
+               packageId={packageId}
+               from={from}
             />
           </div>
         </div>

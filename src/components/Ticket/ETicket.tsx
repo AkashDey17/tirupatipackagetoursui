@@ -519,7 +519,7 @@ import html2canvas from "html2canvas";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData }) => {
+const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData ,packageId,from}) => {
   const {
     boardingPoint = {},
     droppingPoint = {},
@@ -546,7 +546,12 @@ const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData }) 
   const formattedDate = travelDate
     ? new Date(travelDate).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })
     : "";
-
+useEffect(() => {
+    console.log("🎫 E-Ticket Mounted");
+    console.log("📦 Package ID:", packageId);
+     console.log("📦 from ID:", from); // ✅ log here
+    return () => localStorage.removeItem("tripData");
+  }, [packageId]);
   useEffect(() => {
     return () => localStorage.removeItem("tripData");
   }, []);
@@ -663,20 +668,32 @@ const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData }) 
         @layer base { body { background-color: #f5f5f5; font-family: Arial, sans-serif; margin: 0; padding: 20px; } }
       `}</style>
 
+    
       {/* Back Button */}
-      {/* <div style={{ position: "absolute", top: 20, left: 20 }}>
-        <button
-          onClick={() => navigate("/new-bus-booking")}
-          style={{
-            display: "flex", alignItems: "center", gap: "8px",
-            backgroundColor: "#3D85C6", color: "#fff",
-            border: "none", padding: "8px 14px", borderRadius: "8px",
-            fontSize: "14px", cursor: "pointer",
-          }}
-        >
-          <ArrowLeft size={18} /> Back to Bus Booking
-        </button>
-      </div> */}
+<div style={{ position: "absolute", top: 20, left: 20 }}>
+  <button
+    onClick={() =>
+      navigate("/new-bus-booking", {
+        state: { from, packageId }, // ✅ pass both values
+      })
+    }
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "8px",
+      backgroundColor: "#3D85C6",
+      color: "#fff",
+      border: "none",
+      padding: "8px 14px",
+      borderRadius: "8px",
+      fontSize: "14px",
+      cursor: "pointer",
+    }}
+  >
+    <ArrowLeft size={18} /> Back to Bus Booking
+  </button>
+</div>
+
 
       {/* Ticket */}
       <div className="eticket-container" ref={ticketRef}>

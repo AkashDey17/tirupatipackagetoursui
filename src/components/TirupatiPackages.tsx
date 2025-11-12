@@ -237,6 +237,7 @@ const TirupatiPackages = () => {
       </style>
 
       <div
+      id="package"
         style={{
           maxWidth: "1200px",
           margin: "0 auto",

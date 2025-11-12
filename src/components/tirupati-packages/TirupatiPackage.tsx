@@ -42,7 +42,7 @@ const TirupatiPakage = () => {
       <Link to="/new-bus-booking"
       state={{
          packageId: 2,
-    from: "Tirupati 1Day 1Night Dharma Darshan Package",
+    from: "Tirupati 1 Day 1 Night Dharma Darshan Package",
     
   }}
       >

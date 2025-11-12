@@ -141,6 +141,12 @@ const HeroSection = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  const handleKnowMore = () => {
+    const section = document.getElementById("package");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section
@@ -222,8 +228,10 @@ const HeroSection = () => {
               zIndex: 5,
             }}
           >
-            <Link to="/tirupati-package-from-bangalore">
+           
+
             <button
+              onClick={handleKnowMore}
               //onClick={handleBookNow}
               style={{
                 backgroundColor: "#FFCE38",
@@ -240,10 +248,9 @@ const HeroSection = () => {
                 width: "100%",
               }}
             >
-              &lt; BOOK NOW
+              &lt; Know More
             </button>
-            </Link>
-
+           
             <Link to="/contact-us" style={{ width: "100%" }}>
               <button
                 style={{
@@ -277,8 +284,9 @@ const HeroSection = () => {
               flexWrap: "wrap",
             }}
           >
-            <Link to="/tirupati-package-from-bangalore">
+           
             <button
+              onClick={handleKnowMore}
               // onClick={handleBookNow}
               style={{
                 backgroundColor: "#FFCE38",
@@ -294,9 +302,9 @@ const HeroSection = () => {
                 whiteSpace: "nowrap",
               }}
             >
-              &lt; BOOK NOW
+              &lt; Know More
             </button>
-            </Link>
+           
 
             <Link to="/contact-us">
               <button

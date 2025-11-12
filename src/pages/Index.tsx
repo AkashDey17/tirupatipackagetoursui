@@ -14,6 +14,9 @@ import ContactFloatingButton from "@/components/ContactFloatingButton";
 // import poster from "@/assets/poster.jpeg";
 // import poster2 from "@/assets/poster2.jpg";
 import LiveMoodIndicator from "@/components/LiveMoodIndicator";
+import NewBusBooking from "./NewBusBooking";
+import IndexBusBooking from "./IndexBusBooking";
+import SelectBusPackage from "./SelectBusPackage";
 
 const Index = () => {
   const [showPoster, setShowPoster] = useState(true);
@@ -68,7 +71,7 @@ const Index = () => {
       <Header />
       <HeroSection />
       
- 
+ <SelectBusPackage />
       <BestTravelAgency />
       <ScrollVideo />
       <TirupatiPackages />

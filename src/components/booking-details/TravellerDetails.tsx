@@ -806,6 +806,7 @@ import {
 } from "@/components/ui/select";
 import maleImg from "@/assets/male.png";
 import femaleImg from "@/assets/female.png";
+import { AlertTriangle } from "lucide-react";
 import { toast } from "react-hot-toast";
 
 const TravellerDetails = ({
@@ -900,34 +901,75 @@ const TravellerDetails = ({
   };
 
   // ✅ Build traveller data for API payload
-  useEffect(() => {
-    const payload = selectedSeats.map((seatId, i) => {
-      const t = formData[i] || {};
-      const docType = docTypes[i];
-      return {
-        SeatNo: seatId,
-        FirstName: t.name || "",
-        MiddleName: t.middleName || "",
-        LastName: t.lastName || "",
-        Age: t.Age || "",
-        Gender: t.gender || "",
-        DOB: t.dob || null,
-        AadharNo: docType === "aadhar" ? t.docNo || "" : "",
-        PancardNo: docType === "pan" ? t.docNo || "" : "",
-        DrivingLicence: docType === "dl" ? t.docNo || "" : "",
-        PassportNo: docType === "passport" ? t.docNo || "" : "",
-        VoterID: docType === "voter" ? t.docNo || "" : "",
-        RationCard: docType === "ration" ? t.docNo || "" : "",
-        Others: docType === "others" ? t.docNo || "" : "",
-        FoodPref: t.foodPref || "",
-        Disabled: t.disabled || false,
-        Pregnant: t.pregnant || false,
-        IsPrimary: i === 0 ? 1 : 0,
-        CreatedBy: 1,
-      };
-    });
-    setTravellerData(payload);
-  }, [formData, docTypes, selectedSeats, setTravellerData]);
+  // useEffect(() => {
+  //   const payload = selectedSeats.map((seatId, i) => {
+  //     const t = formData[i] || {};
+  //     const docType = docTypes[i];
+  //     return {
+  //       SeatNo: seatId,
+  //       FirstName: t.name || "",
+  //       MiddleName: t.middleName || "",
+  //       LastName: t.lastName || "",
+  //       Age: t.Age || "",
+  //       Gender: t.gender || "",
+  //       DOB: t.dob || null,
+  //       AadharNo: docType === "aadhar" ? t.docNo || "" : "",
+  //       PancardNo: docType === "pan" ? t.docNo || "" : "",
+  //       DrivingLicence: docType === "dl" ? t.docNo || "" : "",
+  //       PassportNo: docType === "passport" ? t.docNo || "" : "",
+  //       VoterID: docType === "voter" ? t.docNo || "" : "",
+  //       RationCard: docType === "ration" ? t.docNo || "" : "",
+  //       Others: docType === "others" ? t.docNo || "" : "",
+  //       FoodPref: t.foodPref || "",
+  //       Disabled: t.disabled || false,
+  //       Pregnant: t.pregnant || false,
+  //       IsPrimary: i === 0 ? 1 : 0,
+  //       CreatedBy: 1,
+  //     };
+  //   });
+  //   setTravellerData(payload);
+  // }, [formData, docTypes, selectedSeats, setTravellerData]);
+useEffect(() => {
+  const payload = selectedSeats.map((seatId, i) => {
+    const t = formData[i] || {};
+    const docType = docTypes[i];
+
+    const traveller = {
+      SeatNo: seatId,
+      FirstName: t.name || "",
+      MiddleName: t.middleName || "",
+      LastName: t.lastName || "",
+      Age: t.Age || "",
+      Gender: t.gender || "",
+      DOB: t.dob || null,
+      AadharNo: docType === "aadhar" ? t.docNo || "" : "",
+      PancardNo: docType === "pan" ? t.docNo || "" : "",
+      DrivingLicence: docType === "dl" ? t.docNo || "" : "",
+      PassportNo: docType === "passport" ? t.docNo || "" : "",
+      VoterID: docType === "voter" ? t.docNo || "" : "",
+      RationCard: docType === "ration" ? t.docNo || "" : "",
+      Others: docType === "others" ? t.docNo || "" : "",
+      FoodPref: t.foodPref || "",
+      Disabled: t.disabled || false,
+      Pregnant: t.pregnant || false,
+      IsPrimary: i === 0 ? 1 : 0,
+      CreatedBy: 1,
+    };
+
+    // ✅ Log male/female info for this seat
+    if (traveller.Gender) {
+      console.log(
+        `🪑 Seat ${seatId}: ${traveller.Gender === "female" ? "👩 Female" : "👨 Male"}`
+      );
+    } else {
+      console.log(`🪑 Seat ${seatId}: Gender not selected yet`);
+    }
+
+    return traveller;
+  });
+
+  setTravellerData(payload);
+}, [formData, docTypes, selectedSeats, setTravellerData]);
 
   return (
     <div className="bg-flixbus-card rounded-lg border border-flixbus-border p-6">

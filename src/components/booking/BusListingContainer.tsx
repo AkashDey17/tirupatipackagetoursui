@@ -45,7 +45,7 @@
 //       setLoading(true);
 //       try {
 //         const res = await fetch(
-//           `http://localhost:5000/api/bus-details?packageId=${packageId}` // ✅ Pass packageId
+//           `https://api.tirupatipackagetours.com/api/bus-details?packageId=${packageId}` // ✅ Pass packageId
 //         );
 //         const data = await res.json();
 
@@ -163,7 +163,7 @@
 //       setLoading(true);
 //       try {
 //         const res = await fetch(
-//           `http://localhost:5000/api/bus-details?packageId=${packageId}`
+//           `https://api.tirupatipackagetours.com/api/bus-details?packageId=${packageId}`
 //         );
 //         const data = await res.json();
 
@@ -276,7 +276,7 @@ const BusListingContainer = ({ selectedDate, packageId,from  }: Props) => {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:5000/api/bus-details?packageId=${packageId}`
+          `https://api.tirupatipackagetours.com/api/bus-details?packageId=${packageId}`
         );
         const data = await res.json();
 

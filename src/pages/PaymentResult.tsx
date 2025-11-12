@@ -48,7 +48,7 @@
 
 //     // ✅ Call backend only if valid booking info
 //     if (payload.BusOperatorID && payload.BookedSeats > 0) {
-//       fetch("http://localhost:5000/api/bus/reduceSeat", {
+//       fetch("https://api.tirupatipackagetours.com/api/bus/reduceSeat", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify(payload),
@@ -183,7 +183,7 @@ const PaymentResult = () => {
 
     // ✅ Call backend to reduce seats
     if (payload.BusOperatorID && payload.BookedSeats > 0) {
-      fetch("http://localhost:5000/api/bus/reduceSeat", {
+      fetch("https://api.tirupatipackagetours.com/api/bus/reduceSeat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

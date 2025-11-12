@@ -19,7 +19,7 @@
 //   useEffect(() => {
 //     const fetchPackages = async () => {
 //       try {
-//         const response = await fetch("http://localhost:5000/api/package-list");
+//         const response = await fetch("https://api.tirupatipackagetours.com/api/package-list");
 //         const data = await response.json();
 //         setPackages(data);
 //       } catch (err) {
@@ -37,7 +37,7 @@
 //     if (!selectedPackage) return toast.error("Please select a package");
 
 //     try {
-//       const response = await fetch("http://localhost:5000/api/submit-feedback", {
+//       const response = await fetch("https://api.tirupatipackagetours.com/api/submit-feedback", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({
@@ -329,7 +329,7 @@ const ContactSignup = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/package-list");
+        const response = await fetch("https://api.tirupatipackagetours.com/api/package-list");
         const data = await response.json();
         setPackages(data);
       } catch (err) {
@@ -349,7 +349,7 @@ const ContactSignup = () => {
     setLoading(true); // ✅ Start spinner
 
     try {
-      const response = await fetch("http://localhost:5000/api/submit-feedback", {
+      const response = await fetch("https://api.tirupatipackagetours.com/api/submit-feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

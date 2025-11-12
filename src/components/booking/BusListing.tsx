@@ -118,7 +118,7 @@
 //   const fetchBusDetailId = async () => {
 //     try {
 //       const res = await fetch(
-//         `http://localhost:5000/api/bus-booking-details/by-operator-package/${operatorId}/${packageId}`
+//         `https://api.tirupatipackagetours.com/api/bus-booking-details/by-operator-package/${operatorId}/${packageId}`
 //       );
 //       const data = await res.json();
 
@@ -141,7 +141,7 @@
 //   useEffect(() => {
 //     const fetchBusDetails = async () => {
 //       try {
-//         const res = await fetch("http://localhost:5000/api/bus-details");
+//         const res = await fetch("https://api.tirupatipackagetours.com/api/bus-details");
 //         const data = await res.json();
 
 //         if (Array.isArray(data) && data.length > 0) {
@@ -177,8 +177,8 @@
 //     const fetchPoints = async () => {
 //       try {
 //         const [boardingRes, droppingRes] = await Promise.all([
-//           fetch(`http://localhost:5000/api/bus/boardingPoints/${busBookingId}`),
-//           fetch(`http://localhost:5000/api/bus/droppingPoints/${busBookingId}`),
+//           fetch(`https://api.tirupatipackagetours.com/api/bus/boardingPoints/${busBookingId}`),
+//           fetch(`https://api.tirupatipackagetours.com/api/bus/droppingPoints/${busBookingId}`),
 //         ]);
 
 //         const boardingData = await boardingRes.json();
@@ -787,8 +787,8 @@ console.log("🎯 BusListing packageId:", packageId, "Type:", typeof packageId, 
     const fetchPoints = async () => {
       try {
         const [boardingRes, droppingRes] = await Promise.all([
-          fetch(`http://localhost:5000/api/bus/boardingPoints/${busBookingDetailsId}`),
-          fetch(`http://localhost:5000/api/bus/droppingPoints/${busBookingDetailsId}`)
+          fetch(`https://api.tirupatipackagetours.com/api/bus/boardingPoints/${busBookingDetailsId}`),
+          fetch(`https://api.tirupatipackagetours.com/api/bus/droppingPoints/${busBookingDetailsId}`)
         ]);
 
         const boardingData = await boardingRes.json();
@@ -865,7 +865,7 @@ console.log("🎯 BusListing packageId:", packageId, "Type:", typeof packageId, 
         const formattedDate = formatLocalDate(selectedDate);
 
         const res = await fetch(
-          `http://localhost:5000/api/bus/seatLayout?busId=${busBookingDetailsId}&journeyDate=${formattedDate}`
+          `https://api.tirupatipackagetours.com/api/bus/seatLayout?busId=${busBookingDetailsId}&journeyDate=${formattedDate}`
         );
 
         const data = await res.json();

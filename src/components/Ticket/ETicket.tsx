@@ -74,7 +74,7 @@
 //   };
 // const handleEmailTicket = async () => {
 //     try {
-//       const response = await fetch("http://localhost:5000/api/send-ticket", {
+//       const response = await fetch("https://api.tirupatipackagetours.com/api/send-ticket", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({
@@ -415,7 +415,7 @@ const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData, pa
     : "";
   const handleEmailTicket = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/send-ticket", {
+      const response = await fetch("https://api.tirupatipackagetours.com/api/send-ticket", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

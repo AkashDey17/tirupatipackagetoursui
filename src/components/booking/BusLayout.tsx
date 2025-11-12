@@ -99,7 +99,7 @@
 //   console.log("✅ Journey Date being passed:", journeyDate);
 
 //       const res = await fetch(
-//         `http://localhost:5000/api/bus/seatLayout?busId=${busBookingId}&journeyDate=${journeyDate}`
+//         `https://api.tirupatipackagetours.com/api/bus/seatLayout?busId=${busBookingId}&journeyDate=${journeyDate}`
 //       );
 
 //       const data = await res.json();
@@ -158,8 +158,8 @@
 //     const fetchPoints = async () => {
 //       try {
 //         const [boardingRes, droppingRes] = await Promise.all([
-//           fetch(`http://localhost:5000/api/bus/boardingPoints/${busBookingId}`),
-//           fetch(`http://localhost:5000/api/bus/droppingPoints/${busBookingId}`)
+//           fetch(`https://api.tirupatipackagetours.com/api/bus/boardingPoints/${busBookingId}`),
+//           fetch(`https://api.tirupatipackagetours.com/api/bus/droppingPoints/${busBookingId}`)
 //         ]);
 
 //         const boardingData = await boardingRes.json();
@@ -225,7 +225,7 @@
 //       // 🧩 Deselect seat → Unlock
 //       setSelectedSeats(prev => prev.filter(id => id !== seatId));
 
-//       await fetch("http://localhost:5000/api/seat/unlock", {
+//       await fetch("https://api.tirupatipackagetours.com/api/seat/unlock", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({
@@ -239,7 +239,7 @@
 //       // 🧩 Select seat → Lock
 //       setSelectedSeats(prev => [...prev, seatId]);
 
-//       await fetch("http://localhost:5000/api/seat/lock", {
+//       await fetch("https://api.tirupatipackagetours.com/api/seat/lock", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({
@@ -715,7 +715,7 @@
 //           selectedDate instanceof Date ? selectedDate.toLocaleDateString("en-CA") : selectedDate;
 
 //         const res = await fetch(
-//           `http://localhost:5000/api/bus/seatLayout?busId=${busBookingId}&journeyDate=${journeyDate}`
+//           `https://api.tirupatipackagetours.com/api/bus/seatLayout?busId=${busBookingId}&journeyDate=${journeyDate}`
 //         );
 //         const data = await res.json();
 
@@ -761,8 +761,8 @@
 //     const fetchPoints = async () => {
 //       try {
 //         const [boardingRes, droppingRes] = await Promise.all([
-//           fetch(`http://localhost:5000/api/bus/boardingPoints/${busBookingId}`),
-//           fetch(`http://localhost:5000/api/bus/droppingPoints/${busBookingId}`),
+//           fetch(`https://api.tirupatipackagetours.com/api/bus/boardingPoints/${busBookingId}`),
+//           fetch(`https://api.tirupatipackagetours.com/api/bus/droppingPoints/${busBookingId}`),
 //         ]);
 
 //         const boardingData = await boardingRes.json();
@@ -822,7 +822,7 @@
 //       // 🧩 Deselect seat → Unlock
 //       setSelectedSeats(prev => prev.filter(id => id !== seatId));
 
-//       await fetch("http://localhost:5000/api/seat/unlock", {
+//       await fetch("https://api.tirupatipackagetours.com/api/seat/unlock", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({
@@ -856,7 +856,7 @@
 //     { duration: 4000 }
 //   );
 // }
-//       await fetch("http://localhost:5000/api/seat/lock", {
+//       await fetch("https://api.tirupatipackagetours.com/api/seat/lock", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({
@@ -1273,7 +1273,7 @@ const BusLayout: React.FC<BusLayoutProps> = ({
           selectedDate instanceof Date ? selectedDate.toLocaleDateString("en-CA") : selectedDate;
 
         const res = await fetch(
-          `http://localhost:5000/api/bus/seatLayout?busId=${busBookingId}&journeyDate=${journeyDate}`
+          `https://api.tirupatipackagetours.com/api/bus/seatLayout?busId=${busBookingId}&journeyDate=${journeyDate}`
         );
         const data = await res.json();
 
@@ -1310,8 +1310,8 @@ const BusLayout: React.FC<BusLayoutProps> = ({
     const fetchPoints = async () => {
       try {
         const [boardingRes, droppingRes] = await Promise.all([
-          fetch(`http://localhost:5000/api/bus/boardingPoints/${busBookingId}`),
-          fetch(`http://localhost:5000/api/bus/droppingPoints/${busBookingId}`),
+          fetch(`https://api.tirupatipackagetours.com/api/bus/boardingPoints/${busBookingId}`),
+          fetch(`https://api.tirupatipackagetours.com/api/bus/droppingPoints/${busBookingId}`),
         ]);
 
         const boardingData = await boardingRes.json();
@@ -1369,7 +1369,7 @@ const BusLayout: React.FC<BusLayoutProps> = ({
     if (selectedSeats.includes(seatId)) {
       // Deselect seat
       setSelectedSeats((prev) => prev.filter((id) => id !== seatId));
-      await fetch("http://localhost:5000/api/seat/unlock", {
+      await fetch("https://api.tirupatipackagetours.com/api/seat/unlock", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ busBookingId, seatNo: seatId, sessionId, journeyDate1 }),
@@ -1399,7 +1399,7 @@ const BusLayout: React.FC<BusLayoutProps> = ({
         );
       }
 
-      await fetch("http://localhost:5000/api/seat/lock", {
+      await fetch("https://api.tirupatipackagetours.com/api/seat/lock", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ busBookingId, seatNo: seatId, sessionId, journeyDate1 }),

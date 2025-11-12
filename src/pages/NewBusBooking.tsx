@@ -24,7 +24,7 @@
 //   const calendarRef = useRef<HTMLDivElement | null>(null);
 
 //   useEffect(() => {
-//     fetch("https://api.tirupatipackagetours.com/api/bus-count")
+//     fetch("http://localhost:5000/api/bus-count")
 //       .then((res) => res.json())
 //       .then((data) => setBusCount(data.count || 0))
 //       .catch(() => setBusCount(0));

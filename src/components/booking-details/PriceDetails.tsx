@@ -46,7 +46,7 @@
 
 //       // ✅ Create PhonePe order
 //       const response = await axios.post(
-//         "https://api.tirupatipackagetours.com/api/payment/create-order",
+//         "http://localhost:5000/api/payment/create-order",
 //         {
 //           merchantOrderId: "ORDER" + Date.now(),
 //           amount: totalPrice * 100, // in paise
@@ -177,7 +177,7 @@
 //       if (selectedSeats?.length > 0 && sessionId) {
 //         console.log("🔓 Unlocking seats on page exit:", selectedSeats);
 //         selectedSeats.forEach((seat) => {
-//           fetch("https://api.tirupatipackagetours.com/api/seat/unlock", {
+//           fetch("http://localhost:5000/api/seat/unlock", {
 //             method: "POST",
 //             headers: { "Content-Type": "application/json" },
 //             body: JSON.stringify({ busId, seatNo: seat, sessionId }),
@@ -202,7 +202,7 @@
 
 //       // ✅ Lock all selected seats
 //       for (const seat of selectedSeats) {
-//         await fetch("https://api.tirupatipackagetours.com/api/seat/lock", {
+//         await fetch("http://localhost:5000/api/seat/lock", {
 //           method: "POST",
 //           headers: { "Content-Type": "application/json" },
 //           body: JSON.stringify({ busId, seatNo: seat, sessionId }),
@@ -348,7 +348,7 @@ const PriceDetails = ({
       if (selectedSeats?.length > 0 && sessionId) {
         console.log("🔓 Unlocking seats on page exit:", selectedSeats);
         selectedSeats.forEach((seat) => {
-          fetch("https://api.tirupatipackagetours.com/api/seat/unlock", {
+          fetch("http://localhost:5000/api/seat/unlock", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ busId, seatNo: seat, sessionId , journeyDate: selectedDate,}),
@@ -476,7 +476,7 @@ const PriceDetails = ({
 //       console.log("🔒 Locking seats before payment:", selectedSeats);
 //       await Promise.all(
 //         selectedSeats.map((seat) =>
-//           fetch("https://api.tirupatipackagetours.com/api/seat/lock", {
+//           fetch("http://localhost:5000/api/seat/lock", {
 //             method: "POST",
 //             headers: { "Content-Type": "application/json" },
 //             body: JSON.stringify({
@@ -516,7 +516,7 @@ const PriceDetails = ({
 //     setShowPopup(false);
 
 //     // ✅ Create PhonePe order
-//     const response = await fetch("https://api.tirupatipackagetours.com/api/payment/create-order", {
+//     const response = await fetch("http://localhost:5000/api/payment/create-order", {
 //       method: "POST",
 //       headers: { "Content-Type": "application/json" },
 //       body: JSON.stringify({
@@ -572,7 +572,7 @@ const PriceDetails = ({
     //   console.log("🔒 Locking seats before payment:", selectedSeats);
     //   await Promise.all(
     //     selectedSeats.map((seat) =>
-    //       fetch("https://api.tirupatipackagetours.com/api/seat/lock", {
+    //       fetch("http://localhost:5000/api/seat/lock", {
     //         method: "POST",
     //         headers: { "Content-Type": "application/json" },
     //         body: JSON.stringify({
@@ -614,7 +614,7 @@ const PriceDetails = ({
     setShowPopup(false);
 
     // ✅ Create PhonePe order
-    const response = await fetch("https://api.tirupatipackagetours.com/api/payment/create-order", {
+    const response = await fetch("http://localhost:5000/api/payment/create-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

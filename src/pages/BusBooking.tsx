@@ -57,7 +57,7 @@ const BusBooking = () => {
   useEffect(() => {
     const fetchBusData = async () => {
       try {
-        const res = await fetch("https://api.tirupatipackagetours.com/api/bus-details"); // your Node.js API
+        const res = await fetch("http://localhost:5000/api/bus-details"); // your Node.js API
         const data = await res.json();
 
         // Map DB data to the structure your BusListing component expects

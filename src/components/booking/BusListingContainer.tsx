@@ -286,7 +286,7 @@ const BusListingContainer = ({ selectedDate, packageId,from  }: Props) => {
 
           const isWeekend = (date: Date) => {
             const day = date.getDay();
-            return day === 0 || day === 6;
+            return day === 5 || day === 6;
           };
 
           const finalPrice = isWeekend(selectedDate)

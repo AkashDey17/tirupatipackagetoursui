@@ -873,7 +873,7 @@ const serviceNumber = busIndex !== undefined ? String(busIndex + 1).padStart(2, 
           </span>
 
           <img
-            src="src/assets/seat-img.jpeg"
+            src={seatImg}
             alt={seat.id}
             className={seatClasses}
           />

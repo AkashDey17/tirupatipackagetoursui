@@ -35,32 +35,76 @@ const ETicket = ({ travellerData, contactData, gstData, totalPrice, tripData, pa
   const formattedDate = travelDate
     ? new Date(travelDate).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })
     : "";
-  const handleEmailTicket = async () => {
-    try {
-      const response = await fetch("https://api.tirupatipackagetours.com/api/send-ticket", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          travellerData,
-          contactData,
-          gstData,
-          totalPrice,
-          tripData,
-        }),
-      });
+  // const handleEmailTicket = async () => {
+  //   try {
+  //     const response = await fetch("https://api.tirupatipackagetours.com/api/send-ticket", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         travellerData,
+  //         contactData,
+  //         gstData,
+  //         totalPrice,
+  //         tripData,
+  //       }),
+  //     });
 
-      const data = await response.json();
-      if (data.success) {
-        alert("✅ Ticket has been emailed successfully!");
-      } else {
-        alert("❌ Failed to send ticket email. Please try again.");
-      }
-    } catch (error) {
-      console.error("Email sending error:", error);
-      alert("Error sending ticket email.");
+  //     const data = await response.json();
+  //     if (data.success) {
+  //       alert("✅ Ticket has been emailed successfully!");
+  //     } else {
+  //       alert("❌ Failed to send ticket email. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Email sending error:", error);
+  //     alert("Error sending ticket email.");
+  //   }
+  // };
+
+const handleEmailTicket = async () => {
+  if (!ticketRef.current) return;
+
+  try {
+    // Generate PDF exactly like download button
+    const element = ticketRef.current;
+
+    const canvas = await html2canvas(element, { scale: 3, useCORS: true });
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+    // Convert PDF to Base64
+    const pdfBase64 = pdf.output("datauristring");
+
+    // Send to backend
+    const response = await fetch("https://api.tirupatipackagetours.com/api/send-ticket", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        travellerData,
+        contactData,
+        totalPrice,
+        tripData,
+        pdfBase64,        // 🔥 sending actual PDF!
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      alert("✅ Ticket emailed successfully!");
+    } else {
+      alert("❌ Email sending failed.");
     }
-  };
-
+  } catch (error) {
+    console.error(error);
+    alert("Error sending ticket email.");
+  }
+};
 
   useEffect(() => {
     console.log("🎫 E-Ticket Mounted");

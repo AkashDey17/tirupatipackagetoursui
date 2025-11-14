@@ -725,7 +725,7 @@ interface Props {
   boardingPoints: string[];
   selectedDate: Date;
   from: string;
-
+busIndex?: number;
 }
 
 const BusListing = (props: Props) => {
@@ -748,6 +748,11 @@ const BusListing = (props: Props) => {
     from
   } = props;
 console.log("🎯 BusListing packageId:", packageId, "Type:", typeof packageId, "Selected Date:", selectedDate);
+
+const serviceNumber = props.busIndex !== undefined
+  ? String(props.busIndex + 1).padStart(2, "0") // 01, 02, 03
+  : "01";
+
 
   const [showSeats, setShowSeats] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<
@@ -1104,6 +1109,8 @@ console.log("🎯 BusListing packageId:", packageId, "Type:", typeof packageId, 
             busBookingDetailsId={busBookingDetailsId}
              packageId={ packageId}
               from={from}
+              serviceNumber={serviceNumber}
+             busIndex={props.busIndex}
           />
         </div>
       )}

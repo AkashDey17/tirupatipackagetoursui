@@ -276,7 +276,7 @@ const BusListingContainer = ({ selectedDate, packageId,from  }: Props) => {
       setLoading(true);
       try {
         const res = await fetch(
-          `https://api.tirupatipackagetours.com/api/bus-details?packageId=${packageId}`
+          `https://api.tirupatipackagetours.com/api/bus-details?packageId=${packageId}&journeyDate=${selectedDate}`
         );
         const data = await res.json();
 
@@ -284,14 +284,14 @@ const BusListingContainer = ({ selectedDate, packageId,from  }: Props) => {
           const depTime = formatTime(bus.DepartureTime);
           const arrTime = formatTime(bus.Arrivaltime);
 
-          const isWeekend = (date: Date) => {
-            const day = date.getDay();
-            return day === 5 || day === 6;
-          };
+          // const isWeekend = (date: Date) => {
+          //   const day = date.getDay();
+          //   return day === 5 || day === 6;
+          // };
 
-          const finalPrice = isWeekend(selectedDate)
-            ? bus.WkEndSeatPrice
-            : bus.WkDaySeatPrice;
+          // const finalPrice = isWeekend(selectedDate)
+          //   ? bus.WkEndSeatPrice
+          //   : bus.WkDaySeatPrice;
 
           return {
             busBookingDetailsId: bus.BusBooKingDetailID,
@@ -305,7 +305,7 @@ const BusListingContainer = ({ selectedDate, packageId,from  }: Props) => {
             date: depTime,
             WkEndSeatPrice: bus.WkEndSeatPrice,
             WkDaySeatPrice: bus.WkDaySeatPrice,
-            finalSeatPrice: finalPrice,
+            finalSeatPrice: bus.FinalSeatPrice,
             seatsAvailable: bus.BusSeats - (bus.FilledSeats || 0),
             totalSeats: bus.BusSeats,
             amenities: bus.amenities || [],
@@ -336,7 +336,7 @@ const BusListingContainer = ({ selectedDate, packageId,from  }: Props) => {
       ) : (
         <div className="animate-fadeIn">
           {busData.map((bus, index) => (
-            <BusListing key={index} {...bus} selectedDate={selectedDate} packageId={packageId} from={from} />
+            <BusListing key={index} {...bus} selectedDate={selectedDate} packageId={packageId} from={from}  busIndex={index} />
           ))}
         </div>
       )}

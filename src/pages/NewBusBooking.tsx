@@ -442,7 +442,7 @@ useEffect(() => {
           </aside>
 
           <main className="flex-1 space-y-6">
-            <BusListingContainer selectedDate={selectedDate} packageId={packageId} from={from} />
+            <BusListingContainer selectedDate={selectedDate} packageId={packageId} from={from}  />
           </main>
         </div>
       </div>

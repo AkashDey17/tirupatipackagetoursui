@@ -773,31 +773,31 @@ const { tickets = [] } = location.state || {};
   const formattedDate = travelDate
     ? new Date(travelDate).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })
     : "";
-  const handleEmailTicket = async () => {
-    try {
-      const response = await fetch("https://api.tirupatipackagetours.com/api/send-ticket", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          travellerData,
-          contactData,
-          gstData,
-          totalPrice,
-          tripData,
-        }),
-      });
+  // const handleEmailTicket = async () => {
+  //   try {
+  //     const response = await fetch("https://api.tirupatipackagetours.com/api/send-ticket", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         travellerData,
+  //         contactData,
+  //         gstData,
+  //         totalPrice,
+  //         tripData,
+  //       }),
+  //     });
 
-      const data = await response.json();
-      if (data.success) {
-        alert("✅ Ticket has been emailed successfully!");
-      } else {
-        alert("❌ Failed to send ticket email. Please try again.");
-      }
-    } catch (error) {
-      console.error("Email sending error:", error);
-      alert("Error sending ticket email.");
-    }
-  };
+  //     const data = await response.json();
+  //     if (data.success) {
+  //       alert("✅ Ticket has been emailed successfully!");
+  //     } else {
+  //       alert("❌ Failed to send ticket email. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Email sending error:", error);
+  //     alert("Error sending ticket email.");
+  //   }
+  // };
   useEffect(() => {
     console.log("🎫 E-Ticket Mounted");
     console.log("📦 Package ID:", packageId);
@@ -1456,12 +1456,12 @@ const { tickets = [] } = location.state || {};
     Download Ticket PDF
   </button>
 
-  <button
+  {/* <button
     onClick={handleEmailTicket}
     className="ticket-btn email-btn"
   >
     Email Ticket
-  </button>
+  </button> */}
 </div>
 
     </>

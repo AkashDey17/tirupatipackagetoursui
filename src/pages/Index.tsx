@@ -17,6 +17,7 @@ import LiveMoodIndicator from "@/components/LiveMoodIndicator";
 import NewBusBooking from "./NewBusBooking";
 import IndexBusBooking from "./IndexBusBooking";
 import SelectBusPackage from "./SelectBusPackage";
+import LaxmiChat from "./LaxmiChat";
 
 const Index = () => {
   const [showPoster, setShowPoster] = useState(true);
@@ -79,7 +80,7 @@ const Index = () => {
       
       <TravelQuiz />
       <ItineraryPlanner />
-
+          <LaxmiChat />
       <TravelersLove />
      
           {/* Floating Live Mood Indicator (Middle Left) */}

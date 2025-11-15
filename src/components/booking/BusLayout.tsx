@@ -566,7 +566,9 @@ interface BusLayoutProps {
   operatorId?: number;
   packageId: number;
   from?: string;
-  busIndex?: number; 
+  busIndex?: number;
+  fromDate: string;
+  toDate: string; 
 }
 
 const BusLayout: React.FC<BusLayoutProps> = ({
@@ -579,7 +581,9 @@ const BusLayout: React.FC<BusLayoutProps> = ({
   operatorId,
   packageId,
   from,
-  busIndex
+  busIndex,
+  fromDate,
+  toDate
 }) => {
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
   const [hoveredSeat, setHoveredSeat] = useState<{ seat: Seat; x: number; y: number } | null>(null);
@@ -599,6 +603,26 @@ const BusLayout: React.FC<BusLayoutProps> = ({
   const { finalSeatPrice } = location.state || {};
   const queryParams = new URLSearchParams(location.search);
   const operatorIdFromUrl = queryParams.get("operatorId");
+
+  const convertToISTTime = (time: string) => {
+  if (!time) return time;
+
+  const parts = time.split(":");
+  if (parts.length < 2) return time;
+
+  const h = parseInt(parts[0], 10);
+  const m = parseInt(parts[1], 10);
+
+  if (isNaN(h) || isNaN(m)) return time;
+
+  const hour = h % 12 || 12;
+  const suffix = h < 12 ? "AM" : "PM";
+
+  return `${hour.toString().padStart(2, "0")}:${m
+    .toString()
+    .padStart(2, "0")} ${suffix}`;
+};
+
 
   // ✅ Operator ID logic
   useEffect(() => {
@@ -660,8 +684,20 @@ const BusLayout: React.FC<BusLayoutProps> = ({
         const boardingData = await boardingRes.json();
         const droppingData = await droppingRes.json();
 
-        setBoardingPoints(boardingData?.boardingPoints || []);
-        setDroppingPoints(droppingData?.droppingPoints || []);
+        setBoardingPoints(
+  (boardingData?.boardingPoints || []).map((p: any) => ({
+    ...p,
+    Time: convertToISTTime(p.Time)
+  }))
+);
+
+setDroppingPoints(
+  (droppingData?.droppingPoints || []).map((p: any) => ({
+    ...p,
+    Time: convertToISTTime(p.Time)
+  }))
+);
+
       } catch (err) {
         console.error("❌ Points fetch error:", err);
       }
@@ -794,6 +830,14 @@ const serviceNumber = busIndex !== undefined ? String(busIndex + 1).padStart(2, 
       packageId,
       from,
       femaleSeats: selectedFemaleSeats, // ✅ simpler & clear
+      fromDate,
+  toDate,
+  fromDateFull: selectedDate,  
+  toDateFull: (() => {
+  const end = new Date(selectedDate);
+  end.setDate(end.getDate() + (packageId === 3 ? 2 : 1));
+  return end;
+})(),
     };
 
     localStorage.setItem("bookingData", JSON.stringify(bookingData));
@@ -1085,71 +1129,8 @@ const serviceNumber = busIndex !== undefined ? String(busIndex + 1).padStart(2, 
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
-              {/* <div className="space-y-2 text-sm">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-medium">BOARDING POINTS</h3>
-                  <ChevronUp className="w-4 h-4 text-muted-foreground" />
-                </div>
-                <div className="max-h-64 overflow-y-auto space-y-2">
-                  {boardingPoints.length > 0 ? (
-                    boardingPoints.map((point, index) => (
-                      <div
-                        key={index}
-                        className={`border rounded p-2 cursor-pointer transition-colors ${selectedBoardingPoint === index
-                          ? "border-primary bg-seat-selected"
-                          : "border-tab-border hover:border-primary"
-                          }`}
-                        onClick={() => setSelectedBoardingPoint(index)}
-                      >
-                        <div className="font-medium text-xs">{point.Time}</div>
-                        <div className="font-semibold text-sm">{point.AreaName}</div>
-                        <div className="text-xs text-pickup-text mt-1">
-                          {point.PointName}
-                        </div>
-                        <div className="text-xs text-pickup-text">{point.Pincode}</div>
-                      </div>
-                    ))
-                  ) : (
-                    <p className="text-xs text-gray-400">
-                      No boarding points found
-                    </p>
-                  )}
-                </div>
-              </div>
-
              
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-medium">DROP POINTS</h3>
-                  <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                </div>
-                <div className="max-h-64 overflow-y-auto space-y-2">
-                  {droppingPoints.length > 0 ? (
-                    droppingPoints.map((point, index) => (
-                      <div
-                        key={index}
-                        className={`border rounded p-2 cursor-pointer transition-colors ${selectedDropPoint === index
-                          ? "border-primary bg-seat-selected"
-                          : "border-tab-border hover:border-primary"
-                          }`}
-                        onClick={() => setSelectedDropPoint(index)}
-                      >
-                        <div className="font-medium text-xs">{point.Time}</div>
-                        <div className="font-semibold text-sm">{point.AreaName}</div>
-                        <div className="text-xs text-pickup-text mt-1">
-                          {point.PointName}
-                        </div>
-                        <div className="text-xs text-pickup-text">{point.Pincode}</div>
-                      </div>
-                    ))
-                  ) : (
-                    <p className="text-xs text-gray-400">
-                      No dropping points found
-                    </p>
-                  )}
-                </div>
-              </div> */}
-              <div>
+              {/* <div>
     <h3 className="font-medium mb-1">BOARDING POINT</h3>
     <select
       className="w-full border rounded p-2"
@@ -1168,12 +1149,56 @@ const serviceNumber = busIndex !== undefined ? String(busIndex + 1).padStart(2, 
       <div className="mt-2 text-xs text-gray-700 border rounded p-2">
         <div><span className="font-semibold">Point Name:</span> {boardingPoints[selectedBoardingPoint].PointName}</div>
         <div><span className="font-semibold">Pincode:</span> {boardingPoints[selectedBoardingPoint].Pincode}</div>
+         <div><span className="font-semibold">Phone No:</span> 9964880505 / 8197882511</div>
+        
       </div>
     )}
-  </div>
+  </div> */}
+
+<div>
+  <h3 className="font-medium mb-1">BOARDING POINT</h3>
+  <select
+    className="w-full border rounded p-2"
+    value={selectedBoardingPoint ?? ""}
+    onChange={(e) => setSelectedBoardingPoint(Number(e.target.value))}
+  >
+    <option value="" disabled>Select Boarding Point</option>
+    {boardingPoints.map((point, index) => (
+      <option key={index} value={index}>
+        {point.Time} | {point.AreaName}
+      </option>
+    ))}
+  </select>
+
+  {selectedBoardingPoint !== null && boardingPoints[selectedBoardingPoint] && (
+    <div className="mt-2 text-xs text-gray-700 border rounded p-2">
+
+      <div>
+        <span className="font-semibold"> 
+       <i className="fa-solid fa-location-dot mr-1"></i>  {boardingPoints[selectedBoardingPoint].PointName}
+       </span> 
+      </div>
+
+      
+
+      {/* <div>
+        <span className="font-semibold">Pincode:</span>
+        {boardingPoints[selectedBoardingPoint].Pincode}
+      </div> */}
+
+      <div>
+        <span className="font-semibold">
+          <i className="fa-solid fa-mobile-screen-button mr-1"></i> Phone No:
+        </span>
+        9964880505 / 8197882511
+      </div>
+
+    </div>
+  )}
+</div>
 
   {/* Dropping Point */}
-  <div>
+  {/* <div>
     <h3 className="font-medium mb-1">DROP POINT</h3>
     <select
       className="w-full border rounded p-2"
@@ -1192,9 +1217,52 @@ const serviceNumber = busIndex !== undefined ? String(busIndex + 1).padStart(2, 
       <div className="mt-2 text-xs text-gray-700 border rounded p-2">
         <div><span className="font-semibold">Point Name:</span> {droppingPoints[selectedDropPoint].PointName}</div>
         <div><span className="font-semibold">Pincode:</span> {droppingPoints[selectedDropPoint].Pincode}</div>
+          <div><span className="font-semibold">Phone No:</span> 9964880505 / 8197882511</div>
       </div>
     )}
-  </div>
+  </div> */}
+  <div>
+  <h3 className="font-medium mb-1">DROP POINT</h3>
+  <select
+    className="w-full border rounded p-2"
+    value={selectedDropPoint ?? ""}
+    onChange={(e) => setSelectedDropPoint(Number(e.target.value))}
+  >
+    <option value="" disabled>Select Drop Point</option>
+    {droppingPoints.map((point, index) => (
+      <option key={index} value={index}>
+        {point.Time} | {point.AreaName}
+      </option>
+    ))}
+  </select>
+
+  {selectedDropPoint !== null && droppingPoints[selectedDropPoint] && (
+    <div className="mt-2 text-xs text-gray-700 border rounded p-2">
+
+      <div>
+        <span className="font-semibold"> <i className="fa-solid fa-location-dot mr-1"></i>
+        {droppingPoints[selectedDropPoint].PointName}
+        </span>
+      </div>
+
+      
+
+      {/* <div>
+        <span className="font-semibold">Pincode:</span>
+        {droppingPoints[selectedDropPoint].Pincode}
+      </div> */}
+
+      <div>
+        <span className="font-semibold">
+          <i className="fa-solid fa-mobile-screen-button mr-1"></i> Phone No:
+        </span>
+        9964880505 / 8197882511
+      </div>
+
+    </div>
+  )}
+</div>
+
             </div>
 
 

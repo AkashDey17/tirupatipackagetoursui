@@ -17,18 +17,39 @@
 //   const [travelDate, setTravelDate] = useState<string>("");
 //   const [busId, setBusId] = useState<number | null>(null);
 //   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
+//   const [femaleSeats, setFemaleSeats] = useState<string[]>([]);
 
 //   const navigate = useNavigate();
 //   const location = useLocation();
 
-//   const { operatorId, busBookingDetailsId, selectedDate } = location.state || {};
+//   const { operatorId, busBookingDetailsId, selectedDate, packageId,from ,fromDate,
+//   toDate,fromDateFull,
+//   toDateFull} = location.state || {};
+//   useEffect(() => {
+//   console.log("🎯 Received packageId:", packageId);
+//    console.log(" Received From:", from);
+// }, [packageId]);
+
+// const localBooking = JSON.parse(localStorage.getItem("bookingData") || "{}");
+
+// const finalFromDateFull = fromDateFull ?? localBooking.fromDateFull;
+// const finalToDateFull = toDateFull ?? localBooking.toDateFull;
 
 //   useEffect(() => {
 //     const bookingData = JSON.parse(localStorage.getItem("bookingData") || "{}");
 
-//     if (bookingData.busId) setBusId(bookingData.busId);
-//     if (bookingData.selectedSeats?.length > 0) setSelectedSeats(bookingData.selectedSeats);
 
+//     if (bookingData.busId) setBusId(bookingData.busId);
+
+//     // ✅ Include both normal and female seats if available
+//     const allSeats = [
+//       ...(bookingData.selectedSeats || []),
+//       ...(bookingData.femaleSeats || []),
+//     ];
+//     if (allSeats.length > 0) setSelectedSeats(allSeats);
+//     if (bookingData.femaleSeats?.length > 0) setFemaleSeats(bookingData.femaleSeats);
+
+//     // ✅ Handle travel date
 //     const dateFromStateOrLocal = selectedDate || bookingData.selectedDate || null;
 //     if (dateFromStateOrLocal) {
 //       const localDate = new Date(dateFromStateOrLocal);
@@ -77,18 +98,20 @@
 
 //       // Optionally save all travellers
 //       if (saveFlag === "Y") {
-//         await Promise.all(travellerData.map(t =>
-//           axios.post("https://api.tirupatipackagetours.com/api/user/get-or-create", {
-//             ...t,
-//             Email: contactData.Email,
-//             ContactNo: t.ContactNo || contactData.ContactNo,
-//             CreatedBy: userId,
-//           })
-//         ));
+//         await Promise.all(
+//           travellerData.map((t) =>
+//             axios.post("https://api.tirupatipackagetours.com/api/user/get-or-create", {
+//               ...t,
+//               Email: contactData.Email,
+//               ContactNo: t.ContactNo || contactData.ContactNo,
+//               CreatedBy: userId,
+//             })
+//           )
+//         );
 //       }
 
 //       // ✅ Save booking seat info and capture BusBookingSeatID
-//       let busBookingSeatId: number | null = null;
+//        let busBookingSeatId: number | null = null;
 //       let bookingdtlsIdFromResponse: number | null = null;
 
 //       for (let i = 0; i < travellerData.length; i++) {
@@ -128,12 +151,11 @@
 //         };
 
 //         const response = await axios.post("https://api.tirupatipackagetours.com/api/bus-booking-seat", payload);
-// console.log("Seat booking response:", response.data);
-//         // ✅ Capture BusBookingSeatID
-//         if (response.data?.BusBookingSeatID) busBookingSeatId = response.data.BusBookingSeatID;
+//         console.log("Seat booking response:", response.data);
 
-//         // Capture booking details ID if needed
-//         if (!bookingdtlsIdFromResponse && response.data?.BookingdtlsID) bookingdtlsIdFromResponse = response.data.BookingdtlsID;
+//         if (response.data?.BusBookingSeatID) busBookingSeatId = response.data.BusBookingSeatID;
+//         if (!bookingdtlsIdFromResponse && response.data?.BookingdtlsID)
+//           bookingdtlsIdFromResponse = response.data.BookingdtlsID;
 //       }
 
 //       // Save locally for confirmation
@@ -143,11 +165,10 @@
 
 //       toast.success("🎉 Booking successful!");
 
-//       // ✅ Return all IDs including BusBookingSeatID
 //       return {
 //         BookingdtlsID: bookingdtlsIdFromResponse || finalBookingDetailsId || null,
 //         UserID: userId,
-//         BusBookingSeatID: busBookingSeatId, // ← now this is correct
+//         BusBookingSeatID: busBookingSeatId,
 //       };
 //     } catch (error: any) {
 //       console.error("❌ Booking Error:", error);
@@ -163,8 +184,15 @@
 //       <div className="max-w-7xl mx-auto px-4 py-6">
 //         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 //           <div className="lg:col-span-2 space-y-6">
-//             <JourneyDetails date={travelDate} />
-//             <TravellerDetails setTravellerData={setTravellerData} selectedSeats={selectedSeats} />
+//             <JourneyDetails date={travelDate} from={from} fromDate={fromDate}
+//   toDate={toDate} fromDateFull={finalFromDateFull}
+//   toDateFull={finalToDateFull}
+//    />
+//             <TravellerDetails
+//               setTravellerData={setTravellerData}
+//               selectedSeats={selectedSeats}
+//               femaleSeats={femaleSeats} // ✅ Added female seat info
+//             />
 //             <ContactDetails setContactData={setContactData} />
 //             <GSTDetails setGSTData={setGSTData} />
 //           </div>
@@ -176,6 +204,8 @@
 //               gstData={gstData}
 //               busId={busId}
 //               selectedSeats={selectedSeats}
+//                packageId={packageId}
+//                from={from}
 //             />
 //           </div>
 //         </div>
@@ -186,6 +216,10 @@
 // };
 
 // export default BusBookingDetails;
+
+
+
+
 
 import JourneyDetails from "@/components/booking-details/JourneyDetails";
 import TravellerDetails from "@/components/booking-details/TravellerDetails";
@@ -211,15 +245,22 @@ const BusBookingDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { operatorId, busBookingDetailsId, selectedDate, packageId,from } = location.state || {};
+  const { operatorId, busBookingDetailsId, selectedDate, packageId, from, fromDate,
+    toDate, fromDateFull,
+    toDateFull } = location.state || {};
   useEffect(() => {
-  console.log("🎯 Received packageId:", packageId);
-   console.log(" Received From:", from);
-}, [packageId]);
+    console.log("🎯 Received packageId:", packageId);
+    console.log(" Received From:", from);
+  }, [packageId]);
 
+  const localBooking = JSON.parse(localStorage.getItem("bookingData") || "{}");
+
+  const finalFromDateFull = fromDateFull ?? localBooking.fromDateFull;
+  const finalToDateFull = toDateFull ?? localBooking.toDateFull;
 
   useEffect(() => {
     const bookingData = JSON.parse(localStorage.getItem("bookingData") || "{}");
+
 
     if (bookingData.busId) setBusId(bookingData.busId);
 
@@ -293,7 +334,7 @@ const BusBookingDetails = () => {
       }
 
       // ✅ Save booking seat info and capture BusBookingSeatID
-      let busBookingSeatId: number | null = null;
+      let busBookingSeatIds = [];   // ⭐ Create an array to collect all seat IDs
       let bookingdtlsIdFromResponse: number | null = null;
 
       for (let i = 0; i < travellerData.length; i++) {
@@ -335,9 +376,15 @@ const BusBookingDetails = () => {
         const response = await axios.post("https://api.tirupatipackagetours.com/api/bus-booking-seat", payload);
         console.log("Seat booking response:", response.data);
 
-        if (response.data?.BusBookingSeatID) busBookingSeatId = response.data.BusBookingSeatID;
-        if (!bookingdtlsIdFromResponse && response.data?.BookingdtlsID)
+        // ⭐ PUSH seat ID into array instead of overwriting
+        if (response.data?.BusBookingSeatID) {
+          busBookingSeatIds.push(response.data.BusBookingSeatID);
+        }
+
+        // ⭐ Only capture once
+        if (!bookingdtlsIdFromResponse && response.data?.BookingdtlsID) {
           bookingdtlsIdFromResponse = response.data.BookingdtlsID;
+        }
       }
 
       // Save locally for confirmation
@@ -347,10 +394,12 @@ const BusBookingDetails = () => {
 
       toast.success("🎉 Booking successful!");
 
+     // ⭐ Return LIST of BusBookingSeatIDs
       return {
-        BookingdtlsID: bookingdtlsIdFromResponse || finalBookingDetailsId || null,
+        BookingdtlsID:
+          bookingdtlsIdFromResponse || finalBookingDetailsId || null,
         UserID: userId,
-        BusBookingSeatID: busBookingSeatId,
+        BusBookingSeatIDs: busBookingSeatIds, // ⭐ Return array
       };
     } catch (error: any) {
       console.error("❌ Booking Error:", error);
@@ -366,7 +415,10 @@ const BusBookingDetails = () => {
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
-            <JourneyDetails date={travelDate} />
+            <JourneyDetails date={travelDate} from={from} fromDate={fromDate}
+              toDate={toDate} fromDateFull={finalFromDateFull}
+              toDateFull={finalToDateFull}
+            />
             <TravellerDetails
               setTravellerData={setTravellerData}
               selectedSeats={selectedSeats}
@@ -383,8 +435,8 @@ const BusBookingDetails = () => {
               gstData={gstData}
               busId={busId}
               selectedSeats={selectedSeats}
-               packageId={packageId}
-               from={from}
+              packageId={packageId}
+              from={from}
             />
           </div>
         </div>
@@ -395,3 +447,5 @@ const BusBookingDetails = () => {
 };
 
 export default BusBookingDetails;
+
+

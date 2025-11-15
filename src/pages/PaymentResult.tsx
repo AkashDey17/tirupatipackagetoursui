@@ -1,6 +1,3 @@
-
-
-
 // import { useEffect, useState } from "react";
 // import { useLocation, useNavigate } from "react-router-dom";
 
@@ -11,7 +8,8 @@
 //   const [bookingData, setBookingData] = useState<any>(null);
 
 //   useEffect(() => {
-//     // ✅ Retrieve booking data from localStorage
+//     console.log("💳 PaymentResult mounted. Checking booking data...");
+
 //     const savedBooking = localStorage.getItem("bookingData");
 
 //     if (!savedBooking) {
@@ -23,16 +21,42 @@
 //     const booking = JSON.parse(savedBooking);
 //     setBookingData(booking);
 
-//     // ✅ Check payment result (mock for now)
+//     // ✅ Log all booking details
+//     console.log("🧾 Booking Data Received from LocalStorage:");
+//     console.log("----------------------------------------");
+//     console.log("🚌 Bus ID:", booking?.busId);
+//     console.log("👤 Operator:", booking?.operator);
+//     console.log("🪑 Selected Seats:", booking?.selectedSeats);
+//     console.log("💰 Total Price:", booking?.totalPrice);
+//     console.log("🕓 Duration:", booking?.duration);
+//     console.log("📅 Travel Date:", booking?.travelDate);
+//     console.log("⏰ Departure Time:", booking?.departureTime);
+//     console.log("🏁 Arrival Time:", booking?.arrivalTime);
+//     console.log("📍 Boarding Point:", booking?.boardingPoint);
+//     console.log("📍 Dropping Point:", booking?.droppingPoint);
+//     console.log("👥 Passenger Count:", booking?.passengerCount);
+//     console.log("🧳 Traveller Details:", booking?.travellerData);
+//     console.log("📞 Contact Details:", booking?.contactData);
+//     console.log("🧾 GST Details:", booking?.gstData);
+//     console.log("Bus Type", booking?.busType);
+//      console.log("📦 Package ID:", booking?.packageId);
+//      console.log("From",booking?.from);
+//     console.log("----------------------------------------");
+
+//     // ✅ Check payment result (mock)
 //     const params = new URLSearchParams(location.search);
 //     const orderId = params.get("orderId");
+    
 
 //     if (!orderId) {
+//       console.error("❌ No orderId found in URL. Payment failed.");
 //       setStatus("failed");
 //       return;
 //     }
 
 //     // ✅ Assume payment success for now
+//     console.log("✅ Payment successful for orderId:", orderId);
+   
 //     setStatus("success");
 
 //     // ✅ Prepare payload for seat reduction
@@ -44,9 +68,9 @@
 //         0,
 //     };
 
-//     console.log("🎟️ Seat reduction payload:", payload);
+//     console.log("🎟️ Seat reduction payload to send to backend:", payload);
 
-//     // ✅ Call backend only if valid booking info
+//     // ✅ Call backend to reduce seats
 //     if (payload.BusOperatorID && payload.BookedSeats > 0) {
 //       fetch("https://api.tirupatipackagetours.com/api/bus/reduceSeat", {
 //         method: "POST",
@@ -55,8 +79,8 @@
 //       })
 //         .then((res) => res.json())
 //         .then((data) => {
-//           console.log("✅ Seat reduction success:", data);
-//             localStorage.setItem("seatsUpdated", "true");
+//           console.log("✅ Seat reduction API response:", data);
+//           localStorage.setItem("seatsUpdated", "true");
 //         })
 //         .catch((err) => {
 //           console.error("❌ Error reducing seat:", err);
@@ -66,7 +90,8 @@
 //     }
 //   }, [location]);
 
-//   if (status === "loading") return <div>Checking payment status...</div>;
+//   if (status === "loading")
+//     return <div>Checking payment status...</div>;
 
 //   return (
 //     <div className="min-h-screen flex items-center justify-center">
@@ -81,7 +106,9 @@
 //               className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
 //               onClick={() =>
 //                 navigate("/ticket", {
-//                   state: bookingData, // ✅ pass booking data to ticket page
+//                   state: bookingData,
+//                    packageId: bookingData?.packageId, 
+//                    from:bookingData?.from
 //                 })
 //               }
 //             >
@@ -109,14 +136,33 @@
 
 // export default PaymentResult;
 
+
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const PaymentResult = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+
   const [status, setStatus] = useState<"success" | "failed" | "loading">("loading");
   const [bookingData, setBookingData] = useState<any>(null);
+
+  const params = new URLSearchParams(location.search);
+  const orderId = params.get("orderId");
+
+  const ticketsParam = params.get("tickets");
+  let tickets = [];
+
+  if (ticketsParam) {
+    try {
+      tickets = JSON.parse(decodeURIComponent(ticketsParam));
+      localStorage.setItem("tickets", JSON.stringify(tickets));
+    } catch (e) {
+      console.error("Ticket parse error:", e);
+    }
+  }
+
 
   useEffect(() => {
     console.log("💳 PaymentResult mounted. Checking booking data...");
@@ -150,14 +196,14 @@ const PaymentResult = () => {
     console.log("📞 Contact Details:", booking?.contactData);
     console.log("🧾 GST Details:", booking?.gstData);
     console.log("Bus Type", booking?.busType);
-     console.log("📦 Package ID:", booking?.packageId);
-     console.log("From",booking?.from);
+    console.log("📦 Package ID:", booking?.packageId);
+    console.log("From", booking?.from);
     console.log("----------------------------------------");
 
     // ✅ Check payment result (mock)
     const params = new URLSearchParams(location.search);
     const orderId = params.get("orderId");
-    
+
 
     if (!orderId) {
       console.error("❌ No orderId found in URL. Payment failed.");
@@ -167,7 +213,7 @@ const PaymentResult = () => {
 
     // ✅ Assume payment success for now
     console.log("✅ Payment successful for orderId:", orderId);
-   
+
     setStatus("success");
 
     // ✅ Prepare payload for seat reduction
@@ -217,9 +263,12 @@ const PaymentResult = () => {
               className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
               onClick={() =>
                 navigate("/ticket", {
-                  state: bookingData,
-                   packageId: bookingData?.packageId, 
-                   from:bookingData?.from
+                  state: {
+                    ...bookingData,
+                    packageId: bookingData?.packageId,
+                    from: bookingData?.from,
+                    tickets,
+                  }
                 })
               }
             >

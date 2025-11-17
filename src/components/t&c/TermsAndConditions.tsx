@@ -49,6 +49,17 @@ const TermsAndConditions = () => {
             </p>
           </section>
 
+
+            {/* Terms and Condition Policy */}
+            <section>
+            <h2 className="text-2xl font-semibold text-[#ff0000] mb-4">
+              Terms and Condition Policy
+            </h2>
+            <p className="text-policy-text leading-relaxed mb-4">
+              Refunds are not applicable as we do not accept cancellations.
+            </p>
+          </section>
+
           {/* User Responsibilities */}
           <section>
             <h2 className="text-2xl font-semibold text-[#ff0000] mb-4">
@@ -120,7 +131,7 @@ const TermsAndConditions = () => {
               you may contact us using the information below:
             </p>
             <div className="mt-4 p-4 bg-card rounded border-l-4 border-policy-accent">
-              <p className="text-policy-text font-medium">sanchar6t@gmail.com</p>
+              <p className="text-policy-text font-medium">enquiry@tirupatipackagetours.com</p>
             </div>
           </section>
 

@@ -168,12 +168,12 @@ const SelectBusPackage = () => {
   const toPackages = [
     {
       id: 2,
-      short: "Tirupati Package (Free Darshan)",
+      short: "Tirupati Package",
       fullName: "Tirupati 1 Day 1 Night Dharma Darshan Package",
     },
     {
       id: 3,
-      short: "Tirupati Srikalahasti (Free Darshan)",
+      short: "Tirupati Srikalahasti",
       fullName: "Tirupati Srikalahasti 2 Nights 2 Days Dharma Darshan Package",
     },
   ];

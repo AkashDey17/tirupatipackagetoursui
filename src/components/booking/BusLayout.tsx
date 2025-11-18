@@ -731,14 +731,42 @@ const serviceNumber = busIndex !== undefined ? String(busIndex + 1).padStart(2, 
   useEffect(() => {
     if (!selectedDate) return;
     const price = getSeatPrice(selectedDate);
+    // const createSeats = (prefix: string): Seat[] =>
+    //   Array.from({ length: 18 }, (_, i) => ({
+    //     id: `${prefix}${i + 1}`,
+    //     price,
+    //     isAvailable: !bookedSeats.includes(`${prefix}${i + 1}`),
+    //     isSelected: false,
+    //     type: i < 12 ? "seater" : "sleeper",
+    //   }));
     const createSeats = (prefix: string): Seat[] =>
-      Array.from({ length: 18 }, (_, i) => ({
-        id: `${prefix}${i + 1}`,
-        price,
-        isAvailable: !bookedSeats.includes(`${prefix}${i + 1}`),
-        isSelected: false,
-        type: i < 12 ? "seater" : "sleeper",
-      }));
+  Array.from({ length: 18 }, (_, i) => {
+    let uiId = "";
+
+    if (prefix === "L") {
+      // LOWER
+      if (i < 6) {
+        uiId = "SL" + (i + 1); // Side lower
+      } else {
+        uiId = "L" + (i - 5);   // L1 – L12
+      }
+    } else {
+      // UPPER
+      if (i < 6) {
+        uiId = "SU" + (i + 1); // Side upper
+      } else {
+        uiId = "U" + (i - 5);  // U1 – U12
+      }
+    }
+
+    return {
+      id: uiId,  // UI ID stored here!
+      price,
+      isAvailable: !bookedSeats.includes(uiId), // compare using UI names
+      isSelected: false,
+      type: i < 12 ? "seater" : "sleeper",
+    };
+  });
 
     setLowerBerthSeats(createSeats("L"));
     setUpperBerthSeats(createSeats("U"));
@@ -759,8 +787,12 @@ const serviceNumber = busIndex !== undefined ? String(busIndex + 1).padStart(2, 
     return;
   }
 
+    // const journeyDate1 =
+    //   selectedDate instanceof Date ? selectedDate.toISOString().split("T")[0] : selectedDate;
     const journeyDate1 =
-      selectedDate instanceof Date ? selectedDate.toISOString().split("T")[0] : selectedDate;
+      selectedDate instanceof Date
+        ? selectedDate.toLocaleDateString("en-CA")
+        : selectedDate;
 
     if (selectedSeats.includes(seatId)) {
       // Deselect seat
